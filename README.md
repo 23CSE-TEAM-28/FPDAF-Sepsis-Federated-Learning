@@ -54,7 +54,6 @@ All official evaluation drafts are included in this portal:
 - [Springer Nature Scientific Reports Manuscript (17 Pages, Q1)](docs/FPDAF_Springer_Journal_Paper.pdf)
 - [IPO Form 2 Patent Specification Draft (13 Pages, 15 Claims)](docs/Patent_Disclosure_Draft_FPDAF.pdf)
 - [Comprehensive Project Documentation Dossier](docs/Project_Documentation_Dossier.pdf)
-- [Turnitin Similarity & Originality Report (4% Index)](docs/Similarity_and_Originality_Report.pdf)
 
 ---
 
