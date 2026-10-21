@@ -1178,9 +1178,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToSection(selector) {
     const el = document.querySelector(selector);
     if (el) {
-      const navHeight = navbar ? navbar.offsetHeight : 70;
+      const navHeight = 100; // Account for top navbar + quicknav ribbon
       window.scrollTo({
-        top: el.offsetTop - navHeight + 10,
+        top: el.offsetTop - navHeight,
         behavior: 'smooth'
       });
     }
