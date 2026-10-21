@@ -34,11 +34,6 @@
 </head>
 <body>
 
-  <!-- Ambient Dynamic Glow Canvas Background -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
-
   <!-- Sticky Top Navigation Bar with Industry-Grade Drop Panels -->
   <header class="navbar" id="topNavbar">
     <div class="nav-container">
@@ -90,7 +85,7 @@
                 <div class="drop-icon icon-emerald"><i data-lucide="code-2"></i></div>
                 <div class="drop-card-body">
                   <div class="drop-card-title">REST API &amp; Standards</div>
-                  <div class="drop-card-desc">Simulated FastAPI console with HL7/FHIR telemetry streams</div>
+                  <div class="drop-card-desc">Production FastAPI endpoints with HL7/FHIR telemetry streams</div>
                 </div>
               </a>
             </div>
@@ -228,14 +223,14 @@
 
         <!-- Direct Nav Links -->
         <div class="nav-item">
-          <a href="#terminal" class="nav-link">MLOps CLI</a>
+          <a href="#api" class="nav-link">API &amp; Docs</a>
         </div>
         <div class="nav-item">
           <a href="#team" class="nav-link">Team</a>
         </div>
       </nav>
 
-      <!-- Nav Actions (Always visible, responsive, never pushed off) -->
+      <!-- Nav Actions (Clean & Focused) -->
       <div class="nav-actions">
         <button class="cmd-trigger-btn" id="openCmdPaletteBtn" title="Search Documentation (⌘K)">
           <i data-lucide="search"></i>
@@ -245,10 +240,9 @@
         <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" class="btn-github" title="View Source on GitHub">
           <i data-lucide="github"></i>
           <span>GitHub</span>
-          <span class="gh-stars">★</span>
         </a>
         <a href="#simulator" class="btn-nav-cta">
-          <span>Live Demo</span>
+          <span>CDSS Simulator</span>
           <i data-lucide="arrow-right"></i>
         </a>
         <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
@@ -287,36 +281,11 @@
         <a href="#patent" class="mobile-link"><i data-lucide="award"></i> Patent Specification (15 Claims)</a>
         <a href="#publications" class="mobile-link"><i data-lucide="book-open"></i> Scholarly Manuscripts &amp; Dossiers</a>
 
-        <div class="mobile-group-title">System &amp; Team</div>
-        <a href="#terminal" class="mobile-link"><i data-lucide="terminal"></i> MLOps CLI Terminal</a>
+        <div class="mobile-group-title">Team</div>
         <a href="#team" class="mobile-link"><i data-lucide="users"></i> Team 28 &amp; Faculty Supervisors</a>
       </div>
     </div>
   </header>
-
-  <!-- Live Multi-Hospital Telemetry Ticker Strip -->
-  <div class="telemetry-ticker">
-    <div class="ticker-badge">
-      <span class="ticker-dot live pulse-dot"></span>
-      <span class="ticker-badge-text">LIVE TELEMETRY</span>
-      <span class="ticker-badge-nodes">3 Edge Nodes</span>
-    </div>
-    <div class="ticker-track">
-      <div class="ticker-wrap" id="telemetryTickerWrap">
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Community Hospital 1:</strong> 12,480 Encounters • Val Loss: 0.0418 • Drifts: 0 [Normal Geriatric]</div>
-        <div class="ticker-item"><span class="ticker-dot crit"></span><strong>Trauma Center 2:</strong> 15,124 Encounters • S_r = 3.42 [AD-CUSUM DRIFT DETECTED] • CSSP Edge Adapt Active</div>
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Academic Center 3:</strong> 12,723 Encounters • Val Loss: 0.0388 • Drifts: 0 [Tertiary Oncology]</div>
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Global FedAvg Consensus:</strong> Round 50/50 • AUROC: 0.9418 • Bandwidth Saved: 38.2% (960 MB)</div>
-        <div class="ticker-item"><span class="ticker-dot warn"></span><strong>Bedside CDSS:</strong> Surviving Sepsis Campaign (SSC) Hour-1 Bundles Synced</div>
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Sovereignty:</strong> Zero Raw Patient Records Transferred (100% HIPAA &amp; India DPDPA Compliant)</div>
-        <!-- Seamless duplicate loop -->
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Community Hospital 1:</strong> 12,480 Encounters • Val Loss: 0.0418 • Drifts: 0 [Normal Geriatric]</div>
-        <div class="ticker-item"><span class="ticker-dot crit"></span><strong>Trauma Center 2:</strong> 15,124 Encounters • S_r = 3.42 [AD-CUSUM DRIFT DETECTED] • CSSP Edge Adapt Active</div>
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Academic Center 3:</strong> 12,723 Encounters • Val Loss: 0.0388 • Drifts: 0 [Tertiary Oncology]</div>
-        <div class="ticker-item"><span class="ticker-dot live"></span><strong>Global FedAvg Consensus:</strong> Round 50/50 • AUROC: 0.9418 • Bandwidth Saved: 38.2% (960 MB)</div>
-      </div>
-    </div>
-  </div>
 
   <!-- Hero Section -->
   <section id="overview" class="hero-section">
@@ -334,23 +303,23 @@
         A decentralized clinical intelligence framework that preserves hospital data sovereignty under <strong>HIPAA &amp; India's DPDPA</strong>, eliminates concept drift between multi-tier ICU centers, and forecasts septic shock <strong>5.8 hours in advance</strong> with <strong>96.42% accuracy</strong>.
       </p>
 
-      <!-- Hero Actions (Prominently Placed at the Top) -->
+      <!-- Hero Actions (Refined Enterprise Layout) -->
       <div class="hero-actions">
-        <a href="#demo" class="btn btn-primary">
-          <i data-lucide="play-circle"></i>
-          <span>Watch Demonstration Video</span>
-        </a>
-        <a href="#simulator" class="btn btn-secondary">
+        <a href="#simulator" class="btn btn-primary">
           <i data-lucide="sliders"></i>
-          <span>Interactive Recourse Simulator</span>
+          <span>Interactive CDSS Simulator</span>
         </a>
-        <a href="#patent" class="btn btn-gold">
+        <a href="#patent" class="btn btn-secondary">
           <i data-lucide="award"></i>
-          <span>Explore Patent Specification (15 Claims)</span>
+          <span>Patent Specification (15 Claims)</span>
         </a>
-        <a href="#publications" class="btn btn-outline">
+        <a href="#demo" class="btn btn-tertiary">
+          <i data-lucide="play-circle"></i>
+          <span>Watch Demonstration</span>
+        </a>
+        <a href="#publications" class="btn btn-ghost">
           <i data-lucide="file-text"></i>
-          <span>Read Scholarly Manuscripts</span>
+          <span>Scholarly Manuscripts</span>
         </a>
       </div>
 
@@ -437,17 +406,16 @@
       <div class="quicknav-scroll">
         <a href="#problem" class="quicknav-link"><span class="qn-num">01</span> Clinical Need</a>
         <a href="#inventions" class="quicknav-link"><span class="qn-num">02</span> Inventions</a>
-        <a href="#terminal" class="quicknav-link"><span class="qn-num">03</span> MLOps CLI</a>
-        <a href="#simulator" class="quicknav-link"><span class="qn-num">04</span> Recourse Sim</a>
-        <a href="#benchmarks" class="quicknav-link"><span class="qn-num">05</span> Benchmarks</a>
-        <a href="#patent" class="quicknav-link"><span class="qn-num">06</span> Patent Claims</a>
-        <a href="#cohort" class="quicknav-link"><span class="qn-num">07</span> Cohort Data</a>
-        <a href="#xai" class="quicknav-link"><span class="qn-num">08</span> XAI Pillars</a>
-        <a href="#api" class="quicknav-link"><span class="qn-num">09</span> REST API</a>
-        <a href="#portals" class="quicknav-link"><span class="qn-num">10</span> Portals</a>
-        <a href="#demo" class="quicknav-link"><span class="qn-num">11</span> Live Video</a>
-        <a href="#publications" class="quicknav-link"><span class="qn-num">12</span> Publications</a>
-        <a href="#team" class="quicknav-link"><span class="qn-num">13</span> Team</a>
+        <a href="#simulator" class="quicknav-link"><span class="qn-num">03</span> Recourse Sim</a>
+        <a href="#benchmarks" class="quicknav-link"><span class="qn-num">04</span> Benchmarks</a>
+        <a href="#patent" class="quicknav-link"><span class="qn-num">05</span> Patent Claims</a>
+        <a href="#cohort" class="quicknav-link"><span class="qn-num">06</span> Cohort Data</a>
+        <a href="#xai" class="quicknav-link"><span class="qn-num">07</span> XAI Pillars</a>
+        <a href="#api" class="quicknav-link"><span class="qn-num">08</span> REST API</a>
+        <a href="#portals" class="quicknav-link"><span class="qn-num">09</span> Portals</a>
+        <a href="#demo" class="quicknav-link"><span class="qn-num">10</span> Live Video</a>
+        <a href="#publications" class="quicknav-link"><span class="qn-num">11</span> Publications</a>
+        <a href="#team" class="quicknav-link"><span class="qn-num">12</span> Team</a>
       </div>
     </div>
   </nav>
@@ -657,45 +625,6 @@
               <span class="img-caption">Selective Client-Server Aggregation Logic</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive MLOps CLI Terminal Simulation -->
-  <section id="terminal" class="section terminal-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag"><i data-lucide="terminal"></i> Edge MLOps Orchestration</div>
-        <h2 class="section-title">Live Federated Training &amp; Drift Adaptation CLI</h2>
-        <p class="section-subtitle">
-          Experience real-time decentralized model synchronization across 3 hospital nodes. Trigger simulated ICU patient demographic drift and observe AD-CUSUM detection and CSSP edge parameter freezing in the runtime terminal below.
-        </p>
-      </div>
-
-      <div class="terminal-card">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span class="t-dot t-red"></span>
-            <span class="t-dot t-yellow"></span>
-            <span class="t-dot t-green"></span>
-          </div>
-          <div class="terminal-title">
-            <i data-lucide="cpu" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i>
-            fpdaf-fl-coordinator — zsh — 80x24 (Python 3.11 / PyTorch 2.3)
-          </div>
-          <div class="terminal-controls">
-            <button class="btn btn-sm btn-outline" id="btnRunRound1">Run Round 1–15</button>
-            <button class="btn btn-sm btn-outline text-amber" id="btnTriggerDrift">Simulate Trauma Drift (R16)</button>
-            <button class="btn btn-sm btn-primary" id="btnAdaptCSSP">Trigger CSSP Freezing</button>
-            <button class="btn btn-sm btn-outline" id="btnClearTerminal"><i data-lucide="trash-2"></i> Clear</button>
-          </div>
-        </div>
-        <div class="terminal-body" id="terminalOutput">
-          <div class="log-line"><span class="log-time">[13:30:00]</span> <span class="log-info">[INIT]</span> Initialized FPDAF Federated Coordinator across 3 Hospital Nodes.</div>
-          <div class="log-line"><span class="log-time">[13:30:01]</span> <span class="log-info">[INFO]</span> Loaded PhysioNet 2019 ICU Cohort (40,327 Encounters, 40 Time-Series Biomarkers).</div>
-          <div class="log-line"><span class="log-time">[13:30:02]</span> <span class="log-success">[SUCCESS]</span> Global BiLSTM-Attention Model weights initialized. Hash: <code>0x7f4a9b2e</code>.</div>
-          <div class="log-line"><span class="log-time">[13:30:05]</span> <span class="log-info">[READY]</span> Awaiting training command. Click buttons above to execute federated rounds... <span class="log-cursor"></span></div>
         </div>
       </div>
     </div>
