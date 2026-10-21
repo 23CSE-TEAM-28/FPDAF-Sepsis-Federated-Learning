@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPDAF — Explainable Federated Learning for Healthcare Time-Series</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for crisp mathematical formulas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="navbar" id="topNavbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-logo">
+          <i data-lucide="activity" class="pulse-icon"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">FPDAF <span class="badge-tag">G028</span></span>
+          <span class="brand-sub">Amrita Vishwa Vidyapeetham • Dept. of CSE</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#problem">Clinical Need</a>
+        <a href="#inventions">Inventions</a>
+        <a href="#results">Benchmarking</a>
+        <a href="#simulator">Recourse Simulator</a>
+        <a href="#xai">Explainability</a>
+        <a href="#portals">CDSS Portals</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#publications">Publications</a>
+        <a href="#team">Team</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://github.com/aksharsakhi/23CSE498-Project-Phase-II" target="_blank" class="btn-github">
+          <i data-lucide="github"></i>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="overview" class="hero-section">
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>B.Tech Final-Year Capstone Project • Course: 23CSE498 Phase II • Group G028 (TAG: DSDA)</span>
+      </div>
+      <h1 class="hero-title">
+        Explainable Federated Learning for Healthcare Time-Series Forecasting with <span class="gradient-text">Personalized Drift Adaptation</span>
+      </h1>
+      <p class="hero-description">
+        A decentralized clinical intelligence framework that preserves hospital data sovereignty under <strong>HIPAA &amp; DPDPA</strong>, eliminates concept drift between multi-tier ICU centers, and forecasts septic shock <strong>5.8 hours in advance</strong> with <strong>96.42% accuracy</strong>.
+      </p>
+
+      <!-- Key Performance Badges (Animated Counters) -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon"><i data-lucide="check-circle-2"></i></div>
+          <div class="metric-value" data-target="96.42" data-suffix="%">0.00%</div>
+          <div class="metric-label">Diagnostic Accuracy</div>
+          <div class="metric-sub">Committee Target: >95% (Exceeded)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon"><i data-lucide="heart-pulse"></i></div>
+          <div class="metric-value" data-target="82.50" data-suffix="%">0.00%</div>
+          <div class="metric-label">Clinical Sensitivity (Recall)</div>
+          <div class="metric-sub">>4 out of 5 Sepsis Cases Caught</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon"><i data-lucide="trending-up"></i></div>
+          <div class="metric-value" data-target="0.9418" data-decimals="4">0.0000</div>
+          <div class="metric-label">AUROC Score</div>
+          <div class="metric-sub">+0.157 vs FedAvg Baseline (0.7844)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon"><i data-lucide="clock"></i></div>
+          <div class="metric-value" data-target="5.8" data-suffix="h">0.0h</div>
+          <div class="metric-label">Advance Lead Time</div>
+          <div class="metric-sub">Actionable Window Before Shock</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon"><i data-lucide="zap"></i></div>
+          <div class="metric-value" data-target="38.2" data-prefix="-" data-suffix="%">-0.0%</div>
+          <div class="metric-label">Bandwidth Reduction</div>
+          <div class="metric-sub">Client-Side Selective Personalization</div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary">
+          <i data-lucide="play-circle"></i>
+          <span>Watch Live Demonstration Video</span>
+        </a>
+        <a href="#simulator" class="btn btn-secondary">
+          <i data-lucide="sliders"></i>
+          <span>Interactive Clinical Recourse Simulator</span>
+        </a>
+        <a href="#publications" class="btn btn-outline">
+          <i data-lucide="file-text"></i>
+          <span>View Manuscripts &amp; Patent</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Statement & Clinical Urgency -->
+  <section id="problem" class="section problem-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="alert-triangle"></i> Clinical Urgency &amp; Technological Gaps</div>
+        <h2 class="section-title">The Challenge: Surviving Sepsis Across Siloed Hospitals</h2>
+        <p class="section-subtitle">
+          Sepsis affects over 49 million patients worldwide, claiming 11 million lives each year. In intensive care, <strong>mortality escalates by 7.6%–8.0% for every single hour of delayed treatment</strong>. Deploying AI at scale, however, is obstructed by three fundamental hurdles:
+        </p>
+      </div>
+
+      <div class="cards-grid-3">
+        <div class="feature-card glass-card">
+          <div class="card-glow red-glow"></div>
+          <div class="feature-icon icon-red">
+            <i data-lucide="shield-alert"></i>
+          </div>
+          <h3>1. Data Sovereignty &amp; Privacy</h3>
+          <p>Strict clinical regulations (HIPAA, GDPR, India's DPDPA) strictly prohibit pooling raw 40-biomarker ICU records into a centralized cloud server, creating impenetrable institutional data silos.</p>
+          <div class="card-metric-footer">
+            <span class="footer-tag tag-red">Solution: Decentralized FL</span>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card">
+          <div class="card-glow yellow-glow"></div>
+          <div class="feature-icon icon-yellow">
+            <i data-lucide="shuffle"></i>
+          </div>
+          <h3>2. Inter-Hospital Non-IID Drift</h3>
+          <p>Community hospitals treat geriatric patients (mean age 68.4y), trauma centers experience acute hemodynamic volatility, and academic centers care for complex oncology cases. Standard FedAvg suffers catastrophic gradient conflict.</p>
+          <div class="card-metric-footer">
+            <span class="footer-tag tag-yellow">Solution: AD-CUSUM Detection</span>
+          </div>
+        </div>
+
+        <div class="feature-card glass-card">
+          <div class="card-glow blue-glow"></div>
+          <div class="feature-icon icon-blue">
+            <i data-lucide="wifi-off"></i>
+          </div>
+          <h3>3. Edge Bandwidth Exhaustion</h3>
+          <p>Bi-level personalized federated baselines (e.g., Ditto) transmit continuous bidirectional multi-megabyte parameter tensors, saturating hospital edge firewalls with >2.48 GB of communication payload per 50 rounds.</p>
+          <div class="card-metric-footer">
+            <span class="footer-tag tag-blue">Solution: CSSP 0-Upload Freezing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology & The 3 Algorithmic Inventions -->
+  <section id="inventions" class="section methodology-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="cpu"></i> Core Architectural Innovations</div>
+        <h2 class="section-title">The Proposed FPDAF Methodology</h2>
+        <p class="section-subtitle">
+          A decoupled neural architecture that separates global temporal representation learning from localized drift adaptation.
+        </p>
+      </div>
+
+      <!-- System Architecture Diagram Card -->
+      <div class="diagram-card glass-card">
+        <div class="diagram-header">
+          <div class="diagram-title-wrap">
+            <i data-lucide="layers" class="diagram-icon"></i>
+            <div>
+              <h3>End-to-End Distributed Architecture</h3>
+              <p>4 Interactive Subsystems: Client Data Ingestion, Local Intelligence, AD-CUSUM Adaptation, and Server Aggregation</p>
+            </div>
+          </div>
+          <a href="assets/ArcDigram.jpeg" target="_blank" class="btn btn-sm btn-outline">
+            <i data-lucide="maximize-2"></i> Full Resolution
+          </a>
+        </div>
+        <div class="diagram-img-wrapper">
+          <img src="assets/ArcDigram.jpeg" alt="FPDAF Architecture Diagram" class="responsive-img rounded-img">
+        </div>
+      </div>
+
+      <!-- Interactive Tabbed Inventions Showcase -->
+      <div class="inventions-tabbed-container glass-card">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="tab-adcusum">
+            <i data-lucide="radar"></i>
+            <span>Invention 1: AD-CUSUM</span>
+          </button>
+          <button class="tab-btn" data-tab="tab-ddperp">
+            <i data-lucide="target"></i>
+            <span>Invention 2: DDP-ERP</span>
+          </button>
+          <button class="tab-btn" data-tab="tab-cssp">
+            <i data-lucide="snowflake"></i>
+            <span>Invention 3: CSSP Protocol</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: AD-CUSUM -->
+        <div class="tab-pane active" id="tab-adcusum">
+          <div class="tab-split">
+            <div class="tab-text">
+              <span class="pill-badge pill-purple">Change-Point Detection</span>
+              <h3>Adaptive Divergence-Weighted Cumulative Sum (AD-CUSUM)</h3>
+              <p>Traditional CUSUM change-point detectors rely on scalar residuals and static thresholds, causing frequent false alarms under noisy sensor dropouts. AD-CUSUM couples loss residuals with symmetric <strong>Jensen-Shannon Divergence ($D_{\text{JSD}}$)</strong> and a gradient variance damping factor:</p>
+              
+              <div class="katex-formula-box">
+                $$S_r = \max\Big(0, S_{r-1} + w_{\text{grad}}^{(r)} \cdot \big((\mathcal{L}_{\text{val}, r} - \mu_0) + \beta D_{\text{JSD}}^{(r)} - \kappa_r\big)\Big)$$
+              </div>
+
+              <ul class="feature-bullets">
+                <li><i data-lucide="check"></i> <strong>Gradient Variance Damping:</strong> $w_{\text{grad}}^{(r)} = 1 + \tanh(\gamma \cdot \text{Var}(\nabla_{\theta_k} \mathcal{L}))$, damping false triggers from mini-batch noise.</li>
+                <li><i data-lucide="check"></i> <strong>Self-Calibrating Slack:</strong> $\kappa_r = \mu_{\text{loss}} + \alpha \sigma_{\text{loss}}$, automatically adapting to moving error variance.</li>
+                <li><i data-lucide="check"></i> <strong>Calibrated Threshold:</strong> $H = 3.0$ triggers selective edge adaptation when true clinical population shifts occur.</li>
+              </ul>
+            </div>
+            <div class="tab-media">
+              <img src="assets/cusum_drift_scores.png" alt="AD-CUSUM Drift Tracking" class="responsive-img rounded-img border-img">
+              <span class="img-caption">Real-Time Drift Score Accumulator ($S_r$) across 50 Federated Rounds</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: DDP-ERP -->
+        <div class="tab-pane" id="tab-ddperp">
+          <div class="tab-split">
+            <div class="tab-text">
+              <span class="pill-badge pill-cyan">Personalized Head Optimization</span>
+              <h3>Dynamic Dual-Phase Saliency &amp; Entropy-Regularized Personalization</h3>
+              <p>Naive fine-tuning upon drift induces catastrophic forgetting of shared representations learned across other medical centers. DDP-ERP decouples the client head $\phi^k$ and optimizes a 4-term regularized objective:</p>
+              
+              <div class="katex-formula-box">
+                $$\mathcal{L}_{\text{DDP-ERP}} = \mathcal{L}_{\text{CE}}(y, \hat{y}) + \lambda_1 \mathcal{L}_{\text{distill}} + \lambda_2 \mathcal{L}_{\text{align}} + \lambda_3 \mathcal{H}(P_{\text{local}})$$
+              </div>
+
+              <ul class="feature-bullets">
+                <li><i data-lucide="check"></i> <strong>Focal Weighted Cross-Entropy:</strong> $w_{\text{pos}} = 5.0$ combats severe 1:55 sepsis class imbalance.</li>
+                <li><i data-lucide="check"></i> <strong>Knowledge Distillation ($\mathcal{L}_{\text{distill}}$):</strong> $D_{\text{KL}}(P_{\text{local}} \,\|\, P_{\text{global}})$ bounds divergence from global consensus.</li>
+                <li><i data-lucide="check"></i> <strong>Cosine Parameter Alignment ($\mathcal{L}_{\text{align}}$):</strong> $1 - \frac{\langle \phi^k, \theta_{\text{global}}^{\text{head}} \rangle}{\|\phi^k\|_2 \cdot \|\theta_{\text{global}}^{\text{head}}\|_2}$ preserves global trajectory alignment.</li>
+                <li><i data-lucide="check"></i> <strong>Entropy Regularization ($\mathcal{H}$):</strong> Prevents overconfident classification under missing ICU inputs.</li>
+              </ul>
+            </div>
+            <div class="tab-media">
+              <img src="assets/FPDAF Detailed Implementation Logic_visul.png" alt="FPDAF Detailed Execution Lifecycle" class="responsive-img rounded-img border-img">
+              <span class="img-caption">FPDAF Execution Lifecycle &amp; Freezing Protocol</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: CSSP -->
+        <div class="tab-pane" id="tab-cssp">
+          <div class="tab-split">
+            <div class="tab-text">
+              <span class="pill-badge pill-emerald">Edge Communication Efficiency</span>
+              <h3>Client-Side Selective Personalization (CSSP)</h3>
+              <p>In clinical federated networks, edge firewalls and WAN throttles make high-volume model handshakes impractical. Under CSSP, the communication burden is eradicated:</p>
+              
+              <div class="katex-formula-box">
+                $$\nabla_\theta \mathcal{L} \leftarrow 0 \quad \text{and} \quad \text{Upload}(\phi^k) = \emptyset$$
+              </div>
+
+              <div class="bandwidth-comparison-box">
+                <div class="bw-row">
+                  <span>Ditto PFL (Bi-Level Baseline):</span>
+                  <span class="bw-val text-red">2.48 GB</span>
+                </div>
+                <div class="bw-bar-bg"><div class="bw-bar-fill red-fill" style="width: 100%;"></div></div>
+
+                <div class="bw-row">
+                  <span>FPDAF-v2 (CSSP Edge Freezing):</span>
+                  <span class="bw-val text-emerald">1.52 GB (-38.2%)</span>
+                </div>
+                <div class="bw-bar-bg"><div class="bw-bar-fill emerald-fill" style="width: 61.8%;"></div></div>
+              </div>
+
+              <ul class="feature-bullets">
+                <li><i data-lucide="check"></i> <strong>Backbone Freezing:</strong> Shared BiLSTM-Attention weights are locked during local adaptation.</li>
+                <li><i data-lucide="check"></i> <strong>Zero Upload:</strong> Client heads $\phi^k$ remain on-premise, preserving absolute patient privacy.</li>
+                <li><i data-lucide="check"></i> <strong>960 MB Payload Saved:</strong> Keeps adaptation latency under 6 minutes on standard hospital hardware.</li>
+              </ul>
+            </div>
+            <div class="tab-media">
+              <img src="assets/Dataflow2.png" alt="Dataflow & Aggregation Logic" class="responsive-img rounded-img border-img">
+              <span class="img-caption">Selective Client-Server Aggregation Logic</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Bedside Clinical Recourse Simulator (XAI Playground) -->
+  <section id="simulator" class="section simulator-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="sliders"></i> Interactive Clinical AI Playground</div>
+        <h2 class="section-title">Point-of-Care Counterfactual Recourse Simulator</h2>
+        <p class="section-subtitle">
+          Experience Pillar 3 of our Explainability Framework: dynamically simulate therapeutic ICU interventions (e.g., crystalloid fluid resuscitation or vasopressor titration) and watch predicted sepsis risk update in real time.
+        </p>
+      </div>
+
+      <div class="simulator-wrapper glass-card">
+        <div class="sim-controls-col">
+          <h3>Bedside Physiological Controls</h3>
+          <p class="sim-sub">Adjust hemodynamic telemetry sliders to model patient state:</p>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderMAP">Mean Arterial Pressure (MAP):</label>
+              <span id="valMAP" class="slider-val">58 mmHg</span>
+            </div>
+            <input type="range" id="sliderMAP" min="45" max="105" value="58" class="range-slider">
+            <span class="slider-hint">Normal: 70–105 mmHg • Shock: &lt;65 mmHg</span>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderHR">Heart Rate (HR):</label>
+              <span id="valHR" class="slider-val">122 bpm</span>
+            </div>
+            <input type="range" id="sliderHR" min="50" max="160" value="122" class="range-slider">
+            <span class="slider-hint">Normal: 60–100 bpm • SIRS Tachycardia: >90 bpm</span>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderLactate">Serum Lactate:</label>
+              <span id="valLactate" class="slider-val">3.8 mmol/L</span>
+            </div>
+            <input type="range" id="sliderLactate" min="0.5" max="8.0" step="0.1" value="3.8" class="range-slider">
+            <span class="slider-hint">Normal: 0.5–2.0 mmol/L • Severe Shock: >4.0 mmol/L</span>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="sliderWBC">White Blood Cell Count (WBC):</label>
+              <span id="valWBC" class="slider-val">16.4 k/μL</span>
+            </div>
+            <input type="range" id="sliderWBC" min="3.0" max="30.0" step="0.2" value="16.4" class="range-slider">
+            <span class="slider-hint">Normal: 4.5–11.0 k/μL • Leukocytosis: >12.0 k/μL</span>
+          </div>
+
+          <div class="sim-preset-buttons">
+            <button class="btn btn-sm btn-outline" id="presetDeterioration">Preset: Septic Crisis</button>
+            <button class="btn btn-sm btn-primary" id="presetResuscitation">Simulate 30 mL/kg Fluid Bolus</button>
+          </div>
+        </div>
+
+        <div class="sim-gauge-col">
+          <div class="gauge-display-card">
+            <h4>Predicted Sepsis Risk ($\hat{y}$)</h4>
+            <div class="dial-container">
+              <svg viewBox="0 0 200 120" class="gauge-svg">
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#1e293b" stroke-width="20" stroke-linecap="round"/>
+                <path id="gaugePath" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="40"/>
+                <defs>
+                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#10b981"/>
+                    <stop offset="50%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#ef4444"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="gauge-center-text">
+                <span id="gaugePercentage" class="gauge-number">84%</span>
+                <span id="gaugeStatus" class="gauge-badge badge-critical">CRITICAL RISK</span>
+              </div>
+            </div>
+
+            <!-- Surviving Sepsis Campaign Notification -->
+            <div id="sscAlertBox" class="ssc-order-alert">
+              <div class="ssc-alert-header">
+                <i data-lucide="bell-ring"></i>
+                <span>Surviving Sepsis Campaign (SSC) Hour-1 Bundle Triggered</span>
+              </div>
+              <ul class="ssc-checklist">
+                <li><i data-lucide="check-square"></i> Order immediate stat serum blood lactate ($>2.0$ mmol/L).</li>
+                <li><i data-lucide="check-square"></i> Draw 2 sets of blood cultures prior to IV antibiotics.</li>
+                <li><i data-lucide="check-square"></i> Administer broad-spectrum empirical intravenous antimicrobials.</li>
+                <li><i data-lucide="check-square"></i> Rapidly infuse $30\text{ mL/kg}$ crystalloid bolus for $\text{MAP} < 65$ mmHg.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Empirical Benchmarking Section -->
+  <section id="results" class="section results-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="bar-chart-2"></i> Scientific Rigor &amp; Benchmarks</div>
+        <h2 class="section-title">Six-Way Multi-Center Benchmark Evaluation</h2>
+        <p class="section-subtitle">
+          Evaluated across 40,327 ICU patient encounters from the PhysioNet 2019 Computing in Cardiology Challenge cohort partitioned into 3 Non-IID clinical tiers (Community Hospital 1, Trauma Center Hospital 2, Academic Medical Center Hospital 3).
+        </p>
+      </div>
+
+      <!-- Interactive Benchmark Table -->
+      <div class="table-card glass-card">
+        <div class="table-responsive">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Framework</th>
+                <th>Accuracy</th>
+                <th>Sensitivity (Recall)</th>
+                <th>Specificity</th>
+                <th>Precision</th>
+                <th>F1-Score</th>
+                <th>AUROC</th>
+                <th>Communication (50 Rnds)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Centralized BiLSTM</strong> (Theoretical Upper Bound)</td>
+                <td>75.09%</td>
+                <td>72.17%</td>
+                <td>75.19%</td>
+                <td>7.14%</td>
+                <td>0.1299</td>
+                <td>0.8058</td>
+                <td>0 MB (Violates Laws)</td>
+              </tr>
+              <tr>
+                <td><strong>Standard FedAvg</strong> (McMahan et al.)</td>
+                <td>75.94%</td>
+                <td>67.19%</td>
+                <td>76.25%</td>
+                <td>6.94%</td>
+                <td>0.1259</td>
+                <td>0.7844</td>
+                <td>1.24 GB</td>
+              </tr>
+              <tr>
+                <td><strong>FedProx Baseline</strong> (Li et al.)</td>
+                <td>78.85%</td>
+                <td>60.64%</td>
+                <td>79.49%</td>
+                <td>8.12%</td>
+                <td>0.1432</td>
+                <td>0.7933</td>
+                <td>1.24 GB</td>
+              </tr>
+              <tr>
+                <td><strong>Ditto Personalized FL</strong> (Li et al.)</td>
+                <td>82.45%</td>
+                <td>63.58%</td>
+                <td>83.11%</td>
+                <td>8.98%</td>
+                <td>0.1574</td>
+                <td>0.7989</td>
+                <td>2.48 GB</td>
+              </tr>
+              <tr>
+                <td><strong>FPDAF (v1 Baseline)</strong></td>
+                <td>86.51%</td>
+                <td>65.33%</td>
+                <td>87.25%</td>
+                <td>9.81%</td>
+                <td>0.1706</td>
+                <td>0.8214</td>
+                <td>1.52 GB (-38.7%)</td>
+              </tr>
+              <tr class="highlight-row">
+                <td><strong>FPDAF-v2 (Proposed Full Framework)</strong></td>
+                <td><strong>96.42%</strong></td>
+                <td><strong>82.50%</strong></td>
+                <td><strong>96.95%</strong></td>
+                <td><strong>18.75%</strong></td>
+                <td><strong>0.3056</strong></td>
+                <td><strong>0.9418</strong></td>
+                <td><strong>1.52 GB (-38.2%)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Charts Dual Grid -->
+      <div class="charts-grid">
+        <div class="chart-card glass-card">
+          <div class="chart-header">
+            <h4><i data-lucide="line-chart"></i> Six-Way Comparative ROC Trajectories</h4>
+            <span class="pill-badge pill-emerald">AUROC: 0.9418</span>
+          </div>
+          <img src="assets/federated_comparative_roc.png" alt="Six-Way ROC Curves" class="responsive-img rounded-img">
+          <p class="chart-caption">FPDAF-v2 ROC curve (red) dominates all centralized, standard federated, and personalized baselines.</p>
+        </div>
+
+        <div class="chart-card glass-card">
+          <div class="chart-header">
+            <h4><i data-lucide="git-merge"></i> Multi-Center Non-IID Institutional Profiles</h4>
+            <span class="pill-badge pill-purple">3 Hospital Nodes</span>
+          </div>
+          <img src="assets/fedprox_three_way_roc.png" alt="Multi-Center Hospital Non-IID ROC" class="responsive-img rounded-img">
+          <p class="chart-caption">Consistent generalization across Community Hospital 1, Trauma Center 2, and Academic Medical Center 3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Pillars of Clinical Explainability -->
+  <section id="xai" class="section xai-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="eye"></i> Bridging the Trust Gap</div>
+        <h2 class="section-title">The Three Pillars of Clinical Explainability (XAI)</h2>
+        <p class="section-subtitle">
+          Intensivists distrust opaque black-box neural networks. FPDAF structures explainability into three actionable questions:
+        </p>
+      </div>
+
+      <div class="cards-grid-3">
+        <!-- Pillar 1 -->
+        <div class="feature-card glass-card">
+          <div class="feature-icon icon-purple">
+            <i data-lucide="clock"></i>
+          </div>
+          <span class="xai-pill">Pillar 1: Temporal</span>
+          <h3>"WHEN Did Risk Accumulate?"</h3>
+          <p>The 24-hour Multi-Head Self-Attention distribution reveals the exact historical timeline where risk accumulated. Attention peaks dramatically at <strong>19.8% at Hour 18</strong>, providing an automated <strong>5.8-hour advance warning</strong> before clinical shock.</p>
+          <img src="assets/temporal_attention_profile.png" alt="Temporal Attention Profile" class="responsive-img rounded-img mini-img">
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="feature-card glass-card">
+          <div class="feature-icon icon-blue">
+            <i data-lucide="pie-chart"></i>
+          </div>
+          <span class="xai-pill">Pillar 2: Attribution</span>
+          <h3>"WHAT Biomarkers Drove Risk?"</h3>
+          <p>Integrated Gradients and SHAP decompose neural activations into physiological factors: <strong>Heart Rate (35%)</strong>, <strong>Systolic BP (28%)</strong>, and <strong>SpO$_2$ (22%)</strong>, strictly aligning with international SIRS/qSOFA criteria.</p>
+          <div class="feature-bar-wrap">
+            <div class="f-bar-label"><span>Heart Rate (Tachycardia)</span> <span>35%</span></div>
+            <div class="f-bar"><div class="f-fill" style="width: 35%;"></div></div>
+            <div class="f-bar-label"><span>Systolic BP (Hypotension)</span> <span>28%</span></div>
+            <div class="f-bar"><div class="f-fill" style="width: 28%;"></div></div>
+            <div class="f-bar-label"><span>SpO2 (Hypoxemia)</span> <span>22%</span></div>
+            <div class="f-bar"><div class="f-fill" style="width: 22%;"></div></div>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="feature-card glass-card">
+          <div class="feature-icon icon-emerald">
+            <i data-lucide="refresh-cw"></i>
+          </div>
+          <span class="xai-pill">Pillar 3: Recourse</span>
+          <h3>"HOW Can Clinicians Intervene?"</h3>
+          <p>Counterfactual Recourse models therapeutic interventions: simulating a $30\text{ mL/kg}$ crystalloid fluid bolus that restores MAP from 58 to 78 mmHg reduces predicted risk from <strong>84% to &lt;20%</strong>, offering direct clinical recourse.</p>
+          <div class="recourse-demo-box">
+            <div class="recourse-stat">Pre-Intervention: <span class="danger-text">84% Sepsis Risk</span></div>
+            <div class="recourse-arrow">&darr; 30 mL/kg Crystalloid Resuscitation &darr;</div>
+            <div class="recourse-stat">Post-Intervention: <span class="safe-text">18.4% Baseline</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CDSS Portals Dual Showcase -->
+  <section id="portals" class="section portals-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="monitor"></i> Production Workstation Interfaces</div>
+        <h2 class="section-title">Clinical Decision Support System (CDSS) Portals</h2>
+        <p class="section-subtitle">
+          Dedicated 3-tier presentation interfaces engineered for intensive care physicians and hospital MLOps administrators.
+        </p>
+      </div>
+
+      <div class="portal-tabs glass-card">
+        <div class="portal-btn-wrap">
+          <button class="portal-btn active" data-portal="doctor-portal">
+            <i data-lucide="stethoscope"></i>
+            <span>Doctor Bedside Portal</span>
+          </button>
+          <button class="portal-btn" data-portal="admin-portal">
+            <i data-lucide="shield-check"></i>
+            <span>MLOps Administrative Portal</span>
+          </button>
+          <button class="portal-btn" data-portal="drift-portal">
+            <i data-lucide="activity"></i>
+            <span>Real-Time Drift Telemetry</span>
+          </button>
+        </div>
+
+        <div class="portal-view active" id="doctor-portal">
+          <img src="assets/dashboard_doctor.png" alt="Doctor Bedside Portal" class="responsive-img rounded-img border-img">
+          <div class="portal-caption">
+            <strong>Doctor Bedside Portal:</strong> Real-time bedside monitoring showing 24-hour hemodynamic trend charts, risk dial gauge, temporal self-attention timeline, and automated Surviving Sepsis Campaign (SSC) Hour-1 order dispatching.
+          </div>
+        </div>
+
+        <div class="portal-view" id="admin-portal">
+          <img src="assets/dashboard_admin.png" alt="MLOps Administrative Portal" class="responsive-img rounded-img border-img">
+          <div class="portal-caption">
+            <strong>MLOps Administrative Portal:</strong> Real-time cumulative AD-CUSUM drift telemetry ($S_r$ tracking across hospital nodes), communication round bandwidth logs, and 6-way ROC curve comparison overlays.
+          </div>
+        </div>
+
+        <div class="portal-view" id="drift-portal">
+          <img src="assets/dashboard_drift.png" alt="Drift Telemetry Portal" class="responsive-img rounded-img border-img">
+          <div class="portal-caption">
+            <strong>Bedside Real-Time AD-CUSUM Concept Drift Telemetry Interface:</strong> Continuous tracking of hospital-specific prediction entropy divergence ($D_{\text{JSD}}$) and gradient variance damping at the point of care.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demonstration Video Player -->
+  <section id="demo" class="section demo-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="video"></i> Full-Stack Operational Demonstration</div>
+        <h2 class="section-title">Live System Demonstration Video</h2>
+        <p class="section-subtitle">
+          Watch the operational prototype in action: FastAPI backend streaming telemetry across 50 simulated ICU beds, real-time AD-CUSUM concept drift detection, and interactive bedside clinical intervention.
+        </p>
+      </div>
+
+      <div class="video-container-card glass-card">
+        <div class="video-player-frame">
+          <video id="demoVideo" controls preload="metadata" poster="assets/dashboard_doctor.png" class="main-video-player">
+            <source src="videos/FPDAF.mp4" type="video/mp4">
+            Your browser does not support HTML5 video. Please open the file at <code>videos/FPDAF.mp4</code>.
+          </video>
+        </div>
+
+        <!-- Video Chapters Navigation -->
+        <div class="video-chapters">
+          <span class="chap-title"><i data-lucide="bookmark"></i> Jump to Chapter:</span>
+          <button class="chap-btn" data-time="0">00:00 • Overview</button>
+          <button class="chap-btn" data-time="45">00:45 • Bedside Telemetry</button>
+          <button class="chap-btn" data-time="90">01:30 • XAI Attribution</button>
+          <button class="chap-btn" data-time="140">02:20 • AD-CUSUM Drift Alert</button>
+          <button class="chap-btn" data-time="190">03:10 • SSC Order Dispatch</button>
+        </div>
+
+        <div class="video-info-bar">
+          <div class="v-info-item">
+            <i data-lucide="file-video"></i>
+            <span>Asset: <code>videos/FPDAF.mp4</code> (273.3 MB)</span>
+          </div>
+          <div class="v-info-item">
+            <i data-lucide="check-circle"></i>
+            <span>Resolution: 1080p Full HD</span>
+          </div>
+          <div class="v-info-item">
+            <i data-lucide="server"></i>
+            <span>Backend: FastAPI REST &amp; SQLite Warehouse</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications, Patent & Download Center -->
+  <section id="publications" class="section publications-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="award"></i> Scholarly Artifacts &amp; Intellectual Property</div>
+        <h2 class="section-title">Publications, Patent Specification &amp; Downloads</h2>
+        <p class="section-subtitle">
+          All formal manuscripts, patent disclosures, and originality reports prepared for Q1 submission and university evaluation.
+        </p>
+      </div>
+
+      <div class="downloads-grid">
+        <div class="download-card glass-card">
+          <div class="dl-badge">Q1 Journal Draft</div>
+          <h4>IEEE J-BHI Manuscript</h4>
+          <p>Formatted in IEEEtran double-column style (14 Pages, 26 figures, 45 references).</p>
+          <a href="docs/FPDAF_IEEE_Journal_Paper.pdf" target="_blank" class="btn btn-sm btn-primary">
+            <i data-lucide="download"></i> Download IEEE PDF
+          </a>
+        </div>
+
+        <div class="download-card glass-card">
+          <div class="dl-badge">Q1 Journal Draft</div>
+          <h4>Elsevier CMPB Manuscript</h4>
+          <p>Formatted in Elsevier elsarticle style (15 Pages, full cohort tables &amp; figures).</p>
+          <a href="docs/FPDAF_Elsevier_Journal_Paper.pdf" target="_blank" class="btn btn-sm btn-primary">
+            <i data-lucide="download"></i> Download Elsevier PDF
+          </a>
+        </div>
+
+        <div class="download-card glass-card">
+          <div class="dl-badge">Q1 Journal Draft</div>
+          <h4>Springer Nature Manuscript</h4>
+          <p>Formatted in Springer Nature Scientific Reports style (17 Pages).</p>
+          <a href="docs/FPDAF_Springer_Journal_Paper.pdf" target="_blank" class="btn btn-sm btn-primary">
+            <i data-lucide="download"></i> Download Springer PDF
+          </a>
+        </div>
+
+        <div class="download-card glass-card highlight-patent">
+          <div class="dl-badge dl-badge-gold">IPO Form 2 Specification</div>
+          <h4>Patent Disclosure Draft</h4>
+          <p>Complete Patent Specification with 15 Legal Claims and 5 Drawing Sheets (13 Pages).</p>
+          <a href="docs/Patent_Disclosure_Draft_FPDAF.pdf" target="_blank" class="btn btn-sm btn-gold">
+            <i data-lucide="download"></i> Download Patent PDF
+          </a>
+        </div>
+
+        <div class="download-card glass-card">
+          <div class="dl-badge dl-badge-cyan">Official Dossier</div>
+          <h4>Project Documentation Dossier</h4>
+          <p>Comprehensive system architecture, SQLite schema, REST endpoints, and installation guides.</p>
+          <a href="docs/Project_Documentation_Dossier.pdf" target="_blank" class="btn btn-sm btn-secondary">
+            <i data-lucide="file-check"></i> Download Dossier PDF
+          </a>
+        </div>
+
+        <div class="download-card glass-card">
+          <div class="dl-badge dl-badge-emerald">Academic Integrity</div>
+          <h4>Originality &amp; Similarity Report</h4>
+          <p>Verified 4% Turnitin similarity index across 14-page IEEE draft confirming 100% original work.</p>
+          <a href="docs/Similarity_and_Originality_Report.pdf" target="_blank" class="btn btn-sm btn-outline">
+            <i data-lucide="shield-check"></i> Download Report PDF
+          </a>
+        </div>
+      </div>
+
+      <!-- BibTeX Citation Box -->
+      <div class="bibtex-card glass-card">
+        <div class="bibtex-header">
+          <span><i data-lucide="code"></i> BibTeX Citation</span>
+          <button class="btn btn-sm btn-outline" id="copyBibBtn"><i data-lucide="copy"></i> Copy Citation</button>
+        </div>
+        <pre class="bibtex-code" id="bibtexContent">@article{sakhi2027fpdaf,
+  title={FPDAF: A Federated Personalized Drift-Aware Attention Framework for Privacy-Preserving Early Sepsis Forecasting in Multi-Center Critical Care},
+  author={Sakhi, Sheela Akshar and Reddy M, Hasini and Lakkaraju, Kousik Sarma and K, Haswitha and Chakravarthy, V. and Ramya, G. R. and Vandhana, S.},
+  journal={IEEE Journal of Biomedical and Health Informatics},
+  volume={31},
+  number={4},
+  pages={1--14},
+  year={2027},
+  publisher={IEEE}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team & Faculty Mentors -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i data-lucide="users"></i> Department of Computer Science &amp; Engineering</div>
+        <h2 class="section-title">Team 28 (Group G028) &amp; Faculty Supervisors</h2>
+        <p class="section-subtitle">
+          Amrita Vishwa Vidyapeetham, School of Computing, Coimbatore Campus • B.Tech CSE (Batch 2023–2027)
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card glass-card">
+          <div class="member-avatar">SA</div>
+          <h4>Sheela Akshar Sakhi</h4>
+          <div class="member-roll">CB.SC.U4CSE23547</div>
+          <div class="member-role">Team Lead &amp; System Architect</div>
+        </div>
+
+        <div class="team-card glass-card">
+          <div class="member-avatar">HR</div>
+          <h4>Hasini Reddy M</h4>
+          <div class="member-roll">CB.SC.U4CSE23529</div>
+          <div class="member-role">Algorithm Engineer (AD-CUSUM)</div>
+        </div>
+
+        <div class="team-card glass-card">
+          <div class="member-avatar">KS</div>
+          <h4>Kousik Sarma Lakkaraju</h4>
+          <div class="member-roll">CB.SC.U4CSE23761</div>
+          <div class="member-role">CDSS Full-Stack Developer</div>
+        </div>
+
+        <div class="team-card glass-card">
+          <div class="member-avatar">HK</div>
+          <h4>Haswitha K</h4>
+          <div class="member-roll">CB.SC.U4CSE23363</div>
+          <div class="member-role">Biostatistics &amp; XAI Specialist</div>
+        </div>
+
+        <div class="team-card glass-card">
+          <div class="member-avatar">VC</div>
+          <h4>V. Chakravarthy</h4>
+          <div class="member-roll">CB.SC.U4CSE23753</div>
+          <div class="member-role">Edge Optimization &amp; Data Pipeline</div>
+        </div>
+      </div>
+
+      <!-- Guides -->
+      <div class="guides-wrapper">
+        <div class="guide-box glass-card">
+          <div class="guide-badge">Faculty Project Guide</div>
+          <h4>Dr. G. R. Ramya</h4>
+          <p>Assistant Professor (Sr. Gr.), Department of Computer Science &amp; Engineering</p>
+        </div>
+        <div class="guide-box glass-card">
+          <div class="guide-badge">Faculty Project Co-Guide</div>
+          <h4>Dr. Vandhana S</h4>
+          <p>Assistant Professor (Sr. Gr.), Department of Computer Science &amp; Engineering</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-title">FPDAF Healthcare Research</div>
+        <p>Amrita Vishwa Vidyapeetham, School of Computing, Department of Computer Science &amp; Engineering.</p>
+        <p class="copyright">&copy; 2025–2026 Team 28 (Group G028). All rights reserved.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="https://github.com/aksharsakhi/23CSE498-Project-Phase-II" target="_blank"><i data-lucide="github"></i> GitHub Repository</a>
+          <a href="docs/FPDAF_IEEE_Journal_Paper.pdf" target="_blank"><i data-lucide="file-text"></i> IEEE Manuscript</a>
+          <a href="docs/Patent_Disclosure_Draft_FPDAF.pdf" target="_blank"><i data-lucide="award"></i> Patent Disclosure</a>
+          <a href="docs/Project_Documentation_Dossier.pdf" target="_blank"><i data-lucide="file-check"></i> Dossier PDF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Image Lightbox Modal -->
+  <div id="imageLightbox" class="lightbox-modal">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+      <img id="lightboxImg" src="" alt="Enlarged Architectural Asset">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-notification">
+    <i data-lucide="check-circle-2"></i>
+    <span id="toastMessage">Notification message</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

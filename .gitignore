@@ -1,0 +1,9 @@
+videos/
+*.mp4
+.DS_Store
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
