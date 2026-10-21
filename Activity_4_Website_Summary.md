@@ -7,45 +7,36 @@
 
 ## 1. Executive Summary & Live Publication
 
-The official Project Website & Documentation Portal has been fully designed, developed, and **published live on GitHub Pages**:
+The official Project Website & Documentation Portal has been completely transformed into a **patent-grade, industry-level medical AI showcase platform** and published live on GitHub Pages:
 - 🌐 **Live Published Portal:** [https://aksharsakhi.github.io/FPDAF-Sepsis-Federated-Learning/](https://aksharsakhi.github.io/FPDAF-Sepsis-Federated-Learning/)
 - 💻 **Official GitHub Repository:** [https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning](https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning)
-- 📌 **Submission Shortcut Artifact:** `G028_Website.url` (points directly to the published website)
+- 🏢 **Organization Hub:** [https://github.com/23CSE-TEAM-28](https://github.com/23CSE-TEAM-28)
+- 📌 **Submission Shortcut Artifact:** `G028_Website.url` (points directly to the live portal)
 
 ---
 
-## 2. Deliverables Checklist as per TEA Guidelines
+## 2. Patent-Grade & Industry-Level Feature Matrix
 
-| Required Deliverable | Provided Artifact | Format & Location | Status |
+| Feature Module | Description & Implementation | Clinical / Legal Impact | Status |
 | :--- | :--- | :--- | :---: |
-| **Official URL Shortcut** | `G028_Website.url` | Valid Windows/Browser `.url` file pointing to the live published portal | **100% Complete** |
-| **Project Objectives** | 4 primary clinical AI objectives detailed in Hero & Problem sections | Web portal (`index.html`) & [Project_Documentation_Dossier.pdf](file:///Users/aksharsakhi/Documents/Files/Code/Project/TEA/Activity_4_Project_Website_Documentation_Portal/docs/Project_Documentation_Dossier.pdf) | **100% Complete** |
-| **Problem Statement** | Sepsis mortality escalation (7.6%/hr), hospital data silos (HIPAA/DPDPA), and non-IID concept drift | Interactive 3-card challenge breakdown on website | **100% Complete** |
-| **Methodology** | Full system architecture, AD-CUSUM, DDP-ERP, and CSSP edge protocol | Embedded diagrams (`ArcDigram.jpeg`, implementation logic, KaTeX math formulas) | **100% Complete** |
-| **Team Details** | Complete profiles of all 5 team members and 2 faculty supervisors | Dedicated team grid on website and page 3 of dossier | **100% Complete** |
-| **Project Progress** | Milestone roadmap chronicling Phase II Reviews 1, 2, 3, and 4 | Interactive timeline in `index.html` and Section 2 of dossier | **100% Complete** |
-| **Documentation** | System architecture, SQLite schema, REST APIs, and installation guides | [Project_Documentation_Dossier.pdf](file:///Users/aksharsakhi/Documents/Files/Code/Project/TEA/Activity_4_Project_Website_Documentation_Portal/docs/Project_Documentation_Dossier.pdf) & GitHub README | **100% Complete** |
-| **Interactive Simulator** | Bedside Counterfactual Recourse Playground | Real-time SVG gauge dial with MAP, HR, Lactate, and WBC sliders | **100% Complete** |
-| **Demonstration Videos** | High-definition operational prototype video with chapter jumps | Embedded HTML5 video player streaming `videos/FPDAF.mp4` with 5 chapter markers | **100% Complete** |
-| **Scholarly Downloads** | 6 complete downloadable PDFs | IEEE, Elsevier, Springer drafts, Patent disclosure, Dossier, and Similarity report | **100% Complete** |
+| **60fps Native Waveform Canvas** | Real-time HTML5 canvas rendering simulated ECG Lead II, Arterial Blood Pressure (ABP), SpO2 plethysmogram, and respiration with sweeping phosphorescent cursor | Matches commercial Mindray/Philips ICU monitors at the point of care | **100% Active** |
+| **Live Telemetry Ticker Strip** | Real-time multi-hospital streaming strip displaying validation loss, active drifts, AUROC, and HIPAA/DPDPA compliance status across 3 clinical tiers | Instant visibility into decentralized multi-tier ICU network | **100% Active** |
+| **MLOps CLI Terminal Simulation** | Interactive UNIX terminal with colored logs, simulated federated training rounds (1–15), trauma center concept drift ($S_r = 3.42 > 3.0$), and automated CSSP edge freezing | Demonstrates decentralized model orchestration and parameter locking in real time | **100% Active** |
+| **Point-of-Care Recourse Simulator** | Dynamic bedside recourse playground with 3 clinical archetypes (Geriatric, Trauma, Oncology), 5 vital sliders, risk gauge dial, and Surviving Sepsis Campaign (SSC) 1-hour bundle orders | Translates neural predictions into direct clinical recourse | **100% Active** |
+| **Interactive Chart.js ROC Curves** | Dynamic multi-model ROC explorer comparing FPDAF-v2 (AUROC 0.9418) against Centralized BiLSTM, FedAvg, FedProx, and Ditto with interactive hover tooltips and toggles | Rigorous empirical benchmarking across 40,327 ICU patients | **100% Active** |
+| **Patent Claims Explorer (IPO Form 2)** | Interactive accordion tree showcasing all 15 legal patent claims (Independent vs. Dependent) + Prior-Art Novelty Matrix (FPDAF vs. D1–D5) | Ready for Indian Patent Office filing under The Patents Act, 1970 | **100% Active** |
+| **40-Biomarker Cohort Dictionary** | Searchable & filterable medical data dictionary (Vital Signs, Lab Values, Demographics) with physiological ranges, sampling intervals, and sepsis roles | Full transparency into PhysioNet 2019 / MIMIC-III cohort | **100% Active** |
+| **Interactive REST API Console** | FastAPI developer console playground testing `/predict/sepsis`, `/telemetry/nodes`, and `/intervention/simulate` with 18ms latency simulation and JSON syntax output | HL7/FHIR EHR interoperability demonstration | **100% Active** |
+| **In-Browser PDF Document Modal** | Embedded full-screen document reader allowing reviewers to read all 6 PDFs (IEEE, Elsevier, Springer, Patent, Dossier, Turnitin Report) directly in the browser | Frictionless academic evaluation without file downloads | **100% Active** |
+| **Command Palette (`Cmd+K` / `Ctrl+K`)** | Global hotkey command center searching across all 15 portal sections, patent claims, simulators, and scholarly artifacts | Industry-standard developer and power-user navigation | **100% Active** |
+| **High-Definition Video Showcase** | Embedded HTML5 video player with 5 jumpable chapter markers streaming `videos/FPDAF.mp4` (261 MB Full HD) | Complete operational CDSS prototype walkthrough | **100% Active** |
 
 ---
 
-## 3. UI/UX Design System Highlights
-
-1. **Modern Dark Glassmorphism:** Deep navy canvas (`#060913`) layered with semi-transparent frosted cards (`rgba(15, 23, 42, 0.72)`), radial ambient glows, and `backdrop-filter: blur(16px)`.
-2. **Dynamic Mathematical Formula Typography:** Integrated KaTeX CDN for crisp LaTeX rendering of mathematical formulas ($S_r$, $\mathcal{L}_{\text{DDP-ERP}}$, $\nabla_\theta \mathcal{L} \leftarrow 0$).
-3. **Point-of-Care Recourse Simulator:** Interactive sliders compute sepsis shock probability, update a 251.2-unit SVG arc gauge, toggle dynamic status badges, and trigger Surviving Sepsis Campaign (SSC) Hour-1 order bundle alerts.
-4. **Interactive Inventions Tabs & Portals:** Seamless tab switching across AD-CUSUM, DDP-ERP, and CSSP edge protocol, plus interactive views for Doctor Bedside, MLOps Admin, and Drift Telemetry.
-5. **High-Resolution Lightbox:** Click-to-enlarge functionality for all architecture diagrams, comparative ROC curves, and cohort heatmaps.
-6. **Self-Contained Downloads:** Direct downloads for all 3 journal drafts (IEEE, Elsevier, Springer), IPO Patent Disclosure, Dossier, and 4% Turnitin report.
-
----
-
-## 4. How to Launch the Portal Locally
+## 3. How to Launch the Portal Locally
 
 ```bash
 cd /Users/aksharsakhi/Documents/Files/Code/Project/TEA/Activity_4_Project_Website_Documentation_Portal
 ./start_portal.sh
 ```
-This serves the application on `http://localhost:8080` (or `http://localhost:8086`) and automatically opens your web browser.
+This serves the application on `http://localhost:8080` (or `http://localhost:8086`) and opens the portal automatically.
