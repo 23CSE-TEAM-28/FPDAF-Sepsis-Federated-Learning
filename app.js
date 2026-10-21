@@ -26,39 +26,99 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2. Sticky Navbar & Active Scrollspy
+  // 2. Dropdown Mega Panels & Navigation
   // ==========================================
   const navbar = document.getElementById('topNavbar');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navItemsWithDropdown = document.querySelectorAll('.nav-item.has-dropdown');
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileDrawer = document.getElementById('mobileNavDrawer');
+  const mobileClose = document.getElementById('mobileMenuClose');
 
+  // Dropdown open/close interactions
+  navItemsWithDropdown.forEach(item => {
+    const toggle = item.querySelector('.dropdown-toggle');
+    let timer = null;
+
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(timer);
+      navItemsWithDropdown.forEach(other => {
+        if (other !== item) other.classList.remove('open');
+      });
+      item.classList.add('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      timer = setTimeout(() => {
+        item.classList.remove('open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = item.classList.contains('open');
+        navItemsWithDropdown.forEach(other => other.classList.remove('open'));
+        if (!isOpen) {
+          item.classList.add('open');
+          toggle.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+
+  // Close dropdowns on outside click or Escape
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item.has-dropdown')) {
+      navItemsWithDropdown.forEach(item => {
+        item.classList.remove('open');
+        const toggle = item.querySelector('.dropdown-toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      navItemsWithDropdown.forEach(item => item.classList.remove('open'));
+      if (mobileDrawer) mobileDrawer.classList.remove('open');
+    }
+  });
+
+  // Mobile Drawer Toggle
+  if (mobileToggle && mobileDrawer) {
+    mobileToggle.addEventListener('click', () => {
+      mobileDrawer.classList.add('open');
+    });
+  }
+
+  if (mobileClose && mobileDrawer) {
+    mobileClose.addEventListener('click', () => {
+      mobileDrawer.classList.remove('open');
+    });
+  }
+
+  document.querySelectorAll('.mobile-link, .drop-card').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileDrawer) mobileDrawer.classList.remove('open');
+      navItemsWithDropdown.forEach(item => item.classList.remove('open'));
+    });
+  });
+
+  // Sticky Navbar class on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-
-    let currentSectionId = '';
-    const scrollPos = window.scrollY + 160;
-
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        currentSectionId = sec.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (currentSectionId && link.getAttribute('href') === `#${currentSectionId}`) {
-        link.classList.add('active');
-      }
-    });
   });
 
-  // Smooth scroll for nav anchor links
+  // Smooth scroll for nav anchor links with precise header offset
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const targetId = link.getAttribute('href');
@@ -66,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const navHeight = navbar ? navbar.offsetHeight : 70;
-          const targetPosition = targetElement.offsetTop - navHeight + 10;
+          const navHeight = 100; // Account for top navbar + quick-nav ribbon
+          const targetPosition = targetElement.offsetTop - navHeight;
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -76,6 +136,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ScrollSpy for Sticky Quick-Jump Ribbon
+  const quickNavLinks = document.querySelectorAll('.quicknav-link');
+  const allSections = document.querySelectorAll('section[id]');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        quickNavLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+            // Auto scroll ribbon horizontally to active pill
+            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-15% 0px -65% 0px',
+    threshold: 0
+  });
+
+  allSections.forEach(sec => sectionObserver.observe(sec));
 
   // ==========================================
   // 3. Animated Metric Counters on Scroll
@@ -200,9 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let lastTime = performance.now();
     let simTime = 0;
+    let prevEcgY = 24;
+    let prevAbpY = 62;
+    let prevSpo2Y = 98;
 
     function renderWaveforms(currentTime) {
-      const dt = (currentTime - lastTime) / 1000;
+      const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
       lastTime = currentTime;
       simTime += dt * 1.8; // Simulated cardiac rate ~110-120 bpm
 
@@ -222,32 +311,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const prevX = (sweepX - sweepSpeed + width) % width;
 
-      // 1. ECG Lead II (Green, top band)
-      const ecgY = 24 - getECG(simTime) * 16;
-      ctx.strokeStyle = '#10b981';
-      ctx.lineWidth = 1.6;
-      ctx.beginPath();
-      ctx.moveTo(prevX, ecgY);
-      ctx.lineTo(sweepX, ecgY);
-      ctx.stroke();
+      const currentEcgY = 24 - getECG(simTime) * 16;
+      const currentAbpY = 62 - getABP(simTime + 0.12) * 20;
+      const currentSpo2Y = 98 - getSpO2(simTime + 0.22) * 16;
 
-      // 2. Arterial Blood Pressure (Red, middle band)
-      const abpY = 62 - getABP(simTime + 0.12) * 20;
-      ctx.strokeStyle = '#f43f5e';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(prevX, abpY);
-      ctx.lineTo(sweepX, abpY);
-      ctx.stroke();
+      if (sweepX > prevX) {
+        // 1. ECG Lead II (Green, top band) - Smooth continuous stroke
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 1.8;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevEcgY);
+        ctx.lineTo(sweepX, currentEcgY);
+        ctx.stroke();
 
-      // 3. SpO2 Plethysmograph (Cyan, bottom band)
-      const spo2Y = 98 - getSpO2(simTime + 0.22) * 16;
-      ctx.strokeStyle = '#06b6d4';
-      ctx.lineWidth = 1.4;
-      ctx.beginPath();
-      ctx.moveTo(prevX, spo2Y);
-      ctx.lineTo(sweepX, spo2Y);
-      ctx.stroke();
+        // 2. Arterial Blood Pressure (Red, middle band) - Smooth continuous stroke
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 1.6;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevAbpY);
+        ctx.lineTo(sweepX, currentAbpY);
+        ctx.stroke();
+
+        // 3. SpO2 Plethysmograph (Cyan, bottom band) - Smooth continuous stroke
+        ctx.strokeStyle = '#06b6d4';
+        ctx.lineWidth = 1.6;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevSpo2Y);
+        ctx.lineTo(sweepX, currentSpo2Y);
+        ctx.stroke();
+      }
+
+      prevEcgY = currentEcgY;
+      prevAbpY = currentAbpY;
+      prevSpo2Y = currentSpo2Y;
 
       sweepX = (sweepX + sweepSpeed) % width;
       requestAnimationFrame(renderWaveforms);
