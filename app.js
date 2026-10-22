@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const navHeight = 100; // Account for top navbar + quick-nav ribbon
-          const targetPosition = targetElement.offsetTop - navHeight;
+          const navHeight = 70; // 64px navbar height + 6px breathing room
+          const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
           window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
