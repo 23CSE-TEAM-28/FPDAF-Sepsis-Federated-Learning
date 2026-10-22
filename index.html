@@ -34,38 +34,162 @@
 </head>
 <body>
 
-  <!-- Sticky Top Navigation Bar with Industry-Grade Drop Panels -->
+  <!-- Modern Floating Glass Island Navigation (Linear / Apple Aesthetic) -->
   <header class="navbar" id="topNavbar">
     <div class="nav-container">
-      <a href="#overview" class="brand">
+      <a href="#overview" class="brand" title="FPDAF: Clinical Federated Intelligence Portal">
         <div class="brand-logo">
           <i data-lucide="activity" class="pulse-icon"></i>
         </div>
         <div class="brand-text">
-          <span class="brand-title">FPDAF <span class="badge-tag">G028</span></span>
+          <div class="brand-title-row">
+            <span class="brand-title">FPDAF</span>
+            <span class="badge-tag">G028</span>
+          </div>
           <span class="brand-sub">Clinical Federated AI</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu (Concise, Elegant, Single-Row) -->
+      <!-- Desktop Navigation Menu (4 Categorized Linear-Style Dropdowns) -->
       <nav class="nav-menu" id="navMenu">
-        <a href="#overview" class="nav-link">Overview</a>
-        <a href="#inventions" class="nav-link">Architecture</a>
-        <a href="#benchmarks" class="nav-link">Benchmarks</a>
-        <a href="#cohort" class="nav-link">Biomarkers</a>
-        <a href="#xai" class="nav-link">Explainability</a>
-        <a href="#patent" class="nav-link">Patent</a>
-        <a href="#api" class="nav-link">REST API</a>
-        <a href="#publications" class="nav-link">Publications</a>
-        <a href="#team" class="nav-link">Team</a>
+        <!-- 1. Architecture Dropdown -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            <span>Architecture</span>
+            <i data-lucide="chevron-down" class="nav-chevron"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#overview" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="monitor"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Overview &amp; Telemetry</div>
+                <div class="dropdown-desc">Real-time 60 FPS ICU multi-parameter vital telemetry</div>
+              </div>
+            </a>
+            <a href="#problem" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="alert-triangle"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Clinical Need &amp; Gaps</div>
+                <div class="dropdown-desc">Concept drift across multi-tier ICU centers</div>
+              </div>
+            </a>
+            <a href="#inventions" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="sparkles"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">3 Core Inventions</div>
+                <div class="dropdown-desc">AD-CUSUM drift detector, CSSP &amp; temporal attention</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Validation Dropdown -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            <span>Validation</span>
+            <i data-lucide="chevron-down" class="nav-chevron"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#benchmarks" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="bar-chart-2"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">6-Way SOTA Benchmarks</div>
+                <div class="dropdown-desc">Rigorous comparison vs FedAvg, FedProx &amp; Centralized</div>
+              </div>
+            </a>
+            <a href="#cohort" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="database"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">PhysioNet 40-Biomarker Cohort</div>
+                <div class="dropdown-desc">40,327 multi-center ICU admissions with 40 clinical signals</div>
+              </div>
+            </a>
+            <a href="#patent" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="file-check-2"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Patent Specification</div>
+                <div class="dropdown-desc">15 granted claims covering federated drift adaptation</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Platform Dropdown -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            <span>Platform</span>
+            <i data-lucide="chevron-down" class="nav-chevron"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#xai" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="eye"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Three Pillars of XAI</div>
+                <div class="dropdown-desc">SHAP attribution, counterfactuals &amp; temporal saliency</div>
+              </div>
+            </a>
+            <a href="#api" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="code-2"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">HL7 FHIR &amp; REST API</div>
+                <div class="dropdown-desc">Production-ready interoperability endpoints &amp; schemas</div>
+              </div>
+            </a>
+            <a href="#portals" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="layout-dashboard"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Doctor &amp; Admin Portals</div>
+                <div class="dropdown-desc">Role-based clinical bedside &amp; governance dashboards</div>
+              </div>
+            </a>
+            <a href="#demo" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="play-circle"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Live Video Demonstration</div>
+                <div class="dropdown-desc">Full 1080p architectural &amp; clinical workflow walkthrough</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Research Dropdown -->
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            <span>Research</span>
+            <i data-lucide="chevron-down" class="nav-chevron"></i>
+          </button>
+          <div class="dropdown-menu">
+            <a href="#publications" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="book-open"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Scholarly Manuscripts</div>
+                <div class="dropdown-desc">IEEE J-BHI journal submission &amp; publication dossiers</div>
+              </div>
+            </a>
+            <a href="#team" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="users"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Team G028 &amp; Supervisors</div>
+                <div class="dropdown-desc">Student researchers &amp; clinical faculty supervisors</div>
+              </div>
+            </a>
+            <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="dropdown-card">
+              <div class="dropdown-icon-box"><i data-lucide="folder-git-2"></i></div>
+              <div class="dropdown-text">
+                <div class="dropdown-title">Open Science Repository</div>
+                <div class="dropdown-desc">Complete source code, training logs &amp; checkpoints</div>
+              </div>
+            </a>
+          </div>
+        </div>
       </nav>
 
-      <!-- Nav Actions (Search, GitHub, and High-Impact CTA) -->
+      <!-- Nav Actions (Unified Glass Action Group) -->
       <div class="nav-actions">
         <button class="cmd-trigger-btn" id="openCmdPaletteBtn" title="Search Documentation (⌘K)">
           <i data-lucide="search"></i>
           <span class="cmd-label">Search</span>
-          <span class="cmd-shortcut">⌘K</span>
+          <kbd class="cmd-shortcut">⌘K</kbd>
         </button>
         <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="btn-github" title="View Source on GitHub">
           <i data-lucide="github"></i>

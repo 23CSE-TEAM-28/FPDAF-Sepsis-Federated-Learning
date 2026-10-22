@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  document.querySelectorAll('.mobile-link, .drop-card').forEach(link => {
+  document.querySelectorAll('.mobile-link, .drop-card, .dropdown-card').forEach(link => {
     link.addEventListener('click', () => {
       if (mobileDrawer) mobileDrawer.classList.remove('open');
       navItemsWithDropdown.forEach(item => item.classList.remove('open'));
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Sticky Navbar class on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
+    if (window.scrollY > 20) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const navHeight = 70; // 64px navbar height + 6px breathing room
+          const navHeight = 85; // Floating navbar offset (14px top + 58px height + 13px breathing room)
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
           window.scrollTo({
             top: targetPosition,
