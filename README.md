@@ -40,7 +40,7 @@ Evaluated across **40,327 ICU patient encounters** from the PhysioNet 2019 Compu
 ## 🏥 Clinical Decision Support System (CDSS)
 
 The repository showcases an end-to-end operational prototype consisting of:
-- **Point-of-Care Bedside Recourse Simulator:** Interactive physiological control simulating therapeutic fluid resuscitation (30 mL/kg) and displaying real-time risk dial progression.
+- **Bedside Multi-Parameter Telemetry Monitor:** Real-time 60fps ECG, ABP, SpO2, and respiration waveform tracking.
 - **Doctor Bedside Portal:** 24-hour hemodynamic trajectory tracking, temporal attention timeline, and automated Surviving Sepsis Campaign (SSC) Hour-1 order bundle dispatching.
 - **MLOps Administrative Telemetry:** Inter-hospital drift score accumulation ($S_r$), communication logs, and comparative ROC curves.
 

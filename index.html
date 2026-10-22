@@ -13,10 +13,10 @@
   <meta property="og:image" content="assets/dashboard_doctor.png">
   <meta property="og:type" content="website">
 
-  <!-- Typography: Plus Jakarta Sans, Outfit, JetBrains Mono -->
+  <!-- Typography: Inter, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- KaTeX for Scientific Formula Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -47,204 +47,34 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Dropdown Panels -->
+      <!-- Desktop Navigation Menu (Crisp, Modern Enterprise Layout) -->
       <nav class="nav-menu" id="navMenu">
-        <!-- Dropdown 1: Architecture -->
-        <div class="nav-item has-dropdown">
-          <button class="nav-link dropdown-toggle" aria-expanded="false" id="dropToggleArch">
-            <span>Architecture</span>
-            <i data-lucide="chevron-down" class="dropdown-arrow"></i>
-          </button>
-          <div class="drop-panel">
-            <div class="drop-panel-header">
-              <span class="drop-header-tag"><i data-lucide="cpu"></i> SYSTEM DESIGN &amp; METHODOLOGY</span>
-            </div>
-            <div class="drop-panel-grid">
-              <a href="#problem" class="drop-card">
-                <div class="drop-icon icon-rose"><i data-lucide="alert-triangle"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Clinical Need &amp; Gaps</div>
-                  <div class="drop-card-desc">11M annual sepsis deaths &amp; data privacy laws (HIPAA/DPDPA)</div>
-                </div>
-              </a>
-              <a href="#inventions" class="drop-card">
-                <div class="drop-icon icon-purple"><i data-lucide="sparkles"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">3 Core Inventions</div>
-                  <div class="drop-card-desc">AD-CUSUM drift tracker, DDP-ERP &amp; CSSP freezing protocol</div>
-                </div>
-              </a>
-              <a href="#xai" class="drop-card">
-                <div class="drop-icon icon-cyan"><i data-lucide="eye"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Three Pillars of XAI</div>
-                  <div class="drop-card-desc">Temporal self-attention, SHAP attribution &amp; clinical recourse</div>
-                </div>
-              </a>
-              <a href="#api" class="drop-card">
-                <div class="drop-icon icon-emerald"><i data-lucide="code-2"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">REST API &amp; Standards</div>
-                  <div class="drop-card-desc">Production FastAPI endpoints with HL7/FHIR telemetry streams</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dropdown 2: Clinical CDSS -->
-        <div class="nav-item has-dropdown">
-          <button class="nav-link dropdown-toggle" aria-expanded="false" id="dropToggleCdss">
-            <span>Clinical CDSS</span>
-            <i data-lucide="chevron-down" class="dropdown-arrow"></i>
-          </button>
-          <div class="drop-panel">
-            <div class="drop-panel-header">
-              <span class="drop-header-tag"><i data-lucide="heart-pulse"></i> POINT-OF-CARE WORKSTATION</span>
-            </div>
-            <div class="drop-panel-grid">
-              <a href="#overview" class="drop-card">
-                <div class="drop-icon icon-emerald"><i data-lucide="monitor"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Bedside Waveform Monitor</div>
-                  <div class="drop-card-desc">Real-time 60fps ECG, ABP, SpO2 &amp; Respiration waveforms</div>
-                </div>
-              </a>
-              <a href="#simulator" class="drop-card">
-                <div class="drop-icon icon-purple"><i data-lucide="sliders"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Recourse Simulator</div>
-                  <div class="drop-card-desc">Interactive counterfactual fluid resuscitation &amp; vasopressor titration</div>
-                </div>
-              </a>
-              <a href="#portals" class="drop-card">
-                <div class="drop-icon icon-cyan"><i data-lucide="layout-dashboard"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Doctor &amp; MLOps Portals</div>
-                  <div class="drop-card-desc">Dual interfaces for ICU intensivists &amp; federated engineers</div>
-                </div>
-              </a>
-              <a href="#demo" class="drop-card">
-                <div class="drop-icon icon-rose"><i data-lucide="play-circle"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Live Video Demonstration</div>
-                  <div class="drop-card-desc">Full 1080p recorded system walkthrough &amp; chapter navigation</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dropdown 3: Benchmarks & Data -->
-        <div class="nav-item has-dropdown">
-          <button class="nav-link dropdown-toggle" aria-expanded="false" id="dropToggleBench">
-            <span>Benchmarks &amp; Data</span>
-            <i data-lucide="chevron-down" class="dropdown-arrow"></i>
-          </button>
-          <div class="drop-panel">
-            <div class="drop-panel-header">
-              <span class="drop-header-tag"><i data-lucide="bar-chart-2"></i> SCIENTIFIC VALIDATION</span>
-            </div>
-            <div class="drop-panel-grid">
-              <a href="#benchmarks" class="drop-card">
-                <div class="drop-icon icon-cyan"><i data-lucide="award"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">6-Way SOTA Benchmarks</div>
-                  <div class="drop-card-desc">96.42% Accuracy, 82.50% Recall &amp; 0.9418 AUROC validation</div>
-                </div>
-              </a>
-              <a href="#cohort" class="drop-card">
-                <div class="drop-icon icon-emerald"><i data-lucide="database"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">PhysioNet 40-Biomarker Cohort</div>
-                  <div class="drop-card-desc">Interactive searchable data dictionary across 40,327 encounters</div>
-                </div>
-              </a>
-              <a href="#benchmarks" class="drop-card">
-                <div class="drop-icon icon-purple"><i data-lucide="line-chart"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Interactive ROC Curves</div>
-                  <div class="drop-card-desc">Chart.js dynamic comparative analytics &amp; institutional profiles</div>
-                </div>
-              </a>
-              <a href="#benchmarks" class="drop-card">
-                <div class="drop-icon icon-rose"><i data-lucide="grid"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Confusion Matrices</div>
-                  <div class="drop-card-desc">Multi-tier true positive vs false alarm comparative verification</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dropdown 4: Patent & Docs -->
-        <div class="nav-item has-dropdown">
-          <button class="nav-link dropdown-toggle" aria-expanded="false" id="dropTogglePatent">
-            <span>Patent &amp; Docs</span>
-            <i data-lucide="chevron-down" class="dropdown-arrow"></i>
-          </button>
-          <div class="drop-panel">
-            <div class="drop-panel-header">
-              <span class="drop-header-tag"><i data-lucide="file-check-2"></i> OFFICIAL INTELLECTUAL PROPERTY</span>
-            </div>
-            <div class="drop-panel-grid">
-              <a href="#patent" class="drop-card">
-                <div class="drop-icon icon-gold"><i data-lucide="award"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Patent Specification (15 Claims)</div>
-                  <div class="drop-card-desc">Complete IPO Form 2 legal disclosure &amp; interactive claims tree</div>
-                </div>
-              </a>
-              <a href="#publications" class="drop-card">
-                <div class="drop-icon icon-cyan"><i data-lucide="book-open"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Scholarly Manuscripts</div>
-                  <div class="drop-card-desc">3 submission-ready drafts (IEEE J-BHI, Elsevier, Springer Nature)</div>
-                </div>
-              </a>
-              <a href="#publications" class="drop-card">
-                <div class="drop-icon icon-purple"><i data-lucide="file-text"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Project Documentation Dossier</div>
-                  <div class="drop-card-desc">Complete 32-page engineering specifications &amp; SQLite schema</div>
-                </div>
-              </a>
-              <a href="#clinical" class="drop-card">
-                <div class="drop-icon icon-emerald"><i data-lucide="stethoscope"></i></div>
-                <div class="drop-card-body">
-                  <div class="drop-card-title">Clinical Protocol &amp; Ethics</div>
-                  <div class="drop-card-desc">Sepsis-3 consensus definitions &amp; HIPAA-compliant de-identification</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Direct Nav Links -->
-        <div class="nav-item">
-          <a href="#api" class="nav-link">API &amp; Docs</a>
-        </div>
-        <div class="nav-item">
-          <a href="#team" class="nav-link">Team</a>
-        </div>
+        <a href="#problem" class="nav-link">Overview</a>
+        <a href="#inventions" class="nav-link">Inventions</a>
+        <a href="#benchmarks" class="nav-link">Benchmarks</a>
+        <a href="#patent" class="nav-link">Patent (15 Claims)</a>
+        <a href="#cohort" class="nav-link">EHR Cohort</a>
+        <a href="#xai" class="nav-link">Explainability</a>
+        <a href="#api" class="nav-link">REST API</a>
+        <a href="#publications" class="nav-link">Publications</a>
+        <a href="#team" class="nav-link">Team</a>
       </nav>
 
-      <!-- Nav Actions (Clean & Focused) -->
+      <!-- Nav Actions (Search, GitHub, and High-Impact CTA) -->
       <div class="nav-actions">
         <button class="cmd-trigger-btn" id="openCmdPaletteBtn" title="Search Documentation (⌘K)">
           <i data-lucide="search"></i>
           <span class="cmd-label">Search docs...</span>
           <span class="cmd-shortcut">⌘K</span>
         </button>
-        <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" class="btn-github" title="View Source on GitHub">
+        <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="btn-github" title="View Source on GitHub">
           <i data-lucide="github"></i>
           <span>GitHub</span>
         </a>
-        <a href="#simulator" class="btn-nav-cta">
-          <span>CDSS Simulator</span>
-          <i data-lucide="arrow-right"></i>
-        </a>
+        <button class="btn-nav-cta" onclick="openPdfViewer('docs/FPDAF_IEEE_Journal_Paper.pdf', 'IEEE J-BHI Journal Paper')">
+          <i data-lucide="file-text"></i>
+          <span>Read Paper</span>
+        </button>
         <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle Navigation Menu">
           <i data-lucide="menu"></i>
         </button>
@@ -261,27 +91,22 @@
         <button class="mobile-close-btn" id="mobileMenuClose"><i data-lucide="x"></i></button>
       </div>
       <div class="mobile-drawer-links">
-        <div class="mobile-group-title">Architecture &amp; System</div>
+        <div class="mobile-group-title">Architecture &amp; Methodology</div>
+        <a href="#overview" class="mobile-link"><i data-lucide="monitor"></i> Telemetry &amp; Metrics</a>
         <a href="#problem" class="mobile-link"><i data-lucide="alert-triangle"></i> Clinical Need &amp; Gaps</a>
         <a href="#inventions" class="mobile-link"><i data-lucide="sparkles"></i> 3 Core Inventions (AD-CUSUM, CSSP)</a>
         <a href="#xai" class="mobile-link"><i data-lucide="eye"></i> Three Pillars of Clinical XAI</a>
         <a href="#api" class="mobile-link"><i data-lucide="code-2"></i> REST API &amp; Standards</a>
 
-        <div class="mobile-group-title">Clinical CDSS</div>
-        <a href="#overview" class="mobile-link"><i data-lucide="monitor"></i> Bedside Waveform Monitor</a>
-        <a href="#simulator" class="mobile-link"><i data-lucide="sliders"></i> Recourse Simulator</a>
+        <div class="mobile-group-title">Validation &amp; Intellect Property</div>
+        <a href="#benchmarks" class="mobile-link"><i data-lucide="award"></i> 6-Way SOTA Benchmarks</a>
+        <a href="#patent" class="mobile-link"><i data-lucide="file-check-2"></i> Patent Specification (15 Claims)</a>
+        <a href="#cohort" class="mobile-link"><i data-lucide="database"></i> PhysioNet 40-Biomarker Cohort</a>
         <a href="#portals" class="mobile-link"><i data-lucide="layout-dashboard"></i> Doctor &amp; Admin Portals</a>
         <a href="#demo" class="mobile-link"><i data-lucide="play-circle"></i> Live Video Demonstration</a>
 
-        <div class="mobile-group-title">Benchmarks &amp; Data</div>
-        <a href="#benchmarks" class="mobile-link"><i data-lucide="award"></i> 6-Way SOTA Benchmarks</a>
-        <a href="#cohort" class="mobile-link"><i data-lucide="database"></i> PhysioNet 40-Biomarker Cohort</a>
-
-        <div class="mobile-group-title">Patent &amp; Research</div>
-        <a href="#patent" class="mobile-link"><i data-lucide="award"></i> Patent Specification (15 Claims)</a>
+        <div class="mobile-group-title">Scholarly Artifacts &amp; Team</div>
         <a href="#publications" class="mobile-link"><i data-lucide="book-open"></i> Scholarly Manuscripts &amp; Dossiers</a>
-
-        <div class="mobile-group-title">Team</div>
         <a href="#team" class="mobile-link"><i data-lucide="users"></i> Team 28 &amp; Faculty Supervisors</a>
       </div>
     </div>
@@ -292,11 +117,11 @@
     <div class="container hero-content">
       <div class="hero-badge-wrap">
         <span class="badge-dot"></span>
-        <span>B.Tech Final-Year Capstone Project • Course: 23CSE498 Phase II • Group G028 (Track: DSDA)</span>
+        <span>Multi-Center Clinical Federated Learning • Group G028 • PhysioNet Cohort Validation</span>
       </div>
 
       <h1 class="hero-title">
-        Explainable Federated Learning for Healthcare Time-Series Forecasting with <span class="gradient-text">Personalized Drift Adaptation</span>
+        Federated Sepsis Forecasting with <span class="gradient-text">Personalized Drift Adaptation</span>
       </h1>
 
       <p class="hero-description">
@@ -305,22 +130,18 @@
 
       <!-- Hero Actions (Refined Enterprise Layout) -->
       <div class="hero-actions">
-        <a href="#simulator" class="btn btn-primary">
-          <i data-lucide="sliders"></i>
-          <span>Interactive CDSS Simulator</span>
+        <a href="#benchmarks" class="btn btn-primary">
+          <i data-lucide="bar-chart-2"></i>
+          <span>Explore SOTA Benchmarks</span>
         </a>
         <a href="#patent" class="btn btn-secondary">
           <i data-lucide="award"></i>
           <span>Patent Specification (15 Claims)</span>
         </a>
-        <a href="#demo" class="btn btn-tertiary">
-          <i data-lucide="play-circle"></i>
-          <span>Watch Demonstration</span>
-        </a>
-        <a href="#publications" class="btn btn-ghost">
+        <button class="btn btn-tertiary" onclick="openPdfViewer('docs/FPDAF_IEEE_Journal_Paper.pdf', 'IEEE J-BHI Journal Paper')">
           <i data-lucide="file-text"></i>
-          <span>Scholarly Manuscripts</span>
-        </a>
+          <span>Read Research Paper (PDF)</span>
+        </button>
       </div>
 
       <!-- Unified Bedside Waveform Monitor & Key Metrics Workstation -->
@@ -399,26 +220,6 @@
     </div>
   </section>
 
-  <!-- Sticky Documentation Quick-Jump Ribbon -->
-  <nav class="doc-quicknav" id="docQuickNav">
-    <div class="quicknav-container">
-      <span class="quicknav-title"><i data-lucide="compass"></i> Quick Jump:</span>
-      <div class="quicknav-scroll">
-        <a href="#problem" class="quicknav-link"><span class="qn-num">01</span> Clinical Need</a>
-        <a href="#inventions" class="quicknav-link"><span class="qn-num">02</span> Inventions</a>
-        <a href="#simulator" class="quicknav-link"><span class="qn-num">03</span> Recourse Sim</a>
-        <a href="#benchmarks" class="quicknav-link"><span class="qn-num">04</span> Benchmarks</a>
-        <a href="#patent" class="quicknav-link"><span class="qn-num">05</span> Patent Claims</a>
-        <a href="#cohort" class="quicknav-link"><span class="qn-num">06</span> Cohort Data</a>
-        <a href="#xai" class="quicknav-link"><span class="qn-num">07</span> XAI Pillars</a>
-        <a href="#api" class="quicknav-link"><span class="qn-num">08</span> REST API</a>
-        <a href="#portals" class="quicknav-link"><span class="qn-num">09</span> Portals</a>
-        <a href="#demo" class="quicknav-link"><span class="qn-num">10</span> Live Video</a>
-        <a href="#publications" class="quicknav-link"><span class="qn-num">11</span> Publications</a>
-        <a href="#team" class="quicknav-link"><span class="qn-num">12</span> Team</a>
-      </div>
-    </div>
-  </nav>
 
   <!-- Problem Statement & Clinical Urgency -->
   <section id="problem" class="section problem-section">
@@ -433,7 +234,7 @@
 
       <div class="cards-grid-3">
         <div class="feature-card glass-card">
-          <div class="card-glow red-glow"></div>
+
           <div class="feature-icon icon-red">
             <i data-lucide="shield-alert"></i>
           </div>
@@ -445,7 +246,7 @@
         </div>
 
         <div class="feature-card glass-card">
-          <div class="card-glow yellow-glow"></div>
+
           <div class="feature-icon icon-yellow">
             <i data-lucide="shuffle"></i>
           </div>
@@ -457,7 +258,7 @@
         </div>
 
         <div class="feature-card glass-card">
-          <div class="card-glow blue-glow"></div>
+
           <div class="feature-icon icon-blue">
             <i data-lucide="wifi-off"></i>
           </div>
@@ -630,120 +431,6 @@
     </div>
   </section>
 
-  <!-- Interactive Bedside Clinical Recourse Simulator (XAI Playground) -->
-  <section id="simulator" class="section simulator-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag"><i data-lucide="sliders"></i> Interactive Clinical AI Playground</div>
-        <h2 class="section-title">Point-of-Care Counterfactual Recourse Simulator</h2>
-        <p class="section-subtitle">
-          Experience Pillar 3 of our Explainability Framework: dynamically simulate therapeutic ICU interventions (e.g., crystalloid fluid resuscitation or vasopressor titration) and watch predicted sepsis risk update in real time.
-        </p>
-      </div>
-
-      <!-- Patient Archetype Selector Pills -->
-      <div class="archetype-bar">
-        <span class="archetype-label"><i data-lucide="user-check"></i> Load Clinical Archetype:</span>
-        <button class="archetype-pill active" id="btnArchGeriatric">Archetype A: Geriatric Sepsis (Age 78, Hypoperfusion)</button>
-        <button class="archetype-pill" id="btnArchTrauma">Archetype B: Acute Trauma Shock (Age 34, Hypotension)</button>
-        <button class="archetype-pill" id="btnArchOncology">Archetype C: Post-Surgical Oncology (Age 62, Leukopenia)</button>
-      </div>
-
-      <div class="simulator-wrapper glass-card">
-        <div class="sim-controls-col">
-          <h3>Bedside Physiological Controls</h3>
-          <p class="sim-sub">Adjust hemodynamic telemetry sliders to model patient state:</p>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <label for="sliderMAP">Mean Arterial Pressure (MAP):</label>
-              <span id="valMAP" class="slider-val">58 mmHg</span>
-            </div>
-            <input type="range" id="sliderMAP" min="45" max="105" value="58" class="range-slider">
-            <span class="slider-hint">Normal: 70–105 mmHg • Shock: &lt;65 mmHg</span>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <label for="sliderHR">Heart Rate (HR):</label>
-              <span id="valHR" class="slider-val">122 bpm</span>
-            </div>
-            <input type="range" id="sliderHR" min="50" max="160" value="122" class="range-slider">
-            <span class="slider-hint">Normal: 60–100 bpm • SIRS Tachycardia: >90 bpm</span>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <label for="sliderLactate">Serum Lactate:</label>
-              <span id="valLactate" class="slider-val">3.8 mmol/L</span>
-            </div>
-            <input type="range" id="sliderLactate" min="0.5" max="8.0" step="0.1" value="3.8" class="range-slider">
-            <span class="slider-hint">Normal: 0.5–2.0 mmol/L • Severe Shock: >4.0 mmol/L</span>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <label for="sliderWBC">White Blood Cell Count (WBC):</label>
-              <span id="valWBC" class="slider-val">16.4 k/μL</span>
-            </div>
-            <input type="range" id="sliderWBC" min="3.0" max="30.0" step="0.2" value="16.4" class="range-slider">
-            <span class="slider-hint">Normal: 4.5–11.0 k/μL • Leukocytosis: >12.0 k/μL</span>
-          </div>
-
-          <div class="slider-group">
-            <div class="slider-header">
-              <label for="sliderResp">Respiration Rate (Resp):</label>
-              <span id="valResp" class="slider-val">28 rpm</span>
-            </div>
-            <input type="range" id="sliderResp" min="10" max="45" value="28" class="range-slider">
-            <span class="slider-hint">Normal: 12–20 rpm • Tachypnea: >22 rpm</span>
-          </div>
-
-          <div class="sim-preset-buttons">
-            <button class="btn btn-sm btn-outline text-rose" id="presetDeterioration"><i data-lucide="alert-octagon"></i> Preset: Septic Crisis</button>
-            <button class="btn btn-sm btn-primary" id="presetResuscitation"><i data-lucide="droplet"></i> Simulate 30 mL/kg Fluid Bolus</button>
-          </div>
-        </div>
-
-        <div class="sim-gauge-col">
-          <div class="gauge-display-card">
-            <h4>Predicted Sepsis Risk ($\hat{y}$)</h4>
-            <div class="dial-container">
-              <svg viewBox="0 0 200 120" class="gauge-svg">
-                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#1e293b" stroke-width="20" stroke-linecap="round"/>
-                <path id="gaugePath" d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="40"/>
-                <defs>
-                  <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#10b981"/>
-                    <stop offset="50%" stop-color="#f59e0b"/>
-                    <stop offset="100%" stop-color="#ef4444"/>
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div class="gauge-center-text">
-                <span id="gaugePercentage" class="gauge-number">84%</span>
-                <span id="gaugeStatus" class="gauge-badge badge-critical">CRITICAL RISK</span>
-              </div>
-            </div>
-
-            <!-- Surviving Sepsis Campaign Notification -->
-            <div id="sscAlertBox" class="ssc-order-alert">
-              <div class="ssc-alert-header">
-                <i data-lucide="bell-ring"></i>
-                <span>Surviving Sepsis Campaign (SSC) Hour-1 Bundle Triggered</span>
-              </div>
-              <ul class="ssc-checklist">
-                <li><i data-lucide="check-square"></i> Order immediate stat serum blood lactate ($>2.0$ mmol/L).</li>
-                <li><i data-lucide="check-square"></i> Draw 2 sets of blood cultures prior to IV antibiotics.</li>
-                <li><i data-lucide="check-square"></i> Administer broad-spectrum empirical intravenous antimicrobials.</li>
-                <li><i data-lucide="check-square"></i> Rapidly infuse $30\text{ mL/kg}$ crystalloid bolus for $\text{MAP} < 65$ mmHg.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Empirical Benchmarking Section & Interactive Chart.js Explorer -->
   <section id="benchmarks" class="section results-section">
@@ -908,8 +595,8 @@
         <div class="patent-meta-info">
           <div class="patent-badge-icon"><i data-lucide="file-check-2"></i></div>
           <div>
-            <h3 style="margin-bottom: 4px; font-size: 1.1rem; color: #fff;">A Federated Personalized Drift-Aware Attention Framework (FPDAF) for Early Sepsis Forecasting in Multi-Center Critical Care</h3>
-            <p style="margin: 0; font-size: 0.82rem; color: var(--text-muted);">
+            <h3>A Federated Personalized Drift-Aware Attention Framework (FPDAF) for Early Sepsis Forecasting in Multi-Center Critical Care</h3>
+            <p>
               <strong>Application Type:</strong> Complete Patent Specification • <strong>Assignee:</strong> Amrita Vishwa Vidyapeetham • <strong>Inventors:</strong> Sheela Akshar Sakhi, Hasini Reddy M, Kousik Sarma Lakkaraju, Haswitha K, V. Chakravarthy
             </p>
           </div>
@@ -926,7 +613,7 @@
 
       <!-- Prior-Art Novelty Analysis Radar Table -->
       <div class="table-card glass-card" style="margin-bottom: 24px;">
-        <h4 style="margin-bottom: 14px; font-size: 0.95rem; color: var(--text-primary);"><i data-lucide="shield-check" class="text-emerald"></i> Prior-Art Novelty &amp; Inventive Step Differentiation Matrix</h4>
+        <h4><i data-lucide="shield-check" class="text-emerald"></i> Prior-Art Novelty &amp; Inventive Step Differentiation Matrix</h4>
         <div class="table-responsive">
           <table class="benchmark-table">
             <thead>

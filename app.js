@@ -137,19 +137,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ScrollSpy for Sticky Quick-Jump Ribbon
-  const quickNavLinks = document.querySelectorAll('.quicknav-link');
+  // ScrollSpy for Top Navigation Menu
+  const topNavLinks = document.querySelectorAll('.nav-menu .nav-link');
   const allSections = document.querySelectorAll('section[id]');
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
-        quickNavLinks.forEach(link => {
+        topNavLinks.forEach(link => {
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
-            // Auto scroll ribbon horizontally to active pill
-            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
           } else {
             link.classList.remove('active');
           }
@@ -157,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    rootMargin: '-15% 0px -65% 0px',
+    rootMargin: '-20% 0px -60% 0px',
     threshold: 0
   });
 
@@ -468,213 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // 7. Interactive Bedside Counterfactual Recourse Simulator
-  // ==========================================
-  const sliderMAP = document.getElementById('sliderMAP');
-  const sliderHR = document.getElementById('sliderHR');
-  const sliderLactate = document.getElementById('sliderLactate');
-  const sliderWBC = document.getElementById('sliderWBC');
-  const sliderResp = document.getElementById('sliderResp');
-
-  const valMAP = document.getElementById('valMAP');
-  const valHR = document.getElementById('valHR');
-  const valLactate = document.getElementById('valLactate');
-  const valWBC = document.getElementById('valWBC');
-  const valResp = document.getElementById('valResp');
-
-  const gaugePath = document.getElementById('gaugePath');
-  const gaugePercentage = document.getElementById('gaugePercentage');
-  const gaugeStatus = document.getElementById('gaugeStatus');
-  const sscAlertBox = document.getElementById('sscAlertBox');
-
-  const btnArchGeriatric = document.getElementById('btnArchGeriatric');
-  const btnArchTrauma = document.getElementById('btnArchTrauma');
-  const btnArchOncology = document.getElementById('btnArchOncology');
-
-  const presetDeterioration = document.getElementById('presetDeterioration');
-  const presetResuscitation = document.getElementById('presetResuscitation');
-
-  function computeSepsisRisk(map, hr, lactate, wbc, resp) {
-    let z = -3.5;
-
-    // MAP: Normal 70-105 mmHg. Shock < 65 mmHg
-    if (map < 65) {
-      z += (65 - map) * 0.092;
-    } else if (map < 72) {
-      z += (72 - map) * 0.035;
-    }
-
-    // HR: Normal 60-90 bpm. SIRS tachycardia > 90 bpm
-    if (hr > 90) {
-      z += (hr - 90) * 0.048;
-    }
-
-    // Serum Lactate: Normal 0.5-1.8 mmol/L. Severe tissue hypoperfusion > 2.0, shock > 4.0
-    if (lactate > 1.8) {
-      z += (lactate - 1.8) * 1.02;
-    }
-
-    // WBC: Normal 4.5-11.0. SIRS leukocytosis > 12.0 or leukopenia < 4.0
-    if (wbc > 11.5) {
-      z += (wbc - 11.5) * 0.082;
-    } else if (wbc < 4.0) {
-      z += (4.0 - wbc) * 0.18;
-    }
-
-    // Resp: Normal 12-20 rpm. Tachypnea > 22 rpm
-    if (resp && resp > 20) {
-      z += (resp - 20) * 0.065;
-    }
-
-    const probability = 1 / (1 + Math.exp(-z));
-    return Math.min(99.0, Math.max(5.0, probability * 100));
-  }
-
-  function updateSimulator() {
-    if (!sliderMAP || !sliderHR || !sliderLactate || !sliderWBC) return;
-
-    const map = parseFloat(sliderMAP.value);
-    const hr = parseFloat(sliderHR.value);
-    const lactate = parseFloat(sliderLactate.value);
-    const wbc = parseFloat(sliderWBC.value);
-    const resp = sliderResp ? parseFloat(sliderResp.value) : 24;
-
-    if (valMAP) valMAP.textContent = `${map.toFixed(0)} mmHg`;
-    if (valHR) valHR.textContent = `${hr.toFixed(0)} bpm`;
-    if (valLactate) valLactate.textContent = `${lactate.toFixed(1)} mmol/L`;
-    if (valWBC) valWBC.textContent = `${wbc.toFixed(1)} k/μL`;
-    if (valResp) valResp.textContent = `${resp.toFixed(0)} rpm`;
-
-    const risk = computeSepsisRisk(map, hr, lactate, wbc, resp);
-
-    if (gaugePath) {
-      const arcLength = 251.2;
-      const offset = arcLength * (1 - (risk / 100));
-      gaugePath.style.strokeDashoffset = offset.toFixed(1);
-    }
-
-    if (gaugePercentage) {
-      gaugePercentage.textContent = `${Math.round(risk)}%`;
-    }
-
-    if (gaugeStatus) {
-      gaugeStatus.classList.remove('badge-critical', 'badge-warning', 'badge-stable');
-      if (risk >= 65) {
-        gaugeStatus.textContent = 'CRITICAL RISK';
-        gaugeStatus.classList.add('badge-critical');
-      } else if (risk >= 32) {
-        gaugeStatus.textContent = 'MODERATE RISK';
-        gaugeStatus.classList.add('badge-warning');
-      } else {
-        gaugeStatus.textContent = 'STABLE / LOW RISK';
-        gaugeStatus.classList.add('badge-stable');
-      }
-    }
-
-    if (sscAlertBox) {
-      if (risk >= 55 || map < 65 || lactate > 2.0) {
-        sscAlertBox.style.display = 'block';
-      } else {
-        sscAlertBox.style.display = 'none';
-      }
-    }
-  }
-
-  [sliderMAP, sliderHR, sliderLactate, sliderWBC, sliderResp].forEach(slider => {
-    if (slider) {
-      slider.addEventListener('input', updateSimulator);
-    }
-  });
-
-  function animateSliderTo(slider, targetVal) {
-    if (!slider) return;
-    const startVal = parseFloat(slider.value);
-    const stepDiff = targetVal - startVal;
-    const duration = 380;
-    const startTime = performance.now();
-
-    function step(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      slider.value = startVal + stepDiff * easeProgress;
-      updateSimulator();
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        slider.value = targetVal;
-        updateSimulator();
-      }
-    }
-
-    requestAnimationFrame(step);
-  }
-
-  // Archetype Presets
-  if (btnArchGeriatric) {
-    btnArchGeriatric.addEventListener('click', () => {
-      document.querySelectorAll('.archetype-pill').forEach(p => p.classList.remove('active'));
-      btnArchGeriatric.classList.add('active');
-      animateSliderTo(sliderMAP, 58);
-      animateSliderTo(sliderHR, 122);
-      animateSliderTo(sliderLactate, 3.8);
-      animateSliderTo(sliderWBC, 16.4);
-      if (sliderResp) animateSliderTo(sliderResp, 28);
-      showToast('Loaded Archetype A: Geriatric Sepsis (Age 78, Hypoperfusion)');
-    });
-  }
-
-  if (btnArchTrauma) {
-    btnArchTrauma.addEventListener('click', () => {
-      document.querySelectorAll('.archetype-pill').forEach(p => p.classList.remove('active'));
-      btnArchTrauma.classList.add('active');
-      animateSliderTo(sliderMAP, 52);
-      animateSliderTo(sliderHR, 138);
-      animateSliderTo(sliderLactate, 4.6);
-      animateSliderTo(sliderWBC, 21.0);
-      if (sliderResp) animateSliderTo(sliderResp, 32);
-      showToast('Loaded Archetype B: Acute Trauma Shock (Age 34, Hypotension)');
-    });
-  }
-
-  if (btnArchOncology) {
-    btnArchOncology.addEventListener('click', () => {
-      document.querySelectorAll('.archetype-pill').forEach(p => p.classList.remove('active'));
-      btnArchOncology.classList.add('active');
-      animateSliderTo(sliderMAP, 68);
-      animateSliderTo(sliderHR, 105);
-      animateSliderTo(sliderLactate, 2.4);
-      animateSliderTo(sliderWBC, 2.1);
-      if (sliderResp) animateSliderTo(sliderResp, 22);
-      showToast('Loaded Archetype C: Post-Surgical Oncology (Age 62, Leukopenia)');
-    });
-  }
-
-  if (presetDeterioration) {
-    presetDeterioration.addEventListener('click', () => {
-      animateSliderTo(sliderMAP, 54);
-      animateSliderTo(sliderHR, 128);
-      animateSliderTo(sliderLactate, 4.2);
-      animateSliderTo(sliderWBC, 18.2);
-      if (sliderResp) animateSliderTo(sliderResp, 30);
-      showToast('Simulating Acute Septic Shock Crisis (MAP: 54, HR: 128, Lactate: 4.2)');
-    });
-  }
-
-  if (presetResuscitation) {
-    presetResuscitation.addEventListener('click', () => {
-      animateSliderTo(sliderMAP, 78);
-      animateSliderTo(sliderHR, 82);
-      animateSliderTo(sliderLactate, 1.4);
-      animateSliderTo(sliderWBC, 9.8);
-      if (sliderResp) animateSliderTo(sliderResp, 16);
-      showToast('Applied 30 mL/kg Crystalloid Resuscitation — Hemodynamics Stabilized');
-    });
-  }
-
-  updateSimulator();
 
   // ==========================================
   // 8. Interactive Chart.js Visualizations
@@ -1144,7 +935,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { label: 'Jump to Clinical Urgency & Problem Statement', tag: 'Section', action: () => scrollToSection('#problem') },
     { label: 'Jump to 3 Architectural Inventions (AD-CUSUM, DDP-ERP, CSSP)', tag: 'Section', action: () => scrollToSection('#inventions') },
     { label: 'Jump to Three Pillars of Clinical XAI', tag: 'Section', action: () => scrollToSection('#xai') },
-    { label: 'Jump to Bedside Recourse Simulator', tag: 'Section', action: () => scrollToSection('#simulator') },
     { label: 'Jump to Benchmark Table & Interactive ROC Explorer', tag: 'Section', action: () => scrollToSection('#benchmarks') },
     { label: 'Jump to Patent Disclosure & 15 Legal Claims', tag: 'Section', action: () => scrollToSection('#patent') },
     { label: 'Jump to 40-Biomarker Cohort Data Dictionary', tag: 'Section', action: () => scrollToSection('#cohort') },
@@ -1156,9 +946,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { label: 'Read IEEE J-BHI Draft (14 Pages)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_IEEE_Journal_Paper.pdf', 'IEEE J-BHI Journal Draft') },
     { label: 'Read Patent Specification (15 Claims, IPO Form 2)', tag: 'PDF', action: () => openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft') },
     { label: 'Read Elsevier CMPB Draft (15 Pages)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_Elsevier_Journal_Paper.pdf', 'Elsevier CMPB Journal Draft') },
-    { label: 'Read Project Documentation Dossier', tag: 'PDF', action: () => openPdfViewer('docs/Project_Documentation_Dossier.pdf', 'Project Documentation Dossier') },
-    { label: 'Simulate Septic Crisis', tag: 'Action', action: () => { scrollToSection('#simulator'); if (presetDeterioration) presetDeterioration.click(); } },
-    { label: 'Simulate 30 mL/kg Fluid Resuscitation', tag: 'Action', action: () => { scrollToSection('#simulator'); if (presetResuscitation) presetResuscitation.click(); } }
+    { label: 'Read Project Documentation Dossier', tag: 'PDF', action: () => openPdfViewer('docs/Project_Documentation_Dossier.pdf', 'Project Documentation Dossier') }
   ];
 
   function openCommandPalette() {
@@ -1178,7 +966,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function scrollToSection(selector) {
     const el = document.querySelector(selector);
     if (el) {
-      const navHeight = 100; // Account for top navbar + quicknav ribbon
+      const navHeight = 70; // Account for top navbar height
       window.scrollTo({
         top: el.offsetTop - navHeight,
         behavior: 'smooth'
