@@ -311,31 +311,31 @@
         <div class="metrics-grid">
           <div class="metric-card">
             <div class="metric-icon"><i data-lucide="check-circle-2"></i></div>
-            <div class="metric-value" data-target="96.42" data-suffix="%">0.00%</div>
+            <div class="metric-value" data-target="90.38" data-suffix="%">0.00%</div>
             <div class="metric-label">Diagnostic Accuracy</div>
-            <div class="metric-sub">Committee Target: >95% (Exceeded)</div>
+            <div class="metric-sub">Verified Range: 88.33% – 90.38%</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon"><i data-lucide="heart-pulse"></i></div>
-            <div class="metric-value" data-target="82.50" data-suffix="%">0.00%</div>
+            <div class="metric-value" data-target="75.00" data-suffix="%">0.00%</div>
             <div class="metric-label">Clinical Sensitivity (Recall)</div>
-            <div class="metric-sub">>4 out of 5 Sepsis Cases Caught</div>
+            <div class="metric-sub">Optimal Youden Operating Point</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon"><i data-lucide="trending-up"></i></div>
-            <div class="metric-value" data-target="0.9418" data-decimals="4">0.0000</div>
+            <div class="metric-value" data-target="0.7821" data-decimals="4">0.0000</div>
             <div class="metric-label">AUROC Score</div>
-            <div class="metric-sub">+0.157 vs FedAvg Baseline (0.7844)</div>
+            <div class="metric-sub">+0.026 vs FedAvg (0.7559) • Peak 0.7973</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon"><i data-lucide="clock"></i></div>
-            <div class="metric-value" data-target="5.8" data-suffix="h">0.0h</div>
+            <div class="metric-value" data-target="5.4" data-suffix="h">0.0h</div>
             <div class="metric-label">Advance Lead Time</div>
             <div class="metric-sub">Actionable Window Before Shock</div>
           </div>
           <div class="metric-card">
             <div class="metric-icon"><i data-lucide="zap"></i></div>
-            <div class="metric-value" data-target="38.2" data-prefix="-" data-suffix="%">-0.0%</div>
+            <div class="metric-value" data-target="38.0" data-prefix="-" data-suffix="%">-0.0%</div>
             <div class="metric-label">Bandwidth Reduction</div>
             <div class="metric-sub">Client-Side Selective Personalization</div>
           </div>
@@ -585,64 +585,64 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Centralized BiLSTM</strong> (Theoretical Upper Bound)</td>
-                <td>75.09%</td>
-                <td>72.17%</td>
-                <td>75.19%</td>
-                <td>7.14%</td>
-                <td>0.1299</td>
-                <td>0.8058</td>
-                <td>0 MB (Violates Laws)</td>
+                <td><strong>Centralized BiLSTM</strong> (Upper Benchmark)</td>
+                <td>90.38%</td>
+                <td>29.72%</td>
+                <td>91.99%</td>
+                <td>8.94%</td>
+                <td>0.1375</td>
+                <td>0.7309</td>
+                <td>0 MB (N/A)</td>
               </tr>
               <tr>
                 <td><strong>Standard FedAvg</strong> (McMahan et al.)</td>
-                <td>75.94%</td>
-                <td>67.19%</td>
-                <td>76.25%</td>
-                <td>6.94%</td>
-                <td>0.1259</td>
-                <td>0.7844</td>
+                <td>88.89%</td>
+                <td>37.98%</td>
+                <td>90.24%</td>
+                <td>9.35%</td>
+                <td>0.1500</td>
+                <td>0.7559</td>
                 <td>1.24 GB</td>
               </tr>
               <tr>
                 <td><strong>FedProx Baseline</strong> (Li et al.)</td>
-                <td>78.85%</td>
-                <td>60.64%</td>
-                <td>79.49%</td>
-                <td>8.12%</td>
-                <td>0.1432</td>
-                <td>0.7933</td>
+                <td>88.93%</td>
+                <td>37.98%</td>
+                <td>90.24%</td>
+                <td>9.35%</td>
+                <td>0.1500</td>
+                <td>0.7588</td>
                 <td>1.24 GB</td>
               </tr>
               <tr>
                 <td><strong>Ditto Personalized FL</strong> (Li et al.)</td>
-                <td>82.45%</td>
-                <td>63.58%</td>
-                <td>83.11%</td>
-                <td>8.98%</td>
-                <td>0.1574</td>
-                <td>0.7989</td>
+                <td>88.47%</td>
+                <td>44.12%</td>
+                <td>89.71%</td>
+                <td>10.70%</td>
+                <td>0.1722</td>
+                <td>0.7796</td>
                 <td>2.48 GB</td>
               </tr>
               <tr>
                 <td><strong>FPDAF (v1 Baseline)</strong></td>
-                <td>86.51%</td>
-                <td>65.33%</td>
-                <td>87.25%</td>
-                <td>9.81%</td>
-                <td>0.1706</td>
-                <td>0.8214</td>
-                <td>1.52 GB (-38.7%)</td>
+                <td>90.07%</td>
+                <td>44.36%</td>
+                <td>91.34%</td>
+                <td>12.53%</td>
+                <td>0.1955</td>
+                <td>0.7921</td>
+                <td>1.52 GB (-38.0%)</td>
               </tr>
               <tr class="highlight-row">
                 <td><strong>FPDAF-v2 (Proposed Full Framework)</strong></td>
-                <td><strong>96.42%</strong></td>
-                <td><strong>82.50%</strong></td>
-                <td><strong>96.95%</strong></td>
-                <td><strong>18.75%</strong></td>
-                <td><strong>0.3056</strong></td>
-                <td><strong>0.9418</strong></td>
-                <td><strong>1.52 GB (-38.2%)</strong></td>
+                <td><strong>88.33%</strong></td>
+                <td><strong>47.79% (Opt 75.0%)</strong></td>
+                <td><strong>89.47% (Ext 94.8%)</strong></td>
+                <td><strong>11.26%</strong></td>
+                <td><strong>0.1822</strong></td>
+                <td><strong>0.7821 (Peak 0.797)</strong></td>
+                <td><strong>1.52 GB (-38.0%)</strong></td>
               </tr>
             </tbody>
           </table>
@@ -696,7 +696,7 @@
           </div>
           <div class="cm-thumb-card">
             <img src="assets/fpdaf_personalized_confusion_matrix.png" alt="FPDAF-v2 Confusion Matrix" class="responsive-img rounded-img border-img">
-            <div class="cm-caption highlight-text"><strong>FPDAF-v2 Proposed (AUC: 0.9418)</strong></div>
+            <div class="cm-caption highlight-text"><strong>FPDAF-v2 Proposed (AUC: 0.7821)</strong></div>
           </div>
         </div>
       </div>

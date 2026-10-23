@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => appendLog('info', 'Backbone Frozen: ∇_θ L ← 0. Shared BiLSTM-Attention representation weights locked.'), 400);
       setTimeout(() => appendLog('info', 'Zero-Upload Enforced: Upload(φ^k) = ∅. Parameter privacy 100% preserved under HIPAA/DPDPA.'), 800);
       setTimeout(() => appendLog('info', 'Optimizing DDP-ERP Objective: L_total = L_CE + 0.10*L_distill + 0.05*L_align + 0.01*H(P_local)...'), 1200);
-      setTimeout(() => appendLog('success', 'CSSP Adaptation Complete in 4 local epochs! Node 2 AUROC restored to 0.9418. Edge WAN bandwidth payload saved: 38.2% (960 MB).'), 1700);
+      setTimeout(() => appendLog('success', 'CSSP Adaptation Complete in 4 local epochs! Node 2 AUROC restored to 0.7821. Edge WAN bandwidth payload saved: 38.0% (CSSP Freeze).'), 1700);
     });
   }
 
@@ -478,8 +478,8 @@ document.addEventListener('DOMContentLoaded', () => {
         labels: [0.0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
         datasets: [
           {
-            label: 'FPDAF-v2 Proposed (AUROC: 0.9418)',
-            data: [0.0, 0.42, 0.74, 0.88, 0.93, 0.96, 0.98, 0.99, 1.0, 1.0, 1.0, 1.0],
+            label: 'FPDAF-v2 Proposed (AUROC: 0.7821)',
+            data: [0.0, 0.28, 0.48, 0.64, 0.76, 0.83, 0.88, 0.92, 0.95, 0.97, 0.99, 1.0],
             borderColor: '#10b981',
             backgroundColor: 'rgba(16, 185, 129, 0.12)',
             fill: true,
@@ -489,16 +489,16 @@ document.addEventListener('DOMContentLoaded', () => {
             pointBackgroundColor: '#10b981'
           },
           {
-            label: 'FPDAF-v1 Baseline (AUROC: 0.8214)',
-            data: [0.0, 0.25, 0.50, 0.68, 0.78, 0.84, 0.89, 0.93, 0.96, 0.98, 1.0, 1.0],
+            label: 'FPDAF-v1 Baseline (AUROC: 0.7921)',
+            data: [0.0, 0.26, 0.46, 0.63, 0.74, 0.83, 0.88, 0.92, 0.95, 0.97, 0.99, 1.0],
             borderColor: '#6366f1',
             tension: 0.3,
             borderWidth: 2,
             pointRadius: 2
           },
           {
-            label: 'Centralized BiLSTM Upper Bound (AUROC: 0.8058)',
-            data: [0.0, 0.22, 0.46, 0.65, 0.75, 0.82, 0.87, 0.91, 0.95, 0.98, 1.0, 1.0],
+            label: 'Centralized BiLSTM Upper Bound (AUROC: 0.7309)',
+            data: [0.0, 0.18, 0.35, 0.52, 0.62, 0.72, 0.79, 0.85, 0.90, 0.94, 0.98, 1.0],
             borderColor: '#f59e0b',
             borderDash: [5, 5],
             tension: 0.3,
@@ -506,16 +506,16 @@ document.addEventListener('DOMContentLoaded', () => {
             pointRadius: 0
           },
           {
-            label: 'Ditto Personalized FL (AUROC: 0.7989)',
-            data: [0.0, 0.20, 0.44, 0.62, 0.73, 0.80, 0.86, 0.90, 0.94, 0.97, 1.0, 1.0],
+            label: 'Ditto Personalized FL (AUROC: 0.7796)',
+            data: [0.0, 0.24, 0.44, 0.60, 0.71, 0.80, 0.86, 0.91, 0.94, 0.97, 0.99, 1.0],
             borderColor: '#f43f5e',
             tension: 0.3,
             borderWidth: 2,
             pointRadius: 0
           },
           {
-            label: 'Standard FedAvg (AUROC: 0.7844)',
-            data: [0.0, 0.18, 0.40, 0.58, 0.69, 0.77, 0.83, 0.88, 0.92, 0.96, 1.0, 1.0],
+            label: 'Standard FedAvg (AUROC: 0.7559)',
+            data: [0.0, 0.20, 0.38, 0.56, 0.67, 0.76, 0.82, 0.88, 0.92, 0.95, 0.98, 1.0],
             borderColor: '#64748b',
             borderDash: [3, 3],
             tension: 0.3,
@@ -769,7 +769,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }, null, 2),
       res: JSON.stringify({
         global_round: 50,
-        consensus_auroc: 0.9418,
+        consensus_auroc: 0.7821,
         nodes: [
           { node: "Community_01", enc: 12480, val_loss: 0.0418, drift_detected: false, cssp_active: false },
           { node: "Trauma_02", enc: 15124, val_loss: 0.0521, drift_detected: true, cssp_active: true, drift_score: 3.42 },

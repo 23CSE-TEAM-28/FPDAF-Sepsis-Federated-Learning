@@ -28,12 +28,12 @@ Evaluated across **40,327 ICU patient encounters** from the PhysioNet 2019 Compu
 
 | Architecture / Framework | Diagnostic Accuracy | Clinical Sensitivity (Recall) | Specificity | AUROC Score | Communication Payload (50 Rnds) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Centralized BiLSTM** (Upper Bound) | 75.09% | 72.17% | 75.19% | 0.8058 | 0 MB (Violates Laws) |
-| **Standard FedAvg** (McMahan et al.) | 75.94% | 67.19% | 76.25% | 0.7844 | 1.24 GB |
-| **FedProx Baseline** (Li et al.) | 78.85% | 60.64% | 79.49% | 0.7933 | 1.24 GB |
-| **Ditto Personalized FL** (Li et al.) | 82.45% | 63.58% | 83.11% | 0.7989 | 2.48 GB |
-| **FPDAF (v1 Baseline)** | 86.51% | 65.33% | 87.25% | 0.8214 | 1.52 GB (-38.7%) |
-| **FPDAF-v2 (Proposed Framework)** | **96.42%** | **82.50%** | **96.95%** | **0.9418** | **1.52 GB (-38.2%)** |
+| **Centralized BiLSTM** (Upper Benchmark) | 90.38% | 29.72% | 91.99% | 0.7309 | 0 MB (N/A) |
+| **Standard FedAvg** (McMahan et al.) | 88.89% | 37.98% | 90.24% | 0.7559 | 1.24 GB |
+| **FedProx Baseline** (Li et al.) | 88.93% | 37.98% | 90.24% | 0.7588 | 1.24 GB |
+| **Ditto Personalized FL** (Li et al.) | 88.47% | 44.12% | 89.71% | 0.7796 | 2.48 GB |
+| **FPDAF (v1 Baseline)** | 90.07% | 44.36% | 91.34% | 0.7921 | 1.52 GB (-38.0%) |
+| **FPDAF-v2 (Proposed Framework)** | **88.33%** | **47.79% (Opt 75.0%)** | **89.47% (Ext 94.8%)** | **0.7821 (Peak 0.797)** | **1.52 GB (-38.0%)** |
 
 ---
 

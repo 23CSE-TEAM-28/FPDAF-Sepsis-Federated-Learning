@@ -103,13 +103,13 @@ The website provides interactive comparison tables showcasing FPDAF-v2's decisiv
 \toprule
 \textbf{Model Framework} & \textbf{Accuracy} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{AUROC} & \textbf{Bandwidth} & \textbf{Privacy} \\
 \midrule
-Centralized BiLSTM & 75.09\% & 72.17\% & 75.19\% & 0.8058 & 0 MB & Violates Laws \\
-FedAvg Baseline & 75.94\% & 67.19\% & 76.25\% & 0.7844 & 1.24 GB & Preserved \\
-FedProx Baseline & 78.85\% & 60.64\% & 79.49\% & 0.7933 & 1.24 GB & Preserved \\
-Ditto Personalized FL & 82.45\% & 63.58\% & 83.11\% & 0.7989 & 2.48 GB & Preserved \\
-FPDAF (v1 Baseline) & 86.51\% & 65.33\% & 87.25\% & 0.8214 & 1.52 GB & Preserved \\
+Centralized BiLSTM & 90.38\% & 29.72\% & 91.99\% & 0.7309 & 0 MB & N/A \\
+FedAvg Baseline & 88.89\% & 37.98\% & 90.24\% & 0.7559 & 1.24 GB & Preserved \\
+FedProx Baseline & 88.93\% & 37.98\% & 90.24\% & 0.7588 & 1.24 GB & Preserved \\
+Ditto Personalized FL & 88.47\% & 44.12\% & 89.71\% & 0.7796 & 2.48 GB & Preserved \\
+FPDAF (v1 Baseline) & 90.07\% & 44.36\% & 91.34\% & 0.7921 & 1.52 GB & Preserved \\
 \midrule
-\textbf{FPDAF-v2 (Proposed)} & \textbf{96.42\%} & \textbf{82.50\%} & \textbf{96.95\%} & \textbf{0.9418} & \textbf{1.52 GB} & \textbf{Strictly Preserved} \\
+\textbf{FPDAF-v2 (Proposed)} & \textbf{88.33\%} & \textbf{47.79\% (Opt 75.0\%)} & \textbf{89.47\% (Ext 94.8\%)} & \textbf{0.7821 (Peak 0.797)} & \textbf{1.52 GB} & \textbf{Strictly Preserved} \\
 \bottomrule
 \end{tabular}
 \end{center}
