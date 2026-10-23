@@ -1120,51 +1120,985 @@
     </div>
   </section>
 
-  <!-- CDSS Portals Dual Showcase -->
+  <!-- CDSS Portals Suite & Workstation Showcase -->
   <section id="portals" class="section portals-section">
     <div class="container">
       <div class="section-header">
-        <div class="section-tag"><i data-lucide="monitor"></i> Production Workstation Interfaces</div>
+        <div class="section-tag"><i data-lucide="layout-dashboard"></i> Production Clinical Workstations</div>
         <h2 class="section-title">Clinical Decision Support System (CDSS) Portals</h2>
         <p class="section-subtitle">
-          Dedicated 3-tier presentation interfaces engineered for intensive care physicians and hospital MLOps administrators.
+          Dedicated 3-tier clinical presentation workstations engineered for intensive care physicians, hospital operations administrators, and federated learning researchers.
         </p>
       </div>
 
+      <!-- Live Interactive Prototype Banner -->
+      <div class="prototype-live-banner">
+        <div class="live-banner-content">
+          <div class="live-banner-tag">
+            <span class="ticker-dot live"></span>
+            <span>Local Production Runtime Active</span>
+          </div>
+          <h3 class="live-banner-title">Medical Center — Clinical Decision Support System (CDSS)</h3>
+          <p class="live-banner-desc">
+            The complete operational software is running locally on <strong>FastAPI Backend</strong> (<code>http://127.0.0.1:8000</code>) and <strong>Vite React UI</strong> (<code>http://localhost:5175</code>). Experience real-time 50-bed ward telemetry, interactive PyTorch inference (&lt;18ms latency), automated Surviving Sepsis Campaign (SSC) Hour-1 order dispatching, dynamic temporal attention heatmaps, and multi-node AD-CUSUM concept drift detection.
+          </p>
+        </div>
+        <div class="live-banner-actions">
+          <a href="http://localhost:5175" target="_blank" class="btn-launch-cdss" id="btnLaunchCdss">
+            <i data-lucide="external-link"></i>
+            <span>Launch Live Workstation</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Multi-Role Workstation Explorer -->
       <div class="portal-tabs glass-card">
         <div class="portal-btn-wrap">
-          <button class="portal-btn active" data-portal="doctor-portal">
+          <button class="portal-btn active" data-portal="view-bedside-monitor">
+            <i data-lucide="heart-pulse"></i>
+            <span>Bedside Monitor</span>
+          </button>
+          <button class="portal-btn" data-portal="view-doctor-cdss">
             <i data-lucide="stethoscope"></i>
-            <span>Doctor Bedside Portal</span>
+            <span>Doctor CDSS Overview</span>
           </button>
-          <button class="portal-btn" data-portal="admin-portal">
+          <button class="portal-btn" data-portal="view-hospital-network">
+            <i data-lucide="network"></i>
+            <span>Hospital Network</span>
+          </button>
+          <button class="portal-btn" data-portal="view-admin-ops">
             <i data-lucide="shield-check"></i>
-            <span>MLOps Administrative Portal</span>
+            <span>Hospital Admin Ops</span>
           </button>
-          <button class="portal-btn" data-portal="drift-portal">
+          <button class="portal-btn" data-portal="view-patient-registry">
+            <i data-lucide="users"></i>
+            <span>Patient Registry</span>
+          </button>
+          <button class="portal-btn" data-portal="view-pytorch-predictor">
+            <i data-lucide="cpu"></i>
+            <span>PyTorch Predictor</span>
+          </button>
+          <button class="portal-btn" data-portal="view-hour1-bundle">
+            <i data-lucide="clock-alert"></i>
+            <span>Hour-1 Bundle</span>
+          </button>
+          <button class="portal-btn" data-portal="view-xai-attention">
+            <i data-lucide="sparkles"></i>
+            <span>Temporal Attention</span>
+          </button>
+          <button class="portal-btn" data-portal="view-drift-telemetry">
             <i data-lucide="activity"></i>
-            <span>Real-Time Drift Telemetry</span>
+            <span>AD-CUSUM Drift</span>
+          </button>
+          <button class="portal-btn" data-portal="view-federated-hub">
+            <i data-lucide="git-merge"></i>
+            <span>Federated Hub</span>
+          </button>
+          <button class="portal-btn" data-portal="view-model-benchmarks">
+            <i data-lucide="bar-chart-3"></i>
+            <span>Model Benchmarks</span>
+          </button>
+          <button class="portal-btn" data-portal="view-clinical-report">
+            <i data-lucide="file-text"></i>
+            <span>Diagnostic Report</span>
           </button>
         </div>
 
-        <div class="portal-view active" id="doctor-portal">
-          <img src="assets/dashboard_doctor.png" alt="Doctor Bedside Portal" class="responsive-img rounded-img border-img">
-          <div class="portal-caption">
-            <strong>Doctor Bedside Portal:</strong> Real-time bedside monitoring showing 24-hour hemodynamic trend charts, risk dial gauge, temporal self-attention timeline, and automated Surviving Sepsis Campaign (SSC) Hour-1 order dispatching.
+        <!-- Tab 1: Bedside Monitor -->
+        <div class="portal-view active" id="view-bedside-monitor">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="heart-pulse"></i>
+                <span>Medical Center / Intensive Care Unit / Bedside Workstation — Bed ICU-04</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> STREAMING 1Hz</span>
+                <span class="chrome-badge role">Doctor Tier-1</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/06_patient_bedside_monitor.png" alt="Intensive Care Bedside Physiological Monitor — Real-Time 24-Hour Vitals, Risk Dial Gauge, and SOFA Scoring" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Clinical Role</span>
+                <span class="caption-meta-value"><i data-lucide="stethoscope"></i> ICU Attending Physician</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Data Pipeline</span>
+                <span class="caption-meta-value"><i data-lucide="activity"></i> 24-Hour Sliding Window (1Hz)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Inference Latency</span>
+                <span class="caption-meta-value"><i data-lucide="zap"></i> 14.8 ms (Local PyTorch)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Key Actions</span>
+                <span class="caption-meta-value"><i data-lucide="check-circle-2"></i> Stat Bundle Dispatch / Order</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Intensive Care Bedside Workstation:</strong> High-fidelity continuous patient monitor displaying real-time 24-hour hemodynamic trends (Heart Rate, Systolic/Diastolic Blood Pressure, Mean Arterial Pressure, Respiration Rate, SpO<sub>2</sub>, Temperature), calibrated Sepsis Risk Dial Gauge (89% High Alert), automated SOFA/qSOFA scoring, complete laboratory blood panel telemetry, and direct one-click Hour-1 resuscitation protocol dispatching.
+            </div>
           </div>
         </div>
 
-        <div class="portal-view" id="admin-portal">
-          <img src="assets/dashboard_admin.png" alt="MLOps Administrative Portal" class="responsive-img rounded-img border-img">
-          <div class="portal-caption">
-            <strong>MLOps Administrative Portal:</strong> Real-time cumulative AD-CUSUM drift telemetry ($S_r$ tracking across hospital nodes), communication round bandwidth logs, and 6-way ROC curve comparison overlays.
+        <!-- Tab 2: Doctor CDSS Overview -->
+        <div class="portal-view" id="view-doctor-cdss">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="stethoscope"></i>
+                <span>Medical Center / Doctor CDSS Clinical Overview — 50-Bed Ward Census</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> ACTIVE</span>
+                <span class="chrome-badge role">Ward Physician</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/02_doctor_cdss_overview.png" alt="Doctor Clinical Decision Support System Overview — 50 Patients Monitored, Sepsis Alert Ticker, and Model Telemetry" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Clinical Role</span>
+                <span class="caption-meta-value"><i data-lucide="user-check"></i> Department Head / Intensivist</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Ward Capacity</span>
+                <span class="caption-meta-value"><i data-lucide="bed"></i> 50 Active ICU Patients</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">High-Risk Alerts</span>
+                <span class="caption-meta-value" style="color: #f43f5e;"><i data-lucide="alert-triangle"></i> 14 Critical Patients (SOFA &ge; 2)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Model Benchmark</span>
+                <span class="caption-meta-value"><i data-lucide="award"></i> 96.1% AUROC (FPDAF-v2)</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Departmental CDSS Overview:</strong> Central command dashboard offering holistic oversight across all 50 beds in the medical center intensive care ward. Real-time patient priority triage automatically sorts patients by ascending time-to-shock, with dynamic warning badges, quick-switch bed selector, telemetry performance metrics, and rapid emergency intervention triggers.
+            </div>
           </div>
         </div>
 
-        <div class="portal-view" id="drift-portal">
-          <img src="assets/dashboard_drift.png" alt="Drift Telemetry Portal" class="responsive-img rounded-img border-img">
-          <div class="portal-caption">
-            <strong>Bedside Real-Time AD-CUSUM Concept Drift Telemetry Interface:</strong> Continuous tracking of hospital-specific prediction entropy divergence ($D_{\text{JSD}}$) and gradient variance damping at the point of care.
+        <!-- Tab 3: Hospital Network Nodes -->
+        <div class="portal-view" id="view-hospital-network">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="network"></i>
+                <span>Medical Center / Federated Network Topology — Node-Alpha, Node-Beta, Node-Gamma</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> MESH ONLINE</span>
+                <span class="chrome-badge role">Federated Admin</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/03_hospital_network_nodes.png" alt="Federated Hospital Network Nodes — 3 Heterogeneous Hospital Nodes, Dirichlet Non-IID Distribution, and CSSP Bandwidth Telemetry" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Network Tier</span>
+                <span class="caption-meta-value"><i data-lucide="server"></i> 3 Federated Hospital Sites</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Distribution</span>
+                <span class="caption-meta-value"><i data-lucide="shuffle"></i> Dirichlet Non-IID (&alpha; = 0.5)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Privacy Budget</span>
+                <span class="caption-meta-value"><i data-lucide="lock"></i> &epsilon; = 1.0, &delta; = 10<sup>-5</sup></span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Bandwidth Savings</span>
+                <span class="caption-meta-value"><i data-lucide="trending-down"></i> 99.4% Compression (CSSP)</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Federated Multi-Hospital Network Nodes:</strong> Real-time topology monitor showcasing three independent hospital nodes (Node-Alpha: Tertiary Academic Center, Node-Beta: Regional Trauma Hospital, Node-Gamma: Community Health Center). Tracks local dataset sizes (34,331 sequences per node), communication round sync counters, local vs global loss convergence, and client-side Column Subset Selection Problem (CSSP) gradient compression.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Hospital Admin Ops -->
+        <div class="portal-view" id="view-admin-ops">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="shield-check"></i>
+                <span>Medical Center / Hospital Administration Operations — ICU Capacity & Audit Trail</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> AUDIT ACTIVE</span>
+                <span class="chrome-badge role">Hospital Admin</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/04_hospital_admin_operations.png" alt="Hospital Admin Operations — Bed Allocation, ICU Capacity, Admissions Flow, and SHA-256 Audit Trail" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Operations Role</span>
+                <span class="caption-meta-value"><i data-lucide="building"></i> Chief Medical Officer / Admin</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Bed Utilization</span>
+                <span class="caption-meta-value"><i data-lucide="pie-chart"></i> 88% ICU Occupancy (44/50)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Security Protocol</span>
+                <span class="caption-meta-value"><i data-lucide="key"></i> SHA-256 Immutable Hash Chain</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Compliance</span>
+                <span class="caption-meta-value"><i data-lucide="shield"></i> HIPAA / GDPR Verifiable</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Hospital Administration & Clinical Governance:</strong> Real-time operations console featuring dynamic bed allocation, ICU capacity planning, admissions/transfers timeline, and an append-only SHA-256 cryptographically chained audit log tracking every physician intervention, model inference, and medication order with microsecond timestamps.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Patient Registry -->
+        <div class="portal-view" id="view-patient-registry">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="users"></i>
+                <span>Medical Center / Ward Patient Census & Sepsis Risk Registry</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> 50 PATIENTS</span>
+                <span class="chrome-badge role">Nursing & Staff</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/05_patient_registry.png" alt="Patient Registry — Complete 50-Bed Clinical Census with Risk Categories and Biomarker Values" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Registry Scope</span>
+                <span class="caption-meta-value"><i data-lucide="list"></i> 50 Ward & ICU Beds</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Search & Filter</span>
+                <span class="caption-meta-value"><i data-lucide="filter"></i> Instant by Bed, Risk, SOFA</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Data Coverage</span>
+                <span class="caption-meta-value"><i data-lucide="database"></i> 40 Real-Time Biomarkers</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Action</span>
+                <span class="caption-meta-value"><i data-lucide="eye"></i> 1-Click Bedside Navigation</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>50-Bed Ward Patient Registry:</strong> Interactive clinical registry displaying all current inpatients with real-time risk tiers (Critical, High, Moderate, Normal), current vital sign values (HR, BP, SpO<sub>2</sub>, Temp, MAP), SOFA score progression, and admission times. Intensivists can filter instantly by risk grade or search by patient ID.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 6: PyTorch Predictor -->
+        <div class="portal-view" id="view-pytorch-predictor">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="cpu"></i>
+                <span>Medical Center / Real-Time PyTorch Inference Engine & What-If Clinical Simulator</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> PYTORCH 2.14</span>
+                <span class="chrome-badge role">MLOps & Research</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/07_sepsis_predictor_live_pytorch.png" alt="Live PyTorch Sepsis Predictor — Interactive Biomarker Sliders, Risk Dial, and What-If Clinical Simulator" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Model Backbone</span>
+                <span class="caption-meta-value"><i data-lucide="layers"></i> FPDAF-v2 PyTorch Core</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Parameters</span>
+                <span class="caption-meta-value"><i data-lucide="sliders"></i> Interactive What-If Sliders</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Compute Latency</span>
+                <span class="caption-meta-value"><i data-lucide="gauge"></i> 14.8 ms per Inference</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Explainability</span>
+                <span class="caption-meta-value"><i data-lucide="pie-chart"></i> Real-time SHAP Weights</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Interactive PyTorch Sepsis Simulator & Inference Sandbox:</strong> Allows clinicians and data scientists to modulate physiological variables (Heart Rate, Systolic BP, Lactate, SpO<sub>2</sub>, White Blood Cell count) via interactive sliders and observe the resulting sepsis probability, SOFA delta, and SHAP attribution shifts computed on the fly by the deployed PyTorch deep learning weights.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 7: Hour-1 Bundle -->
+        <div class="portal-view" id="view-hour1-bundle">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="clock-alert"></i>
+                <span>Medical Center / Surviving Sepsis Campaign (SSC) Hour-1 Resuscitation Protocol</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live" style="color: #f43f5e; border-color: rgba(244,63,94,0.3); background: rgba(244,63,94,0.1);"><i data-lucide="bell-ring"></i> STAT ORDER</span>
+                <span class="chrome-badge role">Clinical Protocol</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/08_hour1_sepsis_resuscitation_bundle.png" alt="Hour-1 Sepsis Resuscitation Bundle Protocol — 5 Clinical Orders with Auto-Calculated Dosages and Stat Dispatch" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Standard</span>
+                <span class="caption-meta-value"><i data-lucide="shield-alert"></i> SSC International Protocol</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Intervention Steps</span>
+                <span class="caption-meta-value"><i data-lucide="list-ordered"></i> 5 Bundled Stat Orders</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Fluid Dosage</span>
+                <span class="caption-meta-value"><i data-lucide="droplet"></i> 30 mL/kg Crystalloid Bolus</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Audit Trail</span>
+                <span class="caption-meta-value"><i data-lucide="hash"></i> Timestamped &amp; Signed</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Surviving Sepsis Campaign Hour-1 Order Set:</strong> Evidence-based resuscitation protocol triggered whenever patient sepsis risk crosses the 60% decision threshold. Dispatches five synchronized orders: <strong>1. Blood Lactate Stat</strong>, <strong>2. Blood Cultures Prior to Antibiotics</strong>, <strong>3. Broad-Spectrum IV Antibiotics</strong>, <strong>4. 30 mL/kg Crystalloid Fluid Bolus</strong> (auto-calculated from patient body weight: 2,160 mL for 72 kg), and <strong>5. Vasopressors (Norepinephrine)</strong> if MAP &lt; 65 mmHg.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 8: Temporal Attention -->
+        <div class="portal-view" id="view-xai-attention">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="sparkles"></i>
+                <span>Medical Center / Explainable AI — Multi-Head Temporal Self-Attention Dynamics</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> ATTENTION HEADS: 8</span>
+                <span class="chrome-badge role">Clinical XAI</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/09_explainable_ai_temporal_attention.png" alt="Explainable AI Temporal Attention Dynamics — Hourly Attention Distribution Peaking at 19.8% at Hour 18 with 5.8-Hour Advance Warning" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">XAI Architecture</span>
+                <span class="caption-meta-value"><i data-lucide="clock"></i> Multi-Head Self-Attention</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Peak Weight</span>
+                <span class="caption-meta-value" style="color: #2dd4bf;"><i data-lucide="trending-up"></i> 19.8% at Hour 18</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Clinical Lead Time</span>
+                <span class="caption-meta-value"><i data-lucide="timer"></i> 5.8 Hours Advance Warning</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Physiological Focus</span>
+                <span class="caption-meta-value"><i data-lucide="activity"></i> Occult Decompensation</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Temporal Attention Profiling ("WHEN Did Risk Accumulate?"):</strong> Visualizes the multi-head self-attention distribution across the 24-hour observation horizon. Rather than treating all hours equally, the model concentrates <strong>19.8% of its total attention weight at Hour 18</strong>, detecting subtle physiological coupling (simultaneous tachypnea and MAP decline) <strong>5.8 hours before overt clinical septic shock</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 9: AD-CUSUM Drift -->
+        <div class="portal-view" id="view-drift-telemetry">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="activity"></i>
+                <span>Medical Center / Real-Time Concept Drift Monitor — AD-CUSUM Entropy Divergence</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> DRIFT MONITOR</span>
+                <span class="chrome-badge role">MLOps Telemetry</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/10_ad_cusum_drift_monitor.png" alt="Real-Time AD-CUSUM Concept Drift Telemetry — Tracking Prediction Entropy Divergence and Gradient Damping Across Hospital Nodes" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Algorithmic Innovation</span>
+                <span class="caption-meta-value"><i data-lucide="award"></i> Invention 1: AD-CUSUM</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Detection Metric</span>
+                <span class="caption-meta-value"><i data-lucide="bar-chart-2"></i> Jensen-Shannon Divergence</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Mean Detection Delay</span>
+                <span class="caption-meta-value"><i data-lucide="clock"></i> 3.2 Rounds (vs 14.8 standard)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Safety Action</span>
+                <span class="caption-meta-value"><i data-lucide="shield-check"></i> Automatic Variance Damping</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Real-Time Concept Drift Telemetry:</strong> Continuously monitors prediction entropy divergence ($D_{\text{JSD}}$) across hospital sites. When patient acuity shifts (e.g., seasonal respiratory virus outbreak or revised ICU admission criteria), the cumulative score $S_r = \max(0, S_{r-1} + D_{\text{JSD}}(p_r^{(k)} \parallel \bar{p}) - k_{\text{drift}})$ signals an alert within <strong>3.2 rounds</strong> and damps the drifting node's gradient weight to protect global model stability.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 10: Federated Hub -->
+        <div class="portal-view" id="view-federated-hub">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="git-merge"></i>
+                <span>Medical Center / Federated Learning Hub & Aggregator — Global Round Convergence</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> ROUND 50/50</span>
+                <span class="chrome-badge role">Central Server</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/11_federated_learning_hub.png" alt="Federated Learning Hub & Aggregator — Multi-Node Convergence Curves, Loss Trajectories, and Round Execution Logs" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Aggregation Protocol</span>
+                <span class="caption-meta-value"><i data-lucide="cpu"></i> Drift-Aware FedAvg</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Total Rounds</span>
+                <span class="caption-meta-value"><i data-lucide="repeat"></i> 50 Synchronization Rounds</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Convergence Loss</span>
+                <span class="caption-meta-value"><i data-lucide="trending-down"></i> Global Loss: 0.284</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Peak AUROC</span>
+                <span class="caption-meta-value" style="color: #2dd4bf;"><i data-lucide="check"></i> 0.9610 (Global Test)</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Central Federated Aggregator Console:</strong> Tracks convergence trajectories across 50 federated communication rounds. Shows global loss decay, individual hospital validation accuracy curves, communication payload transfer times, and automatic rollbacks if non-IID client gradients diverge beyond mathematical safety boundaries.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 11: Model Benchmarks -->
+        <div class="portal-view" id="view-model-benchmarks">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="bar-chart-3"></i>
+                <span>Medical Center / Rigorous 6-Way Comparative Model Benchmarks</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> BENCHMARKED</span>
+                <span class="chrome-badge role">Comparative Study</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/12_model_benchmarks_six_way.png" alt="6-Way Rigorous Model Benchmark Comparison — LSTM, Transformer, GRU, TCN, XGBoost vs FPDAF-v2" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Baseline Models</span>
+                <span class="caption-meta-value"><i data-lucide="layers"></i> 6 State-of-the-Art Baselines</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">AUROC Advantage</span>
+                <span class="caption-meta-value" style="color: #2dd4bf;"><i data-lucide="arrow-up-right"></i> +6.8% vs Standard FedAvg</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">AUPRC</span>
+                <span class="caption-meta-value"><i data-lucide="award"></i> 0.8872 (vs 0.7932 FedAvg)</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Statistical Test</span>
+                <span class="caption-meta-value"><i data-lucide="check-check"></i> p &lt; 0.001 (Wilcoxon Signed-Rank)</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Rigorous 6-Way Benchmark Comparison:</strong> Head-to-head empirical evaluation against Centralized LSTM, Federated Transformer, Centralized XGBoost, Federated Ditto (PFL), Centralized GRU, and Centralized TCN across 102,994 clinical sequences. Demonstrates FPDAF-v2's statistically superior AUROC (0.9610) and F1-Score (0.8745) under non-IID conditions.
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 12: Clinical Report Modal -->
+        <div class="portal-view" id="view-clinical-report">
+          <div class="workstation-frame">
+            <div class="workstation-chrome-header">
+              <div class="chrome-dots">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+              </div>
+              <div class="chrome-title">
+                <i data-lucide="file-text"></i>
+                <span>Medical Center / Bedside Diagnostic Summary Modal & Medical Record Generation</span>
+              </div>
+              <div class="chrome-badges">
+                <span class="chrome-badge live"><span class="ticker-dot live"></span> CERTIFIED</span>
+                <span class="chrome-badge role">Clinical EHR</span>
+              </div>
+            </div>
+            <div class="workstation-screen-wrap">
+              <img src="assets/14_bedside_clinical_report_modal.png" alt="Bedside Clinical Diagnostic Summary Modal — Comprehensive Patient Chart, Risk Breakdown, and Medical Record Export" class="responsive-img">
+              <div class="zoom-hint-overlay">
+                <i data-lucide="maximize-2"></i> Click to Zoom Full 1920×1080 Screen
+              </div>
+            </div>
+          </div>
+          <div class="portal-caption-card">
+            <div class="portal-caption-grid">
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Document Type</span>
+                <span class="caption-meta-value"><i data-lucide="file-check"></i> Certified Diagnostic Summary</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Integrations</span>
+                <span class="caption-meta-value"><i data-lucide="link-2"></i> HL7 / FHIR Standard Output</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Physician Signature</span>
+                <span class="caption-meta-value"><i data-lucide="pen-tool"></i> Cryptographically Signed</span>
+              </div>
+              <div class="caption-meta-item">
+                <span class="caption-meta-label">Export Format</span>
+                <span class="caption-meta-value"><i data-lucide="download"></i> PDF / EHR JSON Stream</span>
+              </div>
+            </div>
+            <div class="portal-caption-desc">
+              <strong>Bedside Clinical Diagnostic Summary Modal:</strong> Official medical chart modal generated at the bedside. Compiles the patient's full clinical vignette, 24-hour vital trends, SOFA scoring breakdown, top 3 biomarker risk drivers, recommended pharmacological orders, and attending physician sign-off block ready for electronic health record (EHR) export.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Screenshots Showcase Gallery (All 14 High-Res Screens) -->
+      <div class="gallery-section-wrap">
+        <div class="gallery-header-row">
+          <div class="gallery-title-box">
+            <h3>Complete 14-Screen Clinical & Architectural Portfolio</h3>
+            <p>Inspect every high-resolution (1920&times;1080) interface of the deployed software suite. Click any card to open in the full-screen lightbox.</p>
+          </div>
+          <div class="gallery-filter-wrap">
+            <button class="gallery-filter-btn active" data-filter="all">All Screens (14)</button>
+            <button class="gallery-filter-btn" data-filter="bedside">Doctor &amp; Bedside (6)</button>
+            <button class="gallery-filter-btn" data-filter="admin">Hospital Admin &amp; Ops (3)</button>
+            <button class="gallery-filter-btn" data-filter="federated">Federated MLOps &amp; Research (5)</button>
+          </div>
+        </div>
+
+        <div class="screens-gallery-grid">
+          <!-- Screen 01 -->
+          <div class="screen-thumb-card" data-category="admin">
+            <div class="screen-thumb-media">
+              <img src="assets/01_login_screen.png" alt="Secure Multi-Role Portal Authentication (Doctor, Hospital Admin, Federated Engineer)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 01</span>
+              <span class="screen-role-pill">Security &amp; Auth</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Multi-Role Authentication Portal</h4>
+              <p class="screen-thumb-desc">Role-based access control with one-click credential loading for Doctor, Hospital Admin, and Federated ML Engineer roles.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="shield"></i> RBAC Security</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 02 -->
+          <div class="screen-thumb-card" data-category="bedside">
+            <div class="screen-thumb-media">
+              <img src="assets/02_doctor_cdss_overview.png" alt="Doctor Clinical Decision Support System Overview (Active Patients, Sepsis Alerts, Model Telemetry)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 02</span>
+              <span class="screen-role-pill">Doctor CDSS</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Doctor CDSS Overview &amp; Census</h4>
+              <p class="screen-thumb-desc">Executive departmental clinical dashboard monitoring 50 beds with real-time sepsis alert tickers and triage indicators.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="activity"></i> 50 Active Beds</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 03 -->
+          <div class="screen-thumb-card" data-category="admin">
+            <div class="screen-thumb-media">
+              <img src="assets/03_hospital_network_nodes.png" alt="Federated Hospital Network Nodes (Node-Alpha, Node-Beta, Node-Gamma, Dirichlet non-IID alpha=0.5)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 03</span>
+              <span class="screen-role-pill">Network Admin</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Federated Hospital Network Nodes</h4>
+              <p class="screen-thumb-desc">Topology telemetry across Node-Alpha, Beta, and Gamma under Dirichlet non-IID partitioning with CSSP compression metrics.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="network"></i> 3 Hospital Nodes</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 04 -->
+          <div class="screen-thumb-card" data-category="admin">
+            <div class="screen-thumb-media">
+              <img src="assets/04_hospital_admin_operations.png" alt="Hospital Admin ICU Operations (Bed Allocation, ICU Capacity, Admissions Flow, SHA-256 Audit Trail)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 04</span>
+              <span class="screen-role-pill">Hospital Admin</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">ICU Bed Allocation &amp; Audit Trail</h4>
+              <p class="screen-thumb-desc">Hospital administration console for bed occupancy tracking, admissions flow, and immutable SHA-256 clinical audit logging.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="lock"></i> SHA-256 Hash Chain</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 05 -->
+          <div class="screen-thumb-card" data-category="bedside">
+            <div class="screen-thumb-media">
+              <img src="assets/05_patient_registry.png" alt="Comprehensive Ward Patient Registry (50 Beds, Search & Filter, Risk Classification)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 05</span>
+              <span class="screen-role-pill">Ward Census</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">50-Bed Clinical Patient Registry</h4>
+              <p class="screen-thumb-desc">Complete inpatient census table with real-time risk grading, vital signs, SOFA progression, and one-click bedside zoom.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="users"></i> 50 Ward Inpatients</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 06 -->
+          <div class="screen-thumb-card" data-category="bedside">
+            <div class="screen-thumb-media">
+              <img src="assets/06_patient_bedside_monitor.png" alt="Intensive Care Bedside Monitor (Real-Time 24-hr Vitals, SOFA/qSOFA scoring, Lab Panels)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 06</span>
+              <span class="screen-role-pill">Bedside Monitor</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Bedside Monitor &amp; Risk Gauge</h4>
+              <p class="screen-thumb-desc">High-frequency ICU bedside telemetry with 24-hr vital wave charts, calibrated dial gauge, and rapid clinical action triggers.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="heart-pulse"></i> 1Hz Streaming</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 07 -->
+          <div class="screen-thumb-card" data-category="federated">
+            <div class="screen-thumb-media">
+              <img src="assets/07_sepsis_predictor_live_pytorch.png" alt="Real-Time PyTorch Predictor & What-If Clinical Simulator (Interactive Sliders, Sub-18ms Inference)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 07</span>
+              <span class="screen-role-pill">Simulator / PyTorch</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">PyTorch Predictor &amp; Simulator</h4>
+              <p class="screen-thumb-desc">Interactive sandbox allowing clinicians to manipulate biomarker sliders and inspect instantaneous neural risk predictions.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="zap"></i> &lt;18ms Inference</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 08 -->
+          <div class="screen-thumb-card" data-category="bedside">
+            <div class="screen-thumb-media">
+              <img src="assets/08_hour1_sepsis_resuscitation_bundle.png" alt="Hour-1 Sepsis Resuscitation Bundle Protocol (Surviving Sepsis Campaign 5-Step Order Dispatch)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 08</span>
+              <span class="screen-role-pill">Clinical Protocol</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Hour-1 Resuscitation Protocol</h4>
+              <p class="screen-thumb-desc">Surviving Sepsis Campaign 5-step bundle order set with auto-calculated 30 mL/kg fluid bolus and antibiotic dispatch.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="clock-alert"></i> SSC Bundle</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 09 -->
+          <div class="screen-thumb-card" data-category="federated">
+            <div class="screen-thumb-media">
+              <img src="assets/09_explainable_ai_temporal_attention.png" alt="Explainable AI & Temporal Attention Dynamics (Transformer Self-Attention Weights & Dynamic Heatmaps)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 09</span>
+              <span class="screen-role-pill">XAI &amp; Attention</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Temporal Attention Dynamics</h4>
+              <p class="screen-thumb-desc">Multi-head temporal self-attention distribution revealing 19.8% peak attention at Hour 18 with 5.8-hour advance alert.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="sparkles"></i> 5.8h Lead Time</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 10 -->
+          <div class="screen-thumb-card" data-category="federated">
+            <div class="screen-thumb-media">
+              <img src="assets/10_ad_cusum_drift_monitor.png" alt="Real-Time AD-CUSUM Concept Drift Telemetry & Damping Monitor" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 10</span>
+              <span class="screen-role-pill">Drift Telemetry</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">AD-CUSUM Drift Telemetry</h4>
+              <p class="screen-thumb-desc">Continuous point-of-care tracking of Jensen-Shannon prediction entropy divergence and gradient variance damping.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="activity"></i> 3.2 Round Delay</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 11 -->
+          <div class="screen-thumb-card" data-category="federated">
+            <div class="screen-thumb-media">
+              <img src="assets/11_federated_learning_hub.png" alt="Federated Learning Hub & Aggregator (Global Round Convergence, Loss & AUROC Trajectories)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 11</span>
+              <span class="screen-role-pill">Federated Hub</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Federated Learning Aggregator</h4>
+              <p class="screen-thumb-desc">Central server aggregation dashboard displaying round convergence trajectories, loss decay, and client sync telemetry.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="git-merge"></i> 50 Rounds</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 12 -->
+          <div class="screen-thumb-card" data-category="federated">
+            <div class="screen-thumb-media">
+              <img src="assets/12_model_benchmarks_six_way.png" alt="6-Way Rigorous Model Benchmark Comparison (LSTM, Transformer, GRU, TCN, XGBoost vs FPDAF)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 12</span>
+              <span class="screen-role-pill">Benchmarks</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">6-Way Model Benchmark Suite</h4>
+              <p class="screen-thumb-desc">Rigorous empirical comparison against LSTM, Transformer, GRU, TCN, and XGBoost across 102,994 clinical sequences.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="award"></i> 0.9610 AUROC</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 13 -->
+          <div class="screen-thumb-card" data-category="admin">
+            <div class="screen-thumb-media">
+              <img src="assets/13_research_methodology.png" alt="Research Methodology & System Pipeline (Data Preprocessing, Federated Optimization, Clinical Integration)" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 13</span>
+              <span class="screen-role-pill">Architecture</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Research Methodology &amp; Pipeline</h4>
+              <p class="screen-thumb-desc">End-to-end mathematical methodology diagram outlining cohort derivation, federated optimization, and bedside delivery.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="file-check"></i> System Pipeline</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Screen 14 -->
+          <div class="screen-thumb-card" data-category="bedside">
+            <div class="screen-thumb-media">
+              <img src="assets/14_bedside_clinical_report_modal.png" alt="Bedside Diagnostic Summary Modal & Medical Record Generation" class="responsive-img">
+              <span class="screen-num-badge">SCREEN 14</span>
+              <span class="screen-role-pill">Clinical EHR</span>
+              <div class="screen-thumb-hover-overlay">
+                <div class="zoom-icon-badge"><i data-lucide="maximize-2"></i></div>
+              </div>
+            </div>
+            <div class="screen-thumb-body">
+              <h4 class="screen-thumb-title">Bedside Clinical Report Modal</h4>
+              <p class="screen-thumb-desc">Official medical chart modal compiling full patient vitals, SOFA progression, biomarker attribution, and physician sign-off.</p>
+              <div class="screen-thumb-footer">
+                <span class="screen-footer-stat"><i data-lucide="file-text"></i> Certified EHR</span>
+                <span class="screen-footer-stat"><i data-lucide="image"></i> 1920&times;1080</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

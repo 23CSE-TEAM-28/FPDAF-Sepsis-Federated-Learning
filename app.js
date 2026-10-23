@@ -854,6 +854,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Gallery Category Filtering (14 Screens Portfolio)
+  const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+  const galleryCards = document.querySelectorAll('.screen-thumb-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      galleryCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Screen Thumb Card Click to Open Full Lightbox
+  galleryCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // If the target was already the img itself, its click listener handles it
+      if (e.target.tagName.toLowerCase() === 'img') return;
+      const img = card.querySelector('img');
+      const lightboxModal = document.getElementById('imageLightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      if (img && lightboxModal && lightboxImg) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || 'Medical Center CDSS Workstation';
+        if (lightboxCaption) {
+          lightboxCaption.textContent = img.alt || '';
+        }
+        lightboxModal.classList.add('open');
+      }
+    });
+  });
+
   // ==========================================
   // 13. Video Player & Chapter Jumping
   // ==========================================
