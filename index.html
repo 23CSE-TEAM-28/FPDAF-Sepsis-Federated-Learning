@@ -34,39 +34,7 @@
 </head>
 <body>
 
-  <!-- Persistent Live ICU Bedside Telemetry Ticker HUD -->
-  <div class="icu-top-ticker-bar" id="icuTopTicker">
-    <div class="ticker-left-badge">
-      <span class="ticker-led red pulse-fast"></span>
-      <span>ICU CENTRAL TELEMETRY STATION</span>
-    </div>
-    <div class="ticker-content-track">
-      <span class="ticker-item"><strong style="color: #f43f5e;">BED 14: PAT-1033 (64M)</strong></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">HR: <span style="color: #10b981; font-weight:700;">122 bpm (Tachycardia)</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">ABP: <span style="color: #f43f5e; font-weight:700;">58/38 (MAP 45 mmHg - Severe Shock)</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">SpO2: <span style="color: #06b6d4; font-weight:700;">91% (Hypoxia)</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">RESP: <span style="color: #eab308; font-weight:700;">28 rpm</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">TEMP: <span style="color: #f59e0b; font-weight:700;">38.9°C</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">LACTATE: <span style="color: #f43f5e; font-weight:700;">4.2 mmol/L</span></span>
-      <span class="ticker-sep">•</span>
-      <span class="badge-ticker-alert"><i data-lucide="alert-triangle"></i> FPDAF-v2 SEPSIS PROB: 98.5% — LEAD TIME: 5.8h — HOUR-1 BUNDLE TRIGGERED</span>
-      <span class="ticker-sep">||</span>
-      <span class="ticker-item">BED 02: PAT-1000 (Stable, 10.9%)</span>
-      <span class="ticker-sep">•</span>
-      <span class="ticker-item">BED 08: PAT-1018 (Borderline, 42.1%)</span>
-    </div>
-    <div class="ticker-right-status">
-      <span class="status-pill-green"><i data-lucide="wifi"></i> 3 HOSPITALS SYNCED</span>
-    </div>
-  </div>
-
-  <!-- Modern Floating Glass Island Navigation (Linear / Apple Aesthetic) -->
+  <!-- Unified Floating Glass Island Navigation (Documentation Design System) -->
   <header class="navbar" id="topNavbar">
     <div class="nav-container">
       <a href="#overview" class="brand" title="FPDAF: Clinical Federated Intelligence Portal">
@@ -82,7 +50,7 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu (4 Categorized Linear-Style Dropdowns) -->
+      <!-- Desktop Navigation Menu (4 Categorized Dropdowns) -->
       <nav class="nav-menu" id="navMenu">
         <!-- 1. Architecture Dropdown -->
         <div class="nav-item has-dropdown">
@@ -94,8 +62,8 @@
             <a href="#overview" class="dropdown-card">
               <div class="dropdown-icon-box"><i data-lucide="monitor"></i></div>
               <div class="dropdown-text">
-                <div class="dropdown-title">Overview &amp; Telemetry</div>
-                <div class="dropdown-desc">Real-time 60 FPS ICU multi-parameter vital telemetry</div>
+                <div class="dropdown-title">Overview &amp; Vitals Telemetry</div>
+                <div class="dropdown-desc">Monitored ICU multi-parameter vital signs &amp; physiological baselines</div>
               </div>
             </a>
             <a href="#problem" class="dropdown-card">
@@ -170,8 +138,8 @@
             <a href="#portals" class="dropdown-card">
               <div class="dropdown-icon-box"><i data-lucide="layout-dashboard"></i></div>
               <div class="dropdown-text">
-                <div class="dropdown-title">Doctor &amp; Admin Portals</div>
-                <div class="dropdown-desc">Role-based clinical bedside &amp; governance dashboards</div>
+                <div class="dropdown-title">Clinical Portals Dossier</div>
+                <div class="dropdown-desc">14 role-based clinical interface specifications</div>
               </div>
             </a>
             <a href="#demo" class="dropdown-card">
@@ -205,11 +173,11 @@
                 <div class="dropdown-desc">Student researchers &amp; clinical faculty supervisors</div>
               </div>
             </a>
-            <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="dropdown-card">
+            <a href="https://github.com/23CSE-TEAM-28/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="dropdown-card">
               <div class="dropdown-icon-box"><i data-lucide="folder-git-2"></i></div>
               <div class="dropdown-text">
-                <div class="dropdown-title">Open Science Repository</div>
-                <div class="dropdown-desc">Complete source code, training logs &amp; checkpoints</div>
+                <div class="dropdown-title">Organization Repository</div>
+                <div class="dropdown-desc">Official 23CSE-TEAM-28 open-science codebase</div>
               </div>
             </a>
           </div>
@@ -223,7 +191,7 @@
           <span class="cmd-label">Search</span>
           <kbd class="cmd-shortcut">⌘K</kbd>
         </button>
-        <a href="https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="btn-github" title="View Source on GitHub">
+        <a href="https://github.com/23CSE-TEAM-28/FPDAF-Sepsis-Federated-Learning" target="_blank" rel="noopener noreferrer" class="btn-github" title="View Source on GitHub Organization">
           <svg class="github-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
           <span class="github-label">GitHub</span>
         </a>
@@ -277,7 +245,7 @@
       </div>
 
       <h1 class="hero-title">
-        Federated Sepsis Forecasting with <span class="gradient-text">Personalized Drift Adaptation</span>
+        Explainable Federated Learning for Healthcare Time-Series Forecasting with <span class="gradient-text">Personalized Drift Adaptation (FPDAF)</span>
       </h1>
 
       <p class="hero-description">
@@ -300,178 +268,153 @@
         </button>
       </div>
 
-      <!-- Commercial-Grade ICU Central Telemetry Workstation -->
+      <!-- ICU Multi-Parameter Physiological Vitals Documentation Profile (Pure Vitals Only) -->
       <div class="hero-workstation-card glass-card">
-        <div class="waveform-monitor-card">
-          <!-- Monitor Station Bezel Header & Interactive Bedside Controls -->
-          <div class="monitor-header">
-            <div class="monitor-title">
-              <i data-lucide="activity" class="text-emerald"></i>
-              <span>ICU MULTI-PARAMETER CENTRAL TELEMETRY STATION</span>
+        <div class="vitals-doc-card">
+          <!-- Monitor Header -->
+          <div class="vitals-doc-header">
+            <div class="vitals-header-title">
+              <i data-lucide="activity" class="text-teal"></i>
+              <div>
+                <h3>ICU Multi-Parameter Physiological Vitals Telemetry Profile</h3>
+                <p>Continuous bedside vitals and physiological biomarkers calibrated from the PhysioNet ICU Cohort (N=40,327). Monitored parameters, reference thresholds, and clinical acquisition modalities.</p>
+              </div>
             </div>
-            
-            <div class="icu-controls-toolbar">
-              <select id="icuPatientSelect" class="icu-patient-dropdown" aria-label="Select ICU Bedside Patient Encounter">
-                <option value="pat1033" selected>Bed 14: PAT-1033 (Critical Septic Shock - 98.5% Risk)</option>
-                <option value="pat1000">Bed 02: PAT-1000 (Post-Op Stable Recovery - 10.9% Risk)</option>
-                <option value="pat1018">Bed 08: PAT-1018 (Intermediate Acuity SIRS - 42.1% Risk)</option>
-              </select>
-
-              <button id="icuBolusSimBtn" class="icu-ctrl-btn btn-bolus" title="Simulate Surviving Sepsis 30 mL/kg IV Fluid Resuscitation">
-                <i data-lucide="droplet"></i>
-                <span id="bolusBtnLabel">Simulate 30 mL/kg Bolus</span>
-              </button>
-
-              <button id="icuAudioToggle" class="icu-ctrl-btn" title="Toggle Clinical QRS Audio Beep (Web Audio API)">
-                <i data-lucide="volume-x" id="icuAudioIcon"></i>
-                <span id="icuAudioText">Audio: Muted</span>
-              </button>
-
-              <button id="icuAlarmSilenceBtn" class="icu-ctrl-btn btn-silence" title="Acknowledge and Silence Clinical Alarms (120s)">
-                <i data-lucide="bell-off"></i>
-                <span id="silenceBtnLabel">Silence</span>
-              </button>
+            <div class="vitals-header-tag">
+              <span class="ticker-dot live"></span>
+              <span>Physiological Telemetry Profile</span>
             </div>
           </div>
 
-          <!-- Dual-Pane Telemetry Monitor: Sweeping Waveforms + Digital LED Numerics -->
-          <div class="icu-monitor-body">
-            <!-- Left: High-Precision 4-Channel Sweeping Waveform Screen -->
-            <div class="icu-waveform-pane">
-              <canvas id="icuWaveformCanvas"></canvas>
-              <div class="waveform-channel-tags">
-                <span class="tag-ecg">II • 1.0 mV/cm • HR <span id="tagHRVal">122</span> bpm</span>
-                <span class="tag-abp">ART • 0–200 mmHg • MAP <span id="tagMAPVal">45</span> mmHg</span>
-                <span class="tag-spo2">PLETH • 100% • SpO2 <span id="tagSpO2Val">91</span>%</span>
-                <span class="tag-resp">RESP • 40 rpm • RR <span id="tagRespVal">28</span> rpm</span>
+          <!-- Pure Vitals Grid (8 Core Physiological Vitals - Only Vitals) -->
+          <div class="vitals-grid">
+            <!-- 1. Heart Rate (ECG) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="heart"></i> ECG LEAD II • Heart Rate</span>
+                <span class="vital-status normal">Normal</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-green">78</span>
+                <span class="vital-unit">bpm</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 60 – 100 bpm</div>
+                <div class="vital-modality">3/5-Lead Surface Bio-Potential Electrodes</div>
               </div>
             </div>
 
-            <!-- Right: Real-Time ICU LED Telemetry Numerics -->
-            <div class="icu-numeric-pane">
-              <!-- HR / ECG Box -->
-              <div class="icu-param-box box-alert-crit" id="boxHR">
-                <div class="param-header">
-                  <span>ECG LEAD II</span>
-                  <span class="param-alarm-badge alarm-crit" id="badgeHR">HIGH</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num ecg-green" id="monitorHR">122</span>
-                  <i data-lucide="heart" class="heart-beat-icon" id="heartBeatIcon"></i>
-                </div>
-                <div class="param-sub-info">
-                  <span>Limits: 60–100</span>
-                  <span>bpm</span>
-                </div>
+            <!-- 2. Arterial Blood Pressure (ABP / ART) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="gauge"></i> ABP (ART) • Blood Pressure</span>
+                <span class="vital-status normal">Target</span>
               </div>
-
-              <!-- ABP / Arterial Line Box -->
-              <div class="icu-param-box box-alert-crit" id="boxABP">
-                <div class="param-header">
-                  <span>ABP (ART)</span>
-                  <span class="param-alarm-badge alarm-crit" id="badgeABP">LOW MAP</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num abp-red" id="monitorABP">58/38</span>
-                  <span style="font-size:0.95rem; font-weight:800; color:#fda4af;">(<span id="monitorMAP">45</span>)</span>
-                </div>
-                <div class="param-sub-info">
-                  <span>Mean Ref: &gt;65</span>
-                  <span>mmHg</span>
-                </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-red">118/76</span>
+                <span class="vital-unit">mmHg <strong style="color: #fda4af;">(MAP 90)</strong></span>
               </div>
-
-              <!-- SpO2 Pulse Oximetry Box -->
-              <div class="icu-param-box box-alert-warn" id="boxSpO2">
-                <div class="param-header">
-                  <span>SpO2 PLETH</span>
-                  <span class="param-alarm-badge alarm-warn" id="badgeSpO2">DESAT</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num spo2-cyan" id="monitorSpO2">91</span>
-                  <span style="font-size:0.95rem; font-weight:800; color:#67e8f9;">%</span>
-                </div>
-                <div class="param-sub-info">
-                  <span>Limits: 92–100</span>
-                  <span>%</span>
-                </div>
-              </div>
-
-              <!-- Respiratory Rate Box -->
-              <div class="icu-param-box box-alert-warn" id="boxResp">
-                <div class="param-header">
-                  <span>RESP RATE</span>
-                  <span class="param-alarm-badge alarm-warn" id="badgeResp">TACHY</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num resp-yellow" id="monitorResp">28</span>
-                  <span style="font-size:0.95rem; font-weight:800; color:#fde047;">rpm</span>
-                </div>
-                <div class="param-sub-info">
-                  <span>Limits: 12–22</span>
-                  <span>rpm</span>
-                </div>
-              </div>
-
-              <!-- Box 5: Core Body Temperature Box -->
-              <div class="icu-param-box box-alert-crit" id="boxTemp">
-                <div class="param-header">
-                  <span>CORE TEMP</span>
-                  <span class="param-alarm-badge alarm-crit" id="badgeTemp">FEBRILE</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num" style="color: #f59e0b; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);"><span id="monitorTemp">38.9</span></span>
-                  <span style="font-size:0.95rem; font-weight:800; color:#fcd34d;">°C</span>
-                </div>
-                <div class="param-sub-info">
-                  <span>Ref: 36.5–37.5</span>
-                  <span>Continuous Foley</span>
-                </div>
-              </div>
-
-              <!-- Box 6: Point-of-Care Blood Lactate Box -->
-              <div class="icu-param-box box-alert-crit" id="boxLactate">
-                <div class="param-header">
-                  <span>POC LACTATE</span>
-                  <span class="param-alarm-badge alarm-crit" id="badgeLactate">ACIDOSIS</span>
-                </div>
-                <div class="param-num-row">
-                  <span class="param-large-num" style="color: #f43f5e; text-shadow: 0 0 10px rgba(244, 63, 94, 0.4);"><span id="monitorLactate">4.2</span></span>
-                  <span style="font-size:0.85rem; font-weight:800; color:#fda4af;">mmol/L</span>
-                </div>
-                <div class="param-sub-info">
-                  <span>Ref: &lt;2.0 (Shock &gt;4)</span>
-                  <span>Point-of-Care ABG</span>
-                </div>
-              </div>
-
-              <!-- FPDAF-v2 CDSS Predictive Sepsis Surveillance Alert Box (Spans 2 columns) -->
-              <div class="icu-param-box box-cdss-alert" id="boxCDSS">
-                <div class="cdss-alert-header">
-                  <span><i data-lucide="shield-alert"></i> FPDAF-v2 PREDICTIVE SEPSIS SURVEILLANCE</span>
-                  <span class="param-alarm-badge alarm-crit" id="badgeCDSS">SHOCK ALERT</span>
-                </div>
-                <div class="cdss-alert-row">
-                  <div>
-                    <div style="font-size:0.62rem; color:#94a3b8; font-weight:700; letter-spacing:0.5px;">PREDICTED SEPSIS RISK</div>
-                    <div class="cdss-prob-num" id="monitorSepsisRisk">98.5%</div>
-                  </div>
-                  <div style="text-align:right;">
-                    <div style="font-size:0.62rem; color:#94a3b8; font-weight:700; letter-spacing:0.5px;">EARLY WARNING LEAD TIME</div>
-                    <div class="cdss-leadtime" id="monitorLeadTime">5.8 Hours Advance</div>
-                  </div>
-                </div>
-                <div class="cdss-bundle-text" id="monitorBundleText">
-                  <strong style="color:#f43f5e;">SSC 1-HOUR BUNDLE:</strong> Refractory hypotension (MAP 45 &lt; 65 mmHg) &amp; hyperlactatemia (4.2 mmol/L). Immediate 30 mL/kg IV crystalloid fluid bolus + vasopressor dispatch.
-                </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Target:</span> MAP &gt; 65 mmHg (Sys 90–120)</div>
+                <div class="vital-modality">Indwelling Radial Arterial Catheter</div>
               </div>
             </div>
-          </div>
 
-          <!-- Bottom Telemetry Alarm Banner -->
-          <div class="monitor-alarm-footer" id="monitorAlarmFooter">
-            <i data-lucide="alert-octagon" class="text-rose"></i>
-            <span id="monitorAlarmMsg">BED 14 (PAT-1033): SEVERE SEPSIS CRITICAL ALERT • Persistent Refractory Hypotension (MAP 45 mmHg &lt; 65) &amp; Lactic Acidosis (4.2 mmol/L). Immediate Surviving Sepsis Bundle Dispatch.</span>
+            <!-- 3. Pulse Oximetry (SpO2) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="droplets"></i> SpO₂ PLETH • Pulse Oximetry</span>
+                <span class="vital-status normal">Optimal</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-cyan">98</span>
+                <span class="vital-unit">%</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 95% – 100% (Room Air)</div>
+                <div class="vital-modality">Dual-Wavelength Optical Photoplethysmography</div>
+              </div>
+            </div>
+
+            <!-- 4. Respiration Rate (RESP) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="wind"></i> RESP • Respiration Rate</span>
+                <span class="vital-status normal">Eupneic</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-yellow">16</span>
+                <span class="vital-unit">rpm</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 12 – 20 rpm (Tachypnea &ge;22)</div>
+                <div class="vital-modality">Transthoracic Bio-Impedance Pneumography</div>
+              </div>
+            </div>
+
+            <!-- 5. Core Body Temperature (TEMP) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="thermometer"></i> CORE TEMP • Temperature</span>
+                <span class="vital-status normal">Normothermic</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-amber">37.0</span>
+                <span class="vital-unit">°C (98.6 °F)</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 36.5 – 37.5 °C (Febrile &gt;38.3)</div>
+                <div class="vital-modality">Continuous Foley Indwelling Thermistor</div>
+              </div>
+            </div>
+
+            <!-- 6. POC Blood Lactate -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="flask-conical"></i> POC LACTATE • Blood Lactate</span>
+                <span class="vital-status normal">Normal</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-rose">1.2</span>
+                <span class="vital-unit">mmol/L</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> &lt; 2.0 mmol/L (Severe &gt;4.0)</div>
+                <div class="vital-modality">Point-of-Care Blood Gas (POC ABG)</div>
+              </div>
+            </div>
+
+            <!-- 7. Central Venous Pressure (CVP) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="git-commit"></i> CVP • Central Venous Pressure</span>
+                <span class="vital-status normal">Euvolemic</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-blue">6</span>
+                <span class="vital-unit">mmHg</span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 2 – 8 mmHg (Filling Pressure)</div>
+                <div class="vital-modality">Triple-Lumen Internal Jugular Catheter</div>
+              </div>
+            </div>
+
+            <!-- 8. Cardiac Output (CO) -->
+            <div class="vital-item">
+              <div class="vital-top">
+                <span class="vital-name"><i data-lucide="activity"></i> CO • Cardiac Output</span>
+                <span class="vital-status normal">Compensated</span>
+              </div>
+              <div class="vital-val-row">
+                <span class="vital-num num-purple">5.2</span>
+                <span class="vital-unit">L/min <strong style="color: #c4b5fd;">(CI 2.8)</strong></span>
+              </div>
+              <div class="vital-meta">
+                <div class="vital-ref"><span>Ref:</span> 4.0 – 8.0 L/min (CI: 2.5–4.0)</div>
+                <div class="vital-modality">Pulse Contour Analysis (FloTrac / PiCCO)</div>
+              </div>
+            </div>
           </div>
         </div>
 

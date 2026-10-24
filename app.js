@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const navHeight = 110; // Fixed ticker (34px) + floating navbar (58px + 14px margin) + buffer
+          const navHeight = 84; // Floating navbar (58px + 16px top margin + 10px buffer)
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
           window.scrollTo({
             top: targetPosition,
@@ -222,9 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. Commercial-Grade ICU Central Telemetry Workstation
+  // 4. ICU Multi-Parameter Physiological Vitals Documentation Profile
   // ==========================================
   const canvas = document.getElementById('icuWaveformCanvas');
+  if (canvas) {
   let preFillWaveforms = () => {};
   
   // Clinical Bedside Patient Encounter Profiles
@@ -866,6 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     requestAnimationFrame(renderWaveforms);
+  }
   }
 
   // ==========================================
