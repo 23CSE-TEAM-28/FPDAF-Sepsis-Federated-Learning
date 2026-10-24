@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (toggle) {
       toggle.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const isOpen = item.classList.contains('open');
         navItemsWithDropdown.forEach(other => other.classList.remove('open'));
         if (!isOpen) {
@@ -1382,22 +1383,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const cmdBackdrop = document.getElementById('cmdBackdrop');
 
   const cmdItemsData = [
-    { label: 'Jump to Overview & Live Waveform Monitor', tag: 'Section', action: () => scrollToSection('#overview') },
+    { label: 'Jump to Overview & Physiological Vitals Profile', tag: 'Section', action: () => scrollToSection('#overview') },
     { label: 'Jump to Clinical Urgency & Problem Statement', tag: 'Section', action: () => scrollToSection('#problem') },
-    { label: 'Jump to 3 Architectural Inventions (AD-CUSUM, DDP-ERP, CSSP)', tag: 'Section', action: () => scrollToSection('#inventions') },
-    { label: 'Jump to Three Pillars of Clinical XAI', tag: 'Section', action: () => scrollToSection('#xai') },
-    { label: 'Jump to Benchmark Table & Interactive ROC Explorer', tag: 'Section', action: () => scrollToSection('#benchmarks') },
-    { label: 'Jump to Patent Disclosure & 15 Legal Claims', tag: 'Section', action: () => scrollToSection('#patent') },
+    { label: 'Jump to 3 Architectural Inventions (AD-CUSUM Drift, DDP-ERP, CSSP)', tag: 'Section', action: () => scrollToSection('#inventions') },
+    { label: 'Jump to Three Pillars of Clinical XAI (Temporal, Attribution, Recourse)', tag: 'Section', action: () => scrollToSection('#xai') },
+    { label: 'Jump to 6-Way Benchmark Suite & Empirical Validation Curves', tag: 'Section', action: () => scrollToSection('#benchmarks') },
+    { label: 'Jump to Patent Disclosure & 15 Legal Claims (IPO Form 2)', tag: 'Section', action: () => scrollToSection('#patent') },
     { label: 'Jump to 40-Biomarker Cohort Data Dictionary', tag: 'Section', action: () => scrollToSection('#cohort') },
     { label: 'Jump to REST API Developer Console', tag: 'Section', action: () => scrollToSection('#api') },
-    { label: 'Jump to Production CDSS Portals', tag: 'Section', action: () => scrollToSection('#portals') },
+    { label: 'Jump to Clinical Documentation & Portals Portfolio', tag: 'Section', action: () => scrollToSection('#portals') },
     { label: 'Jump to Live Video Demonstration Player', tag: 'Section', action: () => scrollToSection('#demo') },
-    { label: 'Jump to Scholarly Publications & Downloads', tag: 'Section', action: () => scrollToSection('#publications') },
+    { label: 'Jump to Scholarly Publications & Deliverables', tag: 'Section', action: () => scrollToSection('#publications') },
     { label: 'Jump to Team G028 & Faculty Mentors', tag: 'Section', action: () => scrollToSection('#team') },
-    { label: 'Read IEEE J-BHI Draft (14 Pages)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_IEEE_Journal_Paper.pdf', 'IEEE J-BHI Journal Draft') },
-    { label: 'Read Patent Specification (15 Claims, IPO Form 2)', tag: 'PDF', action: () => openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft') },
-    { label: 'Read Elsevier CMPB Draft (15 Pages)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_Elsevier_Journal_Paper.pdf', 'Elsevier CMPB Journal Draft') },
-    { label: 'Read Project Documentation Dossier', tag: 'PDF', action: () => openPdfViewer('docs/Project_Documentation_Dossier.pdf', 'Project Documentation Dossier') }
+    { label: 'Read JMIR Medical Informatics Paper (Full Manuscript PDF)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_JMIR_Journal_Paper.pdf', 'JMIR Medical Informatics Paper') },
+    { label: 'Read Patent Specification (15 Claims, IPO Form 2 Draft)', tag: 'PDF', action: () => openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft') },
+    { label: 'Read Project Documentation Dossier (100+ Pages)', tag: 'PDF', action: () => openPdfViewer('docs/Project_Documentation_Dossier.pdf', 'Project Documentation Dossier') }
   ];
 
   function openCommandPalette() {
@@ -1463,6 +1463,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.key === 'Escape') {
       closeCommandPalette();
       closePdfViewer();
+      const lb = document.getElementById('imageLightbox');
+      if (lb) lb.classList.remove('open');
     }
   });
 

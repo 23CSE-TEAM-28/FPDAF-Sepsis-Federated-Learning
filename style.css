@@ -3931,6 +3931,8 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+  .btn-nav-cta { display: none; }
+  .btn-github { display: none; }
   .hero-title { font-size: 1.55rem; }
   .metrics-grid { grid-template-columns: 1fr; }
   .team-grid { grid-template-columns: 1fr; }
