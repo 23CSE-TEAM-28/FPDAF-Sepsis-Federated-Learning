@@ -2170,50 +2170,350 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ==========================================================================
-   12. COHORT DATA DICTIONARY
+   12. COHORT DATA DICTIONARY & MULTI-CENTER SOURCES
    ========================================================================== */
-.data-dictionary-wrapper {
-  margin-top: 20px;
+
+/* 5-Column Summary Stats Ribbon */
+.dataset-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.dataset-stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.dataset-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.4);
+}
+
+.dataset-stat-card .stat-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.dataset-stat-card .stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--teal-400);
+  margin-bottom: 4px;
+}
+
+.dataset-stat-card .stat-label i {
+  width: 14px;
+  height: 14px;
+}
+
+.dataset-stat-card .stat-subtext {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* 3-Column Multi-Center Sources Grid */
+.dataset-sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.dataset-source-card {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.dataset-source-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);
+}
+
+.source-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.source-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.source-icon-badge i {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-bidmc {
+  background: rgba(14, 165, 233, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.icon-emory {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.icon-fed {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.source-header-text {
+  flex: 1;
+}
+
+.source-tag {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--teal-400);
+  margin-bottom: 2px;
+}
+
+.source-name {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.source-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.source-stat-item .val {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.source-stat-item .lbl {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.source-tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  margin-bottom: 14px;
+}
+
+.tier-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  padding: 3px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.tier-item:last-child {
+  border-bottom: none;
+}
+
+.tier-badge {
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.tier-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--teal-300);
+}
+
+.source-desc {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.source-footer {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Compact Searchable Data Dictionary ("not this big") */
+.compact-dict {
+  padding: 22px;
+  border-radius: var(--radius-lg);
+}
+
+.dict-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dict-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dict-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--teal-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(20, 184, 166, 0.25);
+}
+
+.dict-icon-box i {
+  width: 18px;
+  height: 18px;
+}
+
+.dict-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.dict-subheading {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.dict-count-badge {
+  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--teal-300);
+  background: rgba(20, 184, 166, 0.12);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  padding: 4px 12px;
+  border-radius: 9999px;
 }
 
 .dict-controls {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 14px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
+.dict-search-wrap {
+  position: relative;
+  width: 290px;
+}
+
+.dict-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
 .dict-search-input {
-  background: var(--bg-surface);
+  background: #040810;
   border: 1px solid var(--border-light);
   color: var(--text-heading);
-  padding: 7px 14px;
+  padding: 7px 12px 7px 32px;
   border-radius: var(--radius-sm);
-  font-size: 0.82rem;
-  width: 260px;
+  font-size: 0.8rem;
+  width: 100%;
   font-family: inherit;
+  transition: all 0.2s ease;
 }
 
 .dict-search-input:focus {
   outline: none;
   border-color: var(--teal-500);
-  box-shadow: 0 0 0 2px var(--teal-100);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2);
 }
 
 .dict-filter-buttons {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .dict-filter-btn {
-  padding: 6px 14px;
-  background: var(--bg-surface);
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-light);
-  color: var(--text-body);
+  color: #94a3b8;
   border-radius: var(--radius-sm);
-  font-size: 0.76rem;
-  font-weight: 500;
+  font-size: 0.74rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -2227,7 +2527,71 @@ img { max-width: 100%; height: auto; }
   background: var(--teal-500);
   border-color: var(--teal-500);
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(20, 184, 166, 0.3);
+  box-shadow: 0 0 10px rgba(20, 184, 166, 0.35);
+}
+
+/* Constrained Scrollable Table Viewport */
+.dict-scroll-container {
+  max-height: 380px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: #02060d;
+}
+
+.dict-compact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dict-compact-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #07101e;
+  padding: 10px 12px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.dict-compact-table tbody td {
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.dict-compact-table tbody tr:hover td {
+  background: rgba(20, 184, 166, 0.04);
+}
+
+.dict-compact-table code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.74rem;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .dataset-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dataset-sources-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .dataset-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ==========================================================================

@@ -1196,6 +1196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cohortTableBody = document.querySelector('#cohortDictionaryTable tbody');
   const dictSearchInput = document.getElementById('dictSearchInput');
   const dictFilterBtns = document.querySelectorAll('.dict-filter-btn');
+  const dictMatchCount = document.getElementById('dictMatchCount');
 
   let activeCategory = 'all';
 
@@ -1212,6 +1213,10 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       return matchCat && matchQuery;
     });
+
+    if (dictMatchCount) {
+      dictMatchCount.textContent = `Showing ${filtered.length} of ${cohortBiomarkers.length} biomarkers`;
+    }
 
     cohortTableBody.innerHTML = filtered.map(item => `
       <tr>

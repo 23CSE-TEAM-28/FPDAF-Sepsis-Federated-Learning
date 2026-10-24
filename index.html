@@ -1142,19 +1142,169 @@
   </section>
 
   <!-- Searchable 40-Biomarker Clinical Cohort Data Dictionary -->
+  <!-- Comprehensive Multi-Center Dataset Specifications & 40-Biomarker Clinical Dictionary -->
   <section id="cohort" class="section cohort-section">
     <div class="container">
       <div class="section-header">
         <div class="section-tag"><i data-lucide="database"></i> Comprehensive Dataset Specifications</div>
-        <h2 class="section-title">PhysioNet 2019 ICU Cohort: 40-Biomarker Clinical Dictionary</h2>
+        <h2 class="section-title">Multi-Center ICU Cohorts &amp; 40-Biomarker Data Dictionary</h2>
         <p class="section-subtitle">
-          Evaluated across 40,327 multi-center ICU encounters (1,552,210 hourly records). Search or filter the standardized biomarker dictionary below:
+          Rigorously partitioned across 40,327 clinical ICU encounters (1,552,210 hourly telemetry sequences) spanning two distinct health systems and three non-IID hospital tiers under HIPAA Safe Harbor and India's DPDPA 2023.
         </p>
       </div>
 
-      <div class="data-dictionary-wrapper glass-card">
+      <!-- Cohort Summary Metrics Ribbon -->
+      <div class="dataset-stats-grid">
+        <div class="dataset-stat-card">
+          <div class="stat-number">40,327</div>
+          <div class="stat-label"><i data-lucide="users"></i> ICU Patient Encounters</div>
+          <div class="stat-subtext">20,336 BIDMC + 19,991 Emory</div>
+        </div>
+        <div class="dataset-stat-card">
+          <div class="stat-number">1,552,210</div>
+          <div class="stat-label"><i data-lucide="activity"></i> Hourly Records</div>
+          <div class="stat-subtext">Continuous physiological measurements</div>
+        </div>
+        <div class="dataset-stat-card">
+          <div class="stat-number">684,701</div>
+          <div class="stat-label"><i data-lucide="layers"></i> Sliding 24h Windows</div>
+          <div class="stat-subtext">Strict causal temporal padding</div>
+        </div>
+        <div class="dataset-stat-card">
+          <div class="stat-number">40</div>
+          <div class="stat-label"><i data-lucide="dna"></i> Standardized Biomarkers</div>
+          <div class="stat-subtext">8 Vitals • 26 Labs • 6 Demographics</div>
+        </div>
+        <div class="dataset-stat-card">
+          <div class="stat-number">3 Tiers</div>
+          <div class="stat-label"><i data-lucide="network"></i> Non-IID Federated Clients</div>
+          <div class="stat-subtext">Community, Trauma &amp; Academic</div>
+        </div>
+      </div>
+
+      <!-- Multi-Center Clinical Sources Architecture Grid -->
+      <div class="dataset-sources-grid">
+        <!-- Source 1: Hospital System A -->
+        <div class="dataset-source-card glass-card">
+          <div class="source-card-header">
+            <div class="source-icon-badge icon-bidmc">
+              <i data-lucide="building-2"></i>
+            </div>
+            <div class="source-header-text">
+              <span class="source-tag">Hospital System A • Primary Academic</span>
+              <h3 class="source-name">Beth Israel Deaconess Medical Center (MIMIC-III)</h3>
+            </div>
+          </div>
+          <div class="source-stats-row">
+            <div class="source-stat-item">
+              <span class="val">20,336</span>
+              <span class="lbl">ICU Encounters</span>
+            </div>
+            <div class="source-stat-item">
+              <span class="val">~790,000</span>
+              <span class="lbl">Hourly Rows</span>
+            </div>
+            <div class="source-stat-item">
+              <span class="val">Boston, MA</span>
+              <span class="lbl">Location</span>
+            </div>
+          </div>
+          <p class="source-desc">
+            Extracted from the credentialed MIMIC-III database. Encompasses tertiary adult medical and surgical intensive care units (MICU &amp; SICU) characterized by complex multimorbid cases, high-frequency blood panels, and longitudinal arterial line monitoring.
+          </p>
+          <div class="source-footer">
+            <span class="badge-pill pill-cyan"><i data-lucide="shield-check"></i> HIPAA Safe Harbor</span>
+            <span class="badge-pill pill-purple">PhysioNet CinC 2019</span>
+          </div>
+        </div>
+
+        <!-- Source 2: Hospital System B -->
+        <div class="dataset-source-card glass-card">
+          <div class="source-card-header">
+            <div class="source-icon-badge icon-emory">
+              <i data-lucide="hospital"></i>
+            </div>
+            <div class="source-header-text">
+              <span class="source-tag">Hospital System B • Regional Referral</span>
+              <h3 class="source-name">Emory University Healthcare System</h3>
+            </div>
+          </div>
+          <div class="source-stats-row">
+            <div class="source-stat-item">
+              <span class="val">19,991</span>
+              <span class="lbl">ICU Encounters</span>
+            </div>
+            <div class="source-stat-item">
+              <span class="val">~761,000</span>
+              <span class="lbl">Hourly Rows</span>
+            </div>
+            <div class="source-stat-item">
+              <span class="val">Atlanta, GA</span>
+              <span class="lbl">Location</span>
+            </div>
+          </div>
+          <p class="source-desc">
+            Geographically distinct regional healthcare network capturing diverse emergency and acute care admissions. Exhibits different clinical documentation workflows, alternative laboratory assay intervals, and distinct regional antimicrobial protocols.
+          </p>
+          <div class="source-footer">
+            <span class="badge-pill pill-cyan"><i data-lucide="shield-check"></i> Institutional IRB Approved</span>
+            <span class="badge-pill pill-purple">PhysioNet CinC 2019</span>
+          </div>
+        </div>
+
+        <!-- Source 3: Non-IID Federated Hospital Partitioning -->
+        <div class="dataset-source-card glass-card">
+          <div class="source-card-header">
+            <div class="source-icon-badge icon-fed">
+              <i data-lucide="git-branch"></i>
+            </div>
+            <div class="source-header-text">
+              <span class="source-tag">Multi-Tier Heterogeneity • Dirichlet Non-IID</span>
+              <h3 class="source-name">3 Federated Client Hospital Tiers</h3>
+            </div>
+          </div>
+          <div class="source-tier-list">
+            <div class="tier-item">
+              <span class="tier-badge">Client 1 • Community</span>
+              <span class="tier-metric">92,613 hrs • Geriatric (68.4y) • 3.24% Sepsis</span>
+            </div>
+            <div class="tier-item">
+              <span class="tier-badge">Client 2 • Trauma</span>
+              <span class="tier-metric">151,916 hrs • Surgical Trauma • 3.09% Sepsis</span>
+            </div>
+            <div class="tier-item">
+              <span class="tier-badge">Client 3 • Academic</span>
+              <span class="tier-metric">233,140 hrs • Immunocompromised • 2.07% Sepsis</span>
+            </div>
+          </div>
+          <p class="source-desc">
+            Synthesized across hospital tiers using Dirichlet distribution (&alpha;=0.5) to mirror institutional clinical divergence and rigorously validate AD-CUSUM concept drift detection without centralized data pooling.
+          </p>
+          <div class="source-footer">
+            <span class="badge-pill pill-emerald"><i data-lucide="lock"></i> Zero Raw Data Transfer</span>
+            <span class="badge-pill pill-cyan">India DPDPA 2023 Compliant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact Searchable 40-Biomarker Clinical Dictionary ("not this big") -->
+      <div class="data-dictionary-wrapper glass-card compact-dict">
+        <div class="dict-top-bar">
+          <div class="dict-title-group">
+            <div class="dict-icon-box"><i data-lucide="file-spreadsheet"></i></div>
+            <div>
+              <h3 class="dict-heading">Standardized 40-Biomarker Physiological Dictionary</h3>
+              <p class="dict-subheading">Continuously synchronized across all hospital sources with forward-fill causal imputation</p>
+            </div>
+          </div>
+          <div class="dict-count-badge" id="dictMatchCount">Showing 40 of 40 biomarkers</div>
+        </div>
+
         <div class="dict-controls">
-          <input type="text" id="dictSearchInput" class="dict-search-input" placeholder="Search biomarker (e.g., MAP, Lactate, Troponin)...">
+          <div class="dict-search-wrap">
+            <i data-lucide="search" class="dict-search-icon"></i>
+            <input type="text" id="dictSearchInput" class="dict-search-input" placeholder="Search biomarker (e.g., MAP, Lactate, Troponin, WBC)...">
+          </div>
           <div class="dict-filter-buttons">
             <button class="dict-filter-btn active" data-category="all">All (40)</button>
             <button class="dict-filter-btn" data-category="vitals">Vital Signs (8)</button>
@@ -1163,15 +1313,16 @@
           </div>
         </div>
 
-        <div class="table-responsive">
-          <table class="benchmark-table" id="cohortDictionaryTable">
+        <!-- Constrained scrollable table container with sticky header -->
+        <div class="table-responsive dict-scroll-container">
+          <table class="benchmark-table dict-compact-table" id="cohortDictionaryTable">
             <thead>
               <tr>
-                <th>Biomarker / Variable</th>
-                <th>Category</th>
-                <th>Normal Physiological Range</th>
-                <th>Sampling Freq</th>
-                <th>Clinical Role in Sepsis</th>
+                <th style="width: 18%;">Biomarker / Variable</th>
+                <th style="width: 14%;">Category</th>
+                <th style="width: 22%;">Normal Reference Range</th>
+                <th style="width: 16%;">Sampling Freq</th>
+                <th style="width: 30%;">Clinical Role in Sepsis</th>
               </tr>
             </thead>
             <tbody>
