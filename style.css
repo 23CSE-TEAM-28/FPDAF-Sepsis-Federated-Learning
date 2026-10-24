@@ -913,74 +913,149 @@ img { max-width: 100%; height: auto; }
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(20, 184, 166, 0.1);
 }
 
-.waveform-monitor-card {
-  background: #040810;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
+.hero-workstation-card {
+  max-width: 1120px;
+  margin: 0 auto;
+  background: #030712 !important;
+  border: 1px solid var(--border-medium) !important;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(20, 184, 166, 0.15);
 }
 
+.waveform-monitor-card {
+  background: #02060d;
+  border: 1px solid #1e293b;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.95);
+}
+
+/* Clinical Monitor Chrome Header */
 .monitor-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.72rem;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 12px;
   font-family: 'JetBrains Mono', monospace;
-  color: #94a3b8;
-  border-bottom: 1px solid var(--border-light);
-  padding-bottom: 8px;
-  margin-bottom: 10px;
+  font-size: 0.74rem;
 }
 
 .monitor-title {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: #f1f5f9;
+  gap: 10px;
+  font-weight: 700;
+  color: #f8fafc;
 }
 
-.monitor-status-pills {
+.monitor-device-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  letter-spacing: 0.5px;
+}
+
+/* Interactive Bedside Controls */
+.icu-controls-toolbar {
   display: flex;
-  gap: 12px;
   align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.m-pill {
-  display: flex;
+.icu-patient-dropdown {
+  background: #0a1120;
+  color: #e2e8f0;
+  border: 1px solid #2d3f5e;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.icu-patient-dropdown:focus {
+  border-color: #14b8a6;
+}
+
+.icu-ctrl-btn {
+  display: inline-flex;
   align-items: center;
   gap: 5px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #0f172a;
+  color: #cbd5e1;
+  border: 1px solid #334155;
 }
 
-.ticker-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  display: inline-block;
+.icu-ctrl-btn:hover {
+  background: #1e293b;
+  color: #fff;
+  border-color: #64748b;
 }
 
-.ticker-dot.live { background: var(--emerald-500); }
-.ticker-dot.crit { background: var(--rose-500); }
-.ticker-dot.warn { background: var(--amber-500); }
-
-.text-dim { color: var(--gray-500); }
-
-.pulse-dot {
-  animation: pulse-glow 2s ease-in-out infinite;
+.icu-ctrl-btn.btn-bolus {
+  background: rgba(20, 184, 166, 0.18);
+  color: #2dd4bf;
+  border-color: rgba(20, 184, 166, 0.45);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+.icu-ctrl-btn.btn-bolus:hover {
+  background: rgba(20, 184, 166, 0.35);
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.4);
 }
 
-.canvas-waveform-container {
+.icu-ctrl-btn.btn-silence {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.icu-ctrl-btn.active {
+  background: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+  border-color: #10b981;
+}
+
+/* Dual-Pane Monitor Screen */
+.icu-monitor-body {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 960px) {
+  .icu-monitor-body { grid-template-columns: 1fr; }
+}
+
+/* Left Waveform Display */
+.icu-waveform-pane {
+  background: #01040a;
+  border: 1px solid #1a2744;
+  border-radius: 8px;
   position: relative;
-  width: 100%;
-  height: 110px;
-  background: #050505;
-  border-radius: var(--radius-sm);
   overflow: hidden;
+  height: 290px;
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 #icuWaveformCanvas {
@@ -989,37 +1064,284 @@ img { max-width: 100%; height: auto; }
   display: block;
 }
 
-.waveform-legend {
+.waveform-channel-tags {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 270px;
+  pointer-events: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+}
+
+.tag-ecg { color: #10b981; }
+.tag-abp { color: #f43f5e; }
+.tag-spo2 { color: #06b6d4; }
+.tag-resp { color: #eab308; }
+
+/* Right Digital Telemetry Numerics */
+.icu-numeric-pane {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.icu-param-box {
+  background: #050b14;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.icu-param-box.box-alert-crit {
+  border-color: rgba(244, 63, 94, 0.6);
+  background: rgba(244, 63, 94, 0.08);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.2);
+}
+
+.icu-param-box.box-alert-warn {
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.param-header {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  font-size: 0.72rem;
-  font-family: 'JetBrains Mono', monospace;
+  align-items: center;
+  font-size: 0.66rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
-.w-item {
+.param-num-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+
+.param-large-num {
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.param-large-num.ecg-green { color: #10b981; text-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
+.param-large-num.abp-red { color: #f43f5e; text-shadow: 0 0 10px rgba(244, 63, 94, 0.4); }
+.param-large-num.spo2-cyan { color: #06b6d4; text-shadow: 0 0 10px rgba(6, 182, 212, 0.4); }
+.param-large-num.resp-yellow { color: #eab308; text-shadow: 0 0 10px rgba(234, 179, 8, 0.4); }
+
+.heart-beat-icon {
+  display: inline-block;
+  color: #10b981;
+  transform: scale(1);
+  transition: transform 0.1s ease;
+}
+.heart-beat-icon.beat {
+  transform: scale(1.35);
+  color: #34d399;
+}
+
+.param-alarm-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.alarm-crit {
+  background: #f43f5e;
+  color: #fff;
+  animation: blink-fast 1s infinite;
+}
+
+.alarm-warn {
+  background: #f59e0b;
+  color: #000;
+}
+
+.alarm-norm {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.param-sub-info {
+  font-size: 0.64rem;
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Span across two columns for CDSS Alert */
+.icu-param-box.box-cdss-alert {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.22) 0%, rgba(15, 23, 42, 0.85) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+}
+
+.cdss-alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  color: #c084fc;
+  font-weight: 700;
+}
+
+.cdss-alert-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.cdss-prob-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #f43f5e;
+  text-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
+}
+
+.cdss-leadtime {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.cdss-bundle-text {
+  font-size: 0.65rem;
+  color: #e2e8f0;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border-left: 3px solid #f43f5e;
+}
+
+/* Monitor Alarm Banner */
+.monitor-alarm-footer {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #fda4af;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: var(--gray-500);
+  gap: 10px;
+  line-height: 1.4;
 }
 
-.w-val {
+/* Persistent Top Ticker HUD */
+.icu-top-ticker-bar {
+  position: relative;
+  z-index: 100;
+  background: #02060d;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  overflow: hidden;
+}
+
+.ticker-left-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
-  font-size: 0.9rem;
+  color: #f8fafc;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  padding: 3px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
-.w-ecg .w-val { color: var(--emerald-500); }
-.w-abp .w-val { color: var(--rose-500); }
-.w-spo2 .w-val { color: var(--cyan-500); }
-.w-resp .w-val { color: var(--amber-500); }
+.ticker-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
 
-/* Metrics Grid */
+.ticker-led.red { background: #f43f5e; box-shadow: 0 0 8px #f43f5e; }
+.ticker-led.green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+.pulse-fast { animation: blink-fast 1s infinite; }
+
+@keyframes blink-fast {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.ticker-content-track {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 12px;
+}
+
+.ticker-content-track::-webkit-scrollbar { display: none; }
+.ticker-sep { color: #334155; }
+
+.badge-ticker-alert {
+  background: rgba(244, 63, 94, 0.2);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ticker-right-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.status-pill-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.68rem;
+}
+
+/* Metrics Grid - Updated to 6 Cards */
 .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   margin-top: 16px;
 }

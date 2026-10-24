@@ -216,15 +216,400 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. 60fps Native ICU Waveform Canvas Monitor
+  // 4. Commercial-Grade ICU Central Telemetry Workstation
   // ==========================================
   const canvas = document.getElementById('icuWaveformCanvas');
+  
+  // Clinical Bedside Patient Encounter Profiles
+  const ICU_PATIENTS = {
+    pat1033: {
+      name: 'Bed 14: PAT-1033',
+      bed: 'BED 14',
+      status: 'CRITICAL',
+      hr: 122,
+      hrBadge: { text: 'HIGH', cls: 'alarm-crit' },
+      abpSys: 58,
+      abpDia: 38,
+      map: 45,
+      abpBadge: { text: 'LOW MAP', cls: 'alarm-crit' },
+      spo2: 91,
+      spo2Badge: { text: 'DESAT', cls: 'alarm-warn' },
+      resp: 28,
+      respBadge: { text: 'TACHY', cls: 'alarm-warn' },
+      temp: '38.9',
+      lactate: '4.2',
+      labBadge: { text: 'FEBRILE', cls: 'alarm-crit' },
+      cvp: 4,
+      co: '3.8',
+      cvpBadge: { text: 'MONITORED', cls: 'alarm-norm' },
+      risk: '98.5%',
+      riskNum: 98.5,
+      leadTime: '5.8 Hours Advance',
+      cdssBadge: { text: 'SHOCK ALERT', cls: 'alarm-crit' },
+      bundleText: '<strong style="color:#f43f5e;">SSC 1-HOUR BUNDLE:</strong> Refractory hypotension (MAP 45 &lt; 65 mmHg) &amp; hyperlactatemia (4.2 mmol/L). Immediate 30 mL/kg IV crystalloid fluid bolus + vasopressor dispatch.',
+      alarmMsg: 'BED 14 (PAT-1033): SEVERE SEPSIS CRITICAL ALERT • Persistent Refractory Hypotension (MAP 45 mmHg &lt; 65) &amp; Lactic Acidosis (4.2 mmol/L). Immediate Surviving Sepsis Bundle Dispatch.',
+      rateMult: 1.8,
+      boxClasses: {
+        boxHR: 'box-alert-crit',
+        boxABP: 'box-alert-crit',
+        boxSpO2: 'box-alert-warn',
+        boxResp: 'box-alert-warn',
+        boxLab: 'box-alert-crit'
+      }
+    },
+    pat1000: {
+      name: 'Bed 02: PAT-1000',
+      bed: 'BED 02',
+      status: 'STABLE',
+      hr: 72,
+      hrBadge: { text: 'NORM', cls: 'alarm-norm' },
+      abpSys: 122,
+      abpDia: 78,
+      map: 88,
+      abpBadge: { text: 'NORM', cls: 'alarm-norm' },
+      spo2: 99,
+      spo2Badge: { text: 'NORM', cls: 'alarm-norm' },
+      resp: 14,
+      respBadge: { text: 'NORM', cls: 'alarm-norm' },
+      temp: '36.8',
+      lactate: '1.1',
+      labBadge: { text: 'NORMAL', cls: 'alarm-norm' },
+      cvp: 8,
+      co: '5.6',
+      cvpBadge: { text: 'NORMAL', cls: 'alarm-norm' },
+      risk: '10.9%',
+      riskNum: 10.9,
+      leadTime: 'Nominal Baseline',
+      cdssBadge: { text: 'LOW RISK', cls: 'alarm-norm' },
+      bundleText: '<strong style="color:#10b981;">ROUTINE SURVEILLANCE:</strong> Patient hemodynamically stable. Continue standard post-operative clinical monitoring protocols.',
+      alarmMsg: 'BED 02 (PAT-1000): ALL PARAMETERS WITHIN NORMAL ICU OPERATING LIMITS • Routine decentralized continuous surveillance active.',
+      rateMult: 1.05,
+      boxClasses: {
+        boxHR: '',
+        boxABP: '',
+        boxSpO2: '',
+        boxResp: '',
+        boxLab: ''
+      }
+    },
+    pat1018: {
+      name: 'Bed 08: PAT-1018',
+      bed: 'BED 08',
+      status: 'INTERMEDIATE',
+      hr: 98,
+      hrBadge: { text: 'ELEVATED', cls: 'alarm-warn' },
+      abpSys: 98,
+      abpDia: 62,
+      map: 72,
+      abpBadge: { text: 'ACCEPTABLE', cls: 'alarm-norm' },
+      spo2: 94,
+      spo2Badge: { text: 'BORDERLINE', cls: 'alarm-warn' },
+      resp: 22,
+      respBadge: { text: 'ELEVATED', cls: 'alarm-warn' },
+      temp: '38.1',
+      lactate: '2.3',
+      labBadge: { text: 'SUBFEBRILE', cls: 'alarm-warn' },
+      cvp: 6,
+      co: '4.4',
+      cvpBadge: { text: 'MONITORED', cls: 'alarm-norm' },
+      risk: '42.1%',
+      riskNum: 42.1,
+      leadTime: '4.2 Hours Advance',
+      cdssBadge: { text: 'SIRS ALERT', cls: 'alarm-warn' },
+      bundleText: '<strong style="color:#f59e0b;">SECONDARY TRIAGE TRIGGERED:</strong> Borderline oxygenation (94%) and elevated lactate (2.3 mmol/L). Repeat arterial blood gas and serial lactate surveillance q2h.',
+      alarmMsg: 'BED 08 (PAT-1018): INTERMEDIATE SIRS ACUITY • Divergence detected in temporal lactate &amp; leukocyte trajectory. Flagged for secondary bedside triage.',
+      rateMult: 1.4,
+      boxClasses: {
+        boxHR: 'box-alert-warn',
+        boxABP: '',
+        boxSpO2: 'box-alert-warn',
+        boxResp: 'box-alert-warn',
+        boxLab: 'box-alert-warn'
+      }
+    }
+  };
+
+  let activePatientKey = 'pat1033';
+  let activePatient = { ...ICU_PATIENTS[activePatientKey] };
+  let currentRateMult = activePatient.rateMult;
+  let isResuscitated = false;
+  let isBolusAnimating = false;
+
+  // Web Audio Clinical QRS Beep Generator
+  let audioCtx = null;
+  let audioBeepEnabled = false;
+
+  function playQrsBeep() {
+    if (!audioBeepEnabled) return;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Authentic 880 Hz monitor tone
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.055);
+    } catch (e) {
+      // Audio playback blocked or uninitialized
+    }
+  }
+
+  // DOM Elements for Telemetry Numerics
+  const monitorHR = document.getElementById('monitorHR');
+  const monitorABP = document.getElementById('monitorABP');
+  const monitorMAP = document.getElementById('monitorMAP');
+  const monitorSpO2 = document.getElementById('monitorSpO2');
+  const monitorResp = document.getElementById('monitorResp');
+  const monitorTemp = document.getElementById('monitorTemp');
+  const monitorLactate = document.getElementById('monitorLactate');
+  const monitorCVP = document.getElementById('monitorCVP');
+  const monitorCO = document.getElementById('monitorCO');
+  const monitorSepsisRisk = document.getElementById('monitorSepsisRisk');
+  const monitorLeadTime = document.getElementById('monitorLeadTime');
+  const monitorBundleText = document.getElementById('monitorBundleText');
+  const monitorAlarmMsg = document.getElementById('monitorAlarmMsg');
+  const monitorAlarmFooter = document.getElementById('monitorAlarmFooter');
+  const heartBeatIcon = document.getElementById('heartBeatIcon');
+
+  // Channel Tags
+  const tagHRVal = document.getElementById('tagHRVal');
+  const tagMAPVal = document.getElementById('tagMAPVal');
+  const tagSpO2Val = document.getElementById('tagSpO2Val');
+  const tagRespVal = document.getElementById('tagRespVal');
+
+  // Badges
+  const badgeHR = document.getElementById('badgeHR');
+  const badgeABP = document.getElementById('badgeABP');
+  const badgeSpO2 = document.getElementById('badgeSpO2');
+  const badgeResp = document.getElementById('badgeResp');
+  const badgeLab = document.getElementById('badgeLab');
+  const badgeCVP = document.getElementById('badgeCVP');
+  const badgeCDSS = document.getElementById('badgeCDSS');
+
+  // Boxes
+  const boxHR = document.getElementById('boxHR');
+  const boxABP = document.getElementById('boxABP');
+  const boxSpO2 = document.getElementById('boxSpO2');
+  const boxResp = document.getElementById('boxResp');
+  const boxLab = document.getElementById('boxLab');
+  const boxCDSS = document.getElementById('boxCDSS');
+
+  // Controls Toolbar
+  const icuPatientSelect = document.getElementById('icuPatientSelect');
+  const icuBolusSimBtn = document.getElementById('icuBolusSimBtn');
+  const bolusBtnLabel = document.getElementById('bolusBtnLabel');
+  const icuAudioToggle = document.getElementById('icuAudioToggle');
+  const icuAudioIcon = document.getElementById('icuAudioIcon');
+  const icuAudioText = document.getElementById('icuAudioText');
+  const icuAlarmSilenceBtn = document.getElementById('icuAlarmSilenceBtn');
+  const silenceBtnLabel = document.getElementById('silenceBtnLabel');
+
+  function applyPatientToDOM(p) {
+    if (monitorHR) monitorHR.textContent = p.hr;
+    if (monitorABP) monitorABP.textContent = `${p.abpSys}/${p.abpDia}`;
+    if (monitorMAP) monitorMAP.textContent = p.map;
+    if (monitorSpO2) monitorSpO2.textContent = p.spo2;
+    if (monitorResp) monitorResp.textContent = p.resp;
+    if (monitorTemp) monitorTemp.textContent = p.temp;
+    if (monitorLactate) monitorLactate.textContent = p.lactate;
+    if (monitorCVP) monitorCVP.textContent = p.cvp;
+    if (monitorCO) monitorCO.textContent = p.co;
+    if (monitorSepsisRisk) monitorSepsisRisk.textContent = p.risk;
+    if (monitorLeadTime) monitorLeadTime.textContent = p.leadTime;
+    if (monitorBundleText) monitorBundleText.innerHTML = p.bundleText;
+    if (monitorAlarmMsg) monitorAlarmMsg.textContent = p.alarmMsg;
+
+    if (tagHRVal) tagHRVal.textContent = p.hr;
+    if (tagMAPVal) tagMAPVal.textContent = p.map;
+    if (tagSpO2Val) tagSpO2Val.textContent = p.spo2;
+    if (tagRespVal) tagRespVal.textContent = p.resp;
+
+    if (badgeHR) { badgeHR.textContent = p.hrBadge.text; badgeHR.className = `param-alarm-badge ${p.hrBadge.cls}`; }
+    if (badgeABP) { badgeABP.textContent = p.abpBadge.text; badgeABP.className = `param-alarm-badge ${p.abpBadge.cls}`; }
+    if (badgeSpO2) { badgeSpO2.textContent = p.spo2Badge.text; badgeSpO2.className = `param-alarm-badge ${p.spo2Badge.cls}`; }
+    if (badgeResp) { badgeResp.textContent = p.respBadge.text; badgeResp.className = `param-alarm-badge ${p.respBadge.cls}`; }
+    if (badgeLab) { badgeLab.textContent = p.labBadge.text; badgeLab.className = `param-alarm-badge ${p.labBadge.cls}`; }
+    if (badgeCVP) { badgeCVP.textContent = p.cvpBadge.text; badgeCVP.className = `param-alarm-badge ${p.cvpBadge.cls}`; }
+    if (badgeCDSS) { badgeCDSS.textContent = p.cdssBadge.text; badgeCDSS.className = `param-alarm-badge ${p.cdssBadge.cls}`; }
+
+    if (boxHR) boxHR.className = `icu-param-box ${p.boxClasses.boxHR || ''}`;
+    if (boxABP) boxABP.className = `icu-param-box ${p.boxClasses.boxABP || ''}`;
+    if (boxSpO2) boxSpO2.className = `icu-param-box ${p.boxClasses.boxSpO2 || ''}`;
+    if (boxResp) boxResp.className = `icu-param-box ${p.boxClasses.boxResp || ''}`;
+    if (boxLab) boxLab.className = `icu-param-box ${p.boxClasses.boxLab || ''}`;
+
+    if (monitorAlarmFooter) {
+      if (p.status === 'STABLE') {
+        monitorAlarmFooter.style.background = 'rgba(16, 185, 129, 0.12)';
+        monitorAlarmFooter.style.borderColor = 'rgba(16, 185, 129, 0.35)';
+        monitorAlarmFooter.style.color = '#6ee7b7';
+      } else if (p.status === 'INTERMEDIATE') {
+        monitorAlarmFooter.style.background = 'rgba(245, 158, 11, 0.12)';
+        monitorAlarmFooter.style.borderColor = 'rgba(245, 158, 11, 0.35)';
+        monitorAlarmFooter.style.color = '#fde68a';
+      } else {
+        monitorAlarmFooter.style.background = 'rgba(244, 63, 94, 0.12)';
+        monitorAlarmFooter.style.borderColor = 'rgba(244, 63, 94, 0.35)';
+        monitorAlarmFooter.style.color = '#fda4af';
+      }
+    }
+  }
+
+  // Patient Select Handler
+  if (icuPatientSelect) {
+    icuPatientSelect.addEventListener('change', (e) => {
+      activePatientKey = e.target.value;
+      activePatient = { ...ICU_PATIENTS[activePatientKey] };
+      currentRateMult = activePatient.rateMult;
+      isResuscitated = false;
+      if (bolusBtnLabel) bolusBtnLabel.textContent = 'Simulate 30 mL/kg Bolus';
+      if (icuBolusSimBtn) icuBolusSimBtn.classList.remove('active');
+      applyPatientToDOM(activePatient);
+    });
+  }
+
+  // Counterfactual 30 mL/kg Fluid Bolus Resuscitation Simulation
+  if (icuBolusSimBtn) {
+    icuBolusSimBtn.addEventListener('click', () => {
+      if (isBolusAnimating) return;
+
+      if (isResuscitated) {
+        // Reset to original patient baseline
+        activePatient = { ...ICU_PATIENTS[activePatientKey] };
+        currentRateMult = activePatient.rateMult;
+        isResuscitated = false;
+        icuBolusSimBtn.classList.remove('active');
+        if (bolusBtnLabel) bolusBtnLabel.textContent = 'Simulate 30 mL/kg Bolus';
+        applyPatientToDOM(activePatient);
+        return;
+      }
+
+      isBolusAnimating = true;
+      icuBolusSimBtn.classList.add('active');
+      if (bolusBtnLabel) bolusBtnLabel.textContent = 'Infusing 30 mL/kg IV Bolus...';
+
+      const startHR = activePatient.hr;
+      const targetHR = 82;
+      const startMAP = activePatient.map;
+      const targetMAP = 78;
+      const startSys = activePatient.abpSys;
+      const targetSys = 118;
+      const startDia = activePatient.abpDia;
+      const targetDia = 70;
+      const startSpO2 = activePatient.spo2;
+      const targetSpO2 = 98;
+      const startResp = activePatient.resp;
+      const targetResp = 16;
+      const startLactate = parseFloat(activePatient.lactate);
+      const targetLactate = 2.0;
+      const startTemp = parseFloat(activePatient.temp);
+      const targetTemp = 37.6;
+      const startRisk = activePatient.riskNum;
+      const targetRisk = 18.4;
+      const startMult = currentRateMult;
+      const targetMult = 1.15;
+
+      const duration = 2400; // 2.4 seconds smooth transition
+      const startTime = performance.now();
+
+      function animateBolus(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1.0);
+        const ease = 0.5 - Math.cos(progress * Math.PI) / 2; // Smooth cosine ease in-out
+
+        activePatient.hr = Math.round(startHR + (targetHR - startHR) * ease);
+        activePatient.map = Math.round(startMAP + (targetMAP - startMAP) * ease);
+        activePatient.abpSys = Math.round(startSys + (targetSys - startSys) * ease);
+        activePatient.abpDia = Math.round(startDia + (targetDia - startDia) * ease);
+        activePatient.spo2 = Math.round(startSpO2 + (targetSpO2 - startSpO2) * ease);
+        activePatient.resp = Math.round(startResp + (targetResp - startResp) * ease);
+        activePatient.lactate = (startLactate + (targetLactate - startLactate) * ease).toFixed(1);
+        activePatient.temp = (startTemp + (targetTemp - startTemp) * ease).toFixed(1);
+        const curRisk = (startRisk + (targetRisk - startRisk) * ease).toFixed(1);
+        activePatient.risk = `${curRisk}%`;
+        currentRateMult = startMult + (targetMult - startMult) * ease;
+
+        if (progress >= 0.7) {
+          activePatient.hrBadge = { text: 'NORM', cls: 'alarm-norm' };
+          activePatient.abpBadge = { text: 'RESTORED', cls: 'alarm-norm' };
+          activePatient.spo2Badge = { text: 'OPTIMAL', cls: 'alarm-norm' };
+          activePatient.respBadge = { text: 'NORMAL', cls: 'alarm-norm' };
+          activePatient.labBadge = { text: 'CLEARING', cls: 'alarm-norm' };
+          activePatient.cdssBadge = { text: 'STABILIZED', cls: 'alarm-norm' };
+          activePatient.leadTime = 'Hemodynamic Shock Averted';
+          activePatient.bundleText = '<strong style="color:#10b981;">RESUSCITATION TARGET ACHIEVED:</strong> MAP restored &ge;65 mmHg (78 mmHg), lactate clearance initiated (2.0 mmol/L), cardiac output normalized.';
+          activePatient.alarmMsg = 'SIMULATION SUCCESS: Bed 14 (PAT-1033) hemodynamically stabilized post-30 mL/kg crystalloid bolus • Refractory shock reversed.';
+          activePatient.boxClasses = { boxHR: '', boxABP: '', boxSpO2: '', boxResp: '', boxLab: '' };
+        }
+
+        applyPatientToDOM(activePatient);
+
+        if (progress < 1.0) {
+          requestAnimationFrame(animateBolus);
+        } else {
+          isBolusAnimating = false;
+          isResuscitated = true;
+          if (bolusBtnLabel) bolusBtnLabel.textContent = 'Bolus Active (Click to Reset)';
+        }
+      }
+
+      requestAnimationFrame(animateBolus);
+    });
+  }
+
+  // Audio Beep Toggle
+  if (icuAudioToggle) {
+    icuAudioToggle.addEventListener('click', () => {
+      audioBeepEnabled = !audioBeepEnabled;
+      if (audioBeepEnabled) {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        icuAudioToggle.classList.add('active');
+        if (icuAudioText) icuAudioText.textContent = 'QRS Beep: ON';
+        if (icuAudioIcon) icuAudioIcon.setAttribute('data-lucide', 'volume-2');
+        playQrsBeep();
+      } else {
+        icuAudioToggle.classList.remove('active');
+        if (icuAudioText) icuAudioText.textContent = 'Audio: Muted';
+        if (icuAudioIcon) icuAudioIcon.setAttribute('data-lucide', 'volume-x');
+      }
+      if (window.lucide) window.lucide.createIcons();
+    });
+  }
+
+  // Alarm Silence Handler
+  let silenceTimer = null;
+  if (icuAlarmSilenceBtn) {
+    icuAlarmSilenceBtn.addEventListener('click', () => {
+      icuAlarmSilenceBtn.classList.add('active');
+      if (silenceBtnLabel) silenceBtnLabel.textContent = 'Silenced (120s)';
+      if (monitorAlarmFooter) monitorAlarmFooter.style.opacity = '0.45';
+
+      if (silenceTimer) clearTimeout(silenceTimer);
+      silenceTimer = setTimeout(() => {
+        icuAlarmSilenceBtn.classList.remove('active');
+        if (silenceBtnLabel) silenceBtnLabel.textContent = 'Silence';
+        if (monitorAlarmFooter) monitorAlarmFooter.style.opacity = '1.0';
+      }, 120000);
+    });
+  }
+
+  // 4-Channel Sweeping Waveform Canvas Engine
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width = 0;
     let height = 0;
     let sweepX = 0;
-    const sweepSpeed = 3.2; // pixels per frame
+    const sweepSpeed = 3.4; // pixels per frame
 
     function resizeCanvas() {
       const rect = canvas.getBoundingClientRect();
@@ -238,70 +623,91 @@ document.addEventListener('DOMContentLoaded', () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Physiological waveform synthesis functions
+    // Physiological Waveform Generators
     function getECG(t) {
       const cycle = t % 1.0;
-      // Baseline
       let y = 0;
       // P wave
-      if (cycle > 0.1 && cycle < 0.2) y += 0.15 * Math.sin((cycle - 0.1) * Math.PI / 0.1);
+      if (cycle > 0.10 && cycle < 0.20) y += 0.16 * Math.sin((cycle - 0.10) * Math.PI / 0.10);
       // Q wave
-      if (cycle >= 0.22 && cycle < 0.25) y -= 0.2 * Math.sin((cycle - 0.22) * Math.PI / 0.03);
-      // R peak (sharp QRS)
-      if (cycle >= 0.25 && cycle < 0.30) y += 1.0 * Math.sin((cycle - 0.25) * Math.PI / 0.05);
+      if (cycle >= 0.22 && cycle < 0.25) y -= 0.22 * Math.sin((cycle - 0.22) * Math.PI / 0.03);
+      // R peak (sharp QRS complex)
+      if (cycle >= 0.25 && cycle < 0.29) y += 1.05 * Math.sin((cycle - 0.25) * Math.PI / 0.04);
       // S wave
-      if (cycle >= 0.30 && cycle < 0.34) y -= 0.35 * Math.sin((cycle - 0.30) * Math.PI / 0.04);
+      if (cycle >= 0.29 && cycle < 0.33) y -= 0.35 * Math.sin((cycle - 0.29) * Math.PI / 0.04);
       // T wave
-      if (cycle > 0.45 && cycle < 0.65) y += 0.25 * Math.sin((cycle - 0.45) * Math.PI / 0.20);
+      if (cycle > 0.44 && cycle < 0.66) y += 0.28 * Math.sin((cycle - 0.44) * Math.PI / 0.22);
       return y;
     }
 
     function getABP(t) {
       const cycle = t % 1.0;
-      if (cycle < 0.25) {
-        // Systolic rapid upstroke
-        return Math.sin(cycle / 0.25 * (Math.PI / 2));
-      } else if (cycle < 0.40) {
+      if (cycle < 0.24) {
+        // Rapid systolic ejection upstroke
+        return Math.sin(cycle / 0.24 * (Math.PI / 2));
+      } else if (cycle < 0.38) {
         // Systolic decline to dicrotic notch
-        return 1.0 - (cycle - 0.25) / 0.15 * 0.4;
-      } else if (cycle < 0.50) {
-        // Dicrotic notch bounce
-        return 0.6 + 0.1 * Math.sin((cycle - 0.40) / 0.10 * Math.PI);
+        return 1.0 - (cycle - 0.24) / 0.14 * 0.42;
+      } else if (cycle < 0.48) {
+        // Dicrotic notch reflection wave
+        return 0.58 + 0.12 * Math.sin((cycle - 0.38) / 0.10 * Math.PI);
       } else {
-        // Diastolic runoff
-        return 0.65 * Math.exp(-(cycle - 0.50) * 3.5);
+        // Diastolic runoff exponential decay
+        return 0.65 * Math.exp(-(cycle - 0.48) * 3.6);
       }
     }
 
     function getSpO2(t) {
       const cycle = t % 1.0;
-      if (cycle < 0.3) {
-        return Math.sin(cycle / 0.3 * (Math.PI / 2));
+      if (cycle < 0.28) {
+        return Math.sin(cycle / 0.28 * (Math.PI / 2));
       } else {
-        return Math.cos((cycle - 0.3) / 0.7 * (Math.PI / 2));
+        return Math.cos((cycle - 0.28) / 0.72 * (Math.PI / 2));
       }
+    }
+
+    function getRESP(t) {
+      // Smooth sinusoidal respiratory excursion
+      return Math.sin(t * 0.35 * Math.PI * 2);
     }
 
     let lastTime = performance.now();
     let simTime = 0;
-    let prevEcgY = 24;
-    let prevAbpY = 62;
-    let prevSpo2Y = 98;
+    let respSimTime = 0;
+    let lastQrsBeatCycle = 0;
+
+    // Previous Channel Y coordinates
+    let prevEcgY = 38;
+    let prevAbpY = 105;
+    let prevSpo2Y = 178;
+    let prevRespY = 250;
 
     function renderWaveforms(currentTime) {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
       lastTime = currentTime;
-      simTime += dt * 1.8; // Simulated cardiac rate ~110-120 bpm
+      simTime += dt * currentRateMult;
+      respSimTime += dt * (activePatient.resp / 20);
 
-      // Clear the sweep slice ahead of cursor (erasing old trace)
-      ctx.fillStyle = '#010309';
-      ctx.fillRect(sweepX, 0, sweepSpeed * 6, height);
+      // Detect QRS R-wave peak for sound & visual pulse
+      const currentCycle = simTime % 1.0;
+      if (currentCycle >= 0.25 && currentCycle < 0.29 && lastQrsBeatCycle < 0.25) {
+        playQrsBeep();
+        if (heartBeatIcon) {
+          heartBeatIcon.classList.add('beat');
+          setTimeout(() => { if (heartBeatIcon) heartBeatIcon.classList.remove('beat'); }, 110);
+        }
+      }
+      lastQrsBeatCycle = currentCycle;
 
-      // Draw faint horizontal grid lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+      // 1. Clear erase band ahead of sweep cursor
+      ctx.fillStyle = '#01040a';
+      ctx.fillRect(sweepX, 0, 24, height);
+
+      // Faint physiological monitor calibration grid dots
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      for (let y = 20; y < height; y += 20) {
+      for (let y = 18; y < height; y += 18) {
         ctx.moveTo(sweepX, y);
         ctx.lineTo(sweepX + sweepSpeed, y);
       }
@@ -309,14 +715,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const prevX = (sweepX - sweepSpeed + width) % width;
 
-      const currentEcgY = 24 - getECG(simTime) * 16;
-      const currentAbpY = 62 - getABP(simTime + 0.12) * 20;
-      const currentSpo2Y = 98 - getSpO2(simTime + 0.22) * 16;
+      // Channel baseline coordinates (Vertical distribution across 290px canvas)
+      const ecgBaseline = 38;
+      const abpBaseline = 105;
+      const spo2Baseline = 178;
+      const respBaseline = 250;
+
+      const currentEcgY = ecgBaseline - getECG(simTime) * 25;
+      const currentAbpY = abpBaseline - getABP(simTime + 0.11) * 26;
+      const currentSpo2Y = spo2Baseline - getSpO2(simTime + 0.22) * 20;
+      const currentRespY = respBaseline - getRESP(respSimTime) * 14;
 
       if (sweepX > prevX) {
-        // 1. ECG Lead II (Green, top band) - Smooth continuous stroke
+        // Channel 1: ECG Lead II (Vibrant Emerald #10b981)
         ctx.strokeStyle = '#10b981';
-        ctx.lineWidth = 1.8;
+        ctx.lineWidth = 2.0;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.beginPath();
@@ -324,9 +737,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineTo(sweepX, currentEcgY);
         ctx.stroke();
 
-        // 2. Arterial Blood Pressure (Red, middle band) - Smooth continuous stroke
+        // Channel 2: Arterial Blood Pressure Line (Vibrant Coral/Red #f43f5e)
         ctx.strokeStyle = '#f43f5e';
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1.8;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.beginPath();
@@ -334,20 +747,41 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineTo(sweepX, currentAbpY);
         ctx.stroke();
 
-        // 3. SpO2 Plethysmograph (Cyan, bottom band) - Smooth continuous stroke
+        // Channel 3: SpO2 Plethysmograph (Cyan #06b6d4)
         ctx.strokeStyle = '#06b6d4';
-        ctx.lineWidth = 1.6;
+        ctx.lineWidth = 1.8;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
         ctx.beginPath();
         ctx.moveTo(prevX, prevSpo2Y);
         ctx.lineTo(sweepX, currentSpo2Y);
         ctx.stroke();
+
+        // Channel 4: Thoracic Impedance Respiration (Amber/Yellow #eab308)
+        ctx.strokeStyle = '#eab308';
+        ctx.lineWidth = 1.6;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevRespY);
+        ctx.lineTo(sweepX, currentRespY);
+        ctx.stroke();
+
+        // Phosphorescent Sweeping Beam Head (trailing glowing phosphor)
+        const beamGrad = ctx.createLinearGradient(sweepX - 10, 0, sweepX, 0);
+        beamGrad.addColorStop(0, 'rgba(16, 185, 129, 0)');
+        beamGrad.addColorStop(1, 'rgba(52, 211, 153, 0.35)');
+        ctx.fillStyle = beamGrad;
+        ctx.fillRect(sweepX - 10, 0, 10, height);
+
+        ctx.fillStyle = '#a7f3d0';
+        ctx.fillRect(sweepX, 0, 2, height);
       }
 
       prevEcgY = currentEcgY;
       prevAbpY = currentAbpY;
       prevSpo2Y = currentSpo2Y;
+      prevRespY = currentRespY;
 
       sweepX = (sweepX + sweepSpeed) % width;
       requestAnimationFrame(renderWaveforms);
@@ -478,8 +912,8 @@ document.addEventListener('DOMContentLoaded', () => {
         labels: [0.0, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
         datasets: [
           {
-            label: 'FPDAF-v2 Proposed (AUROC: 0.7821)',
-            data: [0.0, 0.28, 0.48, 0.64, 0.76, 0.83, 0.88, 0.92, 0.95, 0.97, 0.99, 1.0],
+            label: 'FPDAF-v2 Proposed (AUROC: 0.7923 [0.7686–0.8170])',
+            data: [0.0, 0.32, 0.52, 0.67, 0.78, 0.85, 0.90, 0.93, 0.96, 0.98, 0.99, 1.0],
             borderColor: '#10b981',
             backgroundColor: 'rgba(16, 185, 129, 0.12)',
             fill: true,
@@ -489,16 +923,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pointBackgroundColor: '#10b981'
           },
           {
-            label: 'FPDAF-v1 Baseline (AUROC: 0.7921)',
-            data: [0.0, 0.26, 0.46, 0.63, 0.74, 0.83, 0.88, 0.92, 0.95, 0.97, 0.99, 1.0],
-            borderColor: '#6366f1',
-            tension: 0.3,
-            borderWidth: 2,
-            pointRadius: 2
-          },
-          {
-            label: 'Centralized BiLSTM Upper Bound (AUROC: 0.7309)',
-            data: [0.0, 0.18, 0.35, 0.52, 0.62, 0.72, 0.79, 0.85, 0.90, 0.94, 0.98, 1.0],
+            label: 'Centralized BiLSTM (AUROC: 0.8058)',
+            data: [0.0, 0.34, 0.54, 0.69, 0.79, 0.86, 0.91, 0.94, 0.96, 0.98, 0.99, 1.0],
             borderColor: '#f59e0b',
             borderDash: [5, 5],
             tension: 0.3,
@@ -506,16 +932,24 @@ document.addEventListener('DOMContentLoaded', () => {
             pointRadius: 0
           },
           {
-            label: 'Ditto Personalized FL (AUROC: 0.7796)',
-            data: [0.0, 0.24, 0.44, 0.60, 0.71, 0.80, 0.86, 0.91, 0.94, 0.97, 0.99, 1.0],
+            label: 'Ditto Personalized FL (AUROC: 0.7989)',
+            data: [0.0, 0.31, 0.51, 0.66, 0.77, 0.85, 0.90, 0.93, 0.96, 0.98, 0.99, 1.0],
             borderColor: '#f43f5e',
             tension: 0.3,
             borderWidth: 2,
             pointRadius: 0
           },
           {
-            label: 'Standard FedAvg (AUROC: 0.7559)',
-            data: [0.0, 0.20, 0.38, 0.56, 0.67, 0.76, 0.82, 0.88, 0.92, 0.95, 0.98, 1.0],
+            label: 'FedProx Baseline (AUROC: 0.7910)',
+            data: [0.0, 0.30, 0.50, 0.65, 0.76, 0.84, 0.89, 0.93, 0.95, 0.97, 0.99, 1.0],
+            borderColor: '#a855f7',
+            tension: 0.3,
+            borderWidth: 2,
+            pointRadius: 0
+          },
+          {
+            label: 'Standard FedAvg (AUROC: 0.7883)',
+            data: [0.0, 0.29, 0.49, 0.64, 0.75, 0.83, 0.88, 0.92, 0.95, 0.97, 0.99, 1.0],
             borderColor: '#64748b',
             borderDash: [3, 3],
             tension: 0.3,
