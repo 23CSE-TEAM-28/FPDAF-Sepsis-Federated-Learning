@@ -128,13 +128,6 @@
                 <div class="dropdown-desc">SHAP attribution, counterfactuals &amp; temporal saliency</div>
               </div>
             </a>
-            <a href="#api" class="dropdown-card">
-              <div class="dropdown-icon-box"><i data-lucide="code-2"></i></div>
-              <div class="dropdown-text">
-                <div class="dropdown-title">HL7 FHIR &amp; REST API</div>
-                <div class="dropdown-desc">Production-ready interoperability endpoints &amp; schemas</div>
-              </div>
-            </a>
             <a href="#portals" class="dropdown-card">
               <div class="dropdown-icon-box"><i data-lucide="layout-dashboard"></i></div>
               <div class="dropdown-text">
@@ -220,7 +213,6 @@
         <a href="#problem" class="mobile-link"><i data-lucide="alert-triangle"></i> Clinical Need &amp; Gaps</a>
         <a href="#inventions" class="mobile-link"><i data-lucide="sparkles"></i> 3 Core Inventions (AD-CUSUM, CSSP)</a>
         <a href="#xai" class="mobile-link"><i data-lucide="eye"></i> Three Pillars of Clinical XAI</a>
-        <a href="#api" class="mobile-link"><i data-lucide="code-2"></i> REST API &amp; Standards</a>
 
         <div class="mobile-group-title">Validation &amp; Intellect Property</div>
         <a href="#benchmarks" class="mobile-link"><i data-lucide="award"></i> 6-Way SOTA Benchmarks</a>
@@ -1250,54 +1242,6 @@
     </div>
   </section>
 
-  <!-- Interactive REST API Developer Console (FastAPI Simulation) -->
-  <section id="api" class="section api-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag"><i data-lucide="code-2"></i> Developer Integration &amp; Standards</div>
-        <h2 class="section-title">Interactive REST API Developer Console</h2>
-        <p class="section-subtitle">
-          Test live simulated FastAPI endpoints powering real-time EHR integration (HL7 / FHIR compliant). Select an endpoint and click Send Request:
-        </p>
-      </div>
-
-      <div class="api-console-card glass-card">
-        <div class="api-tabs">
-          <button class="api-tab-btn active" data-endpoint="predict">
-            <span class="method-badge method-post">POST</span>
-            <span>/api/v1/predict/sepsis</span>
-          </button>
-          <button class="api-tab-btn" data-endpoint="telemetry">
-            <span class="method-badge method-get">GET</span>
-            <span>/api/v1/telemetry/nodes</span>
-          </button>
-          <button class="api-tab-btn" data-endpoint="recourse">
-            <span class="method-badge method-post">POST</span>
-            <span>/api/v1/intervention/simulate</span>
-          </button>
-        </div>
-
-        <div class="api-split">
-          <div class="api-pane">
-            <div class="api-pane-header">
-              <span>REQUEST PAYLOAD (JSON)</span>
-              <button class="btn btn-sm btn-primary" id="btnExecuteApi"><i data-lucide="play"></i> Send Request</button>
-            </div>
-            <pre class="api-code-block" id="apiReqPayload"></pre>
-          </div>
-
-          <div class="api-pane">
-            <div class="api-pane-header">
-              <span>SERVER RESPONSE</span>
-              <span id="apiStatusBadge" class="ticker-dot live" style="margin-right: 4px;"></span>
-              <span id="apiResponseStatus" style="font-size: 0.75rem; color: #10b981;">200 OK • 18ms</span>
-            </div>
-            <pre class="api-code-block" id="apiResPayload"></pre>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CDSS Portals Suite & Clinical Architecture Showcase -->
   <section id="portals" class="section portals-section">
