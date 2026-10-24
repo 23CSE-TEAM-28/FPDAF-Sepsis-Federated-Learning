@@ -2540,35 +2540,34 @@ img { max-width: 100%; height: auto; }
   margin: 0;
 }
 
-.live-banner-actions {
+.live-banner-badges {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
   flex-shrink: 0;
 }
 
-.btn-launch-cdss {
+.portal-spec-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
-  color: #ffffff;
-  border: none;
+  padding: 8px 16px;
+  background: rgba(20, 184, 166, 0.08);
+  border: 1px solid rgba(20, 184, 166, 0.28);
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);
-  transition: all 0.2s ease;
+  color: var(--teal-300);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
 }
 
-.btn-launch-cdss:hover {
-  background: linear-gradient(135deg, #2dd4bf, #14b8a6);
-  box-shadow: 0 6px 20px rgba(45, 212, 191, 0.5);
-  transform: translateY(-2px);
-  color: #ffffff;
+.portal-spec-badge i,
+.portal-spec-badge svg {
+  width: 15px;
+  height: 15px;
+  color: var(--teal-400);
 }
 
 /* Full Screenshots Showcase Gallery (14 High-Res Screens) */
@@ -2782,6 +2781,7 @@ img { max-width: 100%; height: auto; }
   .screens-gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .portal-caption-grid { grid-template-columns: 1fr 1fr; }
   .prototype-live-banner { flex-direction: column; align-items: flex-start; }
+  .live-banner-badges { flex-direction: row; flex-wrap: wrap; margin-top: 10px; }
 }
 
 @media (max-width: 640px) {
