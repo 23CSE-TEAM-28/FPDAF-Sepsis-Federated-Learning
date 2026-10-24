@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          const navHeight = 85; // Floating navbar offset (14px top + 58px height + 13px breathing room)
+          const navHeight = 110; // Fixed ticker (34px) + floating navbar (58px + 14px margin) + buffer
           const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
           window.scrollTo({
             top: targetPosition,
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const decimals = valEl.dataset.decimals ? parseInt(valEl.dataset.decimals, 10) : 2;
 
       let start = 0;
-      const duration = 1800;
+      const duration = 750;
       const startTime = performance.now();
 
       function updateCounter(currentTime) {
@@ -208,17 +208,24 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.disconnect();
       }
     });
-  }, { threshold: 0.25 });
+  }, { threshold: 0.1 });
 
   const metricsGrid = document.querySelector('.metrics-grid');
   if (metricsGrid) {
     metricsObserver.observe(metricsGrid);
+    // If already in viewport on load, fire immediately
+    const rect = metricsGrid.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0 && !metricsAnimated) {
+      metricsAnimated = true;
+      animateCounters();
+    }
   }
 
   // ==========================================
   // 4. Commercial-Grade ICU Central Telemetry Workstation
   // ==========================================
   const canvas = document.getElementById('icuWaveformCanvas');
+  let preFillWaveforms = () => {};
   
   // Clinical Bedside Patient Encounter Profiles
   const ICU_PATIENTS = {
@@ -237,8 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
       resp: 28,
       respBadge: { text: 'TACHY', cls: 'alarm-warn' },
       temp: '38.9',
+      tempBadge: { text: 'FEBRILE', cls: 'alarm-crit' },
       lactate: '4.2',
-      labBadge: { text: 'FEBRILE', cls: 'alarm-crit' },
+      lactateBadge: { text: 'ACIDOSIS', cls: 'alarm-crit' },
       cvp: 4,
       co: '3.8',
       cvpBadge: { text: 'MONITORED', cls: 'alarm-norm' },
@@ -254,7 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         boxABP: 'box-alert-crit',
         boxSpO2: 'box-alert-warn',
         boxResp: 'box-alert-warn',
-        boxLab: 'box-alert-crit'
+        boxTemp: 'box-alert-crit',
+        boxLactate: 'box-alert-crit'
       }
     },
     pat1000: {
@@ -272,8 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
       resp: 14,
       respBadge: { text: 'NORM', cls: 'alarm-norm' },
       temp: '36.8',
+      tempBadge: { text: 'NORM', cls: 'alarm-norm' },
       lactate: '1.1',
-      labBadge: { text: 'NORMAL', cls: 'alarm-norm' },
+      lactateBadge: { text: 'NORM', cls: 'alarm-norm' },
       cvp: 8,
       co: '5.6',
       cvpBadge: { text: 'NORMAL', cls: 'alarm-norm' },
@@ -289,7 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
         boxABP: '',
         boxSpO2: '',
         boxResp: '',
-        boxLab: ''
+        boxTemp: '',
+        boxLactate: ''
       }
     },
     pat1018: {
@@ -307,8 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
       resp: 22,
       respBadge: { text: 'ELEVATED', cls: 'alarm-warn' },
       temp: '38.1',
+      tempBadge: { text: 'SUBFEBRILE', cls: 'alarm-warn' },
       lactate: '2.3',
-      labBadge: { text: 'SUBFEBRILE', cls: 'alarm-warn' },
+      lactateBadge: { text: 'ELEVATED', cls: 'alarm-warn' },
       cvp: 6,
       co: '4.4',
       cvpBadge: { text: 'MONITORED', cls: 'alarm-norm' },
@@ -324,7 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
         boxABP: '',
         boxSpO2: 'box-alert-warn',
         boxResp: 'box-alert-warn',
-        boxLab: 'box-alert-warn'
+        boxTemp: 'box-alert-warn',
+        boxLactate: 'box-alert-warn'
       }
     }
   };
@@ -391,7 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const badgeABP = document.getElementById('badgeABP');
   const badgeSpO2 = document.getElementById('badgeSpO2');
   const badgeResp = document.getElementById('badgeResp');
-  const badgeLab = document.getElementById('badgeLab');
+  const badgeTemp = document.getElementById('badgeTemp');
+  const badgeLactate = document.getElementById('badgeLactate');
   const badgeCVP = document.getElementById('badgeCVP');
   const badgeCDSS = document.getElementById('badgeCDSS');
 
@@ -400,7 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const boxABP = document.getElementById('boxABP');
   const boxSpO2 = document.getElementById('boxSpO2');
   const boxResp = document.getElementById('boxResp');
-  const boxLab = document.getElementById('boxLab');
+  const boxTemp = document.getElementById('boxTemp');
+  const boxLactate = document.getElementById('boxLactate');
   const boxCDSS = document.getElementById('boxCDSS');
 
   // Controls Toolbar
@@ -437,7 +452,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (badgeABP) { badgeABP.textContent = p.abpBadge.text; badgeABP.className = `param-alarm-badge ${p.abpBadge.cls}`; }
     if (badgeSpO2) { badgeSpO2.textContent = p.spo2Badge.text; badgeSpO2.className = `param-alarm-badge ${p.spo2Badge.cls}`; }
     if (badgeResp) { badgeResp.textContent = p.respBadge.text; badgeResp.className = `param-alarm-badge ${p.respBadge.cls}`; }
-    if (badgeLab) { badgeLab.textContent = p.labBadge.text; badgeLab.className = `param-alarm-badge ${p.labBadge.cls}`; }
+    if (badgeTemp && p.tempBadge) { badgeTemp.textContent = p.tempBadge.text; badgeTemp.className = `param-alarm-badge ${p.tempBadge.cls}`; }
+    if (badgeLactate && p.lactateBadge) { badgeLactate.textContent = p.lactateBadge.text; badgeLactate.className = `param-alarm-badge ${p.lactateBadge.cls}`; }
     if (badgeCVP) { badgeCVP.textContent = p.cvpBadge.text; badgeCVP.className = `param-alarm-badge ${p.cvpBadge.cls}`; }
     if (badgeCDSS) { badgeCDSS.textContent = p.cdssBadge.text; badgeCDSS.className = `param-alarm-badge ${p.cdssBadge.cls}`; }
 
@@ -445,7 +461,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (boxABP) boxABP.className = `icu-param-box ${p.boxClasses.boxABP || ''}`;
     if (boxSpO2) boxSpO2.className = `icu-param-box ${p.boxClasses.boxSpO2 || ''}`;
     if (boxResp) boxResp.className = `icu-param-box ${p.boxClasses.boxResp || ''}`;
-    if (boxLab) boxLab.className = `icu-param-box ${p.boxClasses.boxLab || ''}`;
+    if (boxTemp) boxTemp.className = `icu-param-box ${p.boxClasses.boxTemp || ''}`;
+    if (boxLactate) boxLactate.className = `icu-param-box ${p.boxClasses.boxLactate || ''}`;
 
     if (monitorAlarmFooter) {
       if (p.status === 'STABLE') {
@@ -474,6 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (bolusBtnLabel) bolusBtnLabel.textContent = 'Simulate 30 mL/kg Bolus';
       if (icuBolusSimBtn) icuBolusSimBtn.classList.remove('active');
       applyPatientToDOM(activePatient);
+      preFillWaveforms();
     });
   }
 
@@ -490,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
         icuBolusSimBtn.classList.remove('active');
         if (bolusBtnLabel) bolusBtnLabel.textContent = 'Simulate 30 mL/kg Bolus';
         applyPatientToDOM(activePatient);
+        preFillWaveforms();
         return;
       }
 
@@ -543,12 +562,13 @@ document.addEventListener('DOMContentLoaded', () => {
           activePatient.abpBadge = { text: 'RESTORED', cls: 'alarm-norm' };
           activePatient.spo2Badge = { text: 'OPTIMAL', cls: 'alarm-norm' };
           activePatient.respBadge = { text: 'NORMAL', cls: 'alarm-norm' };
-          activePatient.labBadge = { text: 'CLEARING', cls: 'alarm-norm' };
+          activePatient.tempBadge = { text: 'NORM', cls: 'alarm-norm' };
+          activePatient.lactateBadge = { text: 'CLEARING', cls: 'alarm-norm' };
           activePatient.cdssBadge = { text: 'STABILIZED', cls: 'alarm-norm' };
           activePatient.leadTime = 'Hemodynamic Shock Averted';
           activePatient.bundleText = '<strong style="color:#10b981;">RESUSCITATION TARGET ACHIEVED:</strong> MAP restored &ge;65 mmHg (78 mmHg), lactate clearance initiated (2.0 mmol/L), cardiac output normalized.';
           activePatient.alarmMsg = 'SIMULATION SUCCESS: Bed 14 (PAT-1033) hemodynamically stabilized post-30 mL/kg crystalloid bolus • Refractory shock reversed.';
-          activePatient.boxClasses = { boxHR: '', boxABP: '', boxSpO2: '', boxResp: '', boxLab: '' };
+          activePatient.boxClasses = { boxHR: '', boxABP: '', boxSpO2: '', boxResp: '', boxTemp: '', boxLactate: '' };
         }
 
         applyPatientToDOM(activePatient);
@@ -611,31 +631,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let sweepX = 0;
     const sweepSpeed = 3.4; // pixels per frame
 
-    function resizeCanvas() {
-      const rect = canvas.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      canvas.width = width * window.devicePixelRatio;
-      canvas.height = height * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-    }
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
     // Physiological Waveform Generators
     function getECG(t) {
       const cycle = t % 1.0;
       let y = 0;
-      // P wave
       if (cycle > 0.10 && cycle < 0.20) y += 0.16 * Math.sin((cycle - 0.10) * Math.PI / 0.10);
-      // Q wave
       if (cycle >= 0.22 && cycle < 0.25) y -= 0.22 * Math.sin((cycle - 0.22) * Math.PI / 0.03);
-      // R peak (sharp QRS complex)
       if (cycle >= 0.25 && cycle < 0.29) y += 1.05 * Math.sin((cycle - 0.25) * Math.PI / 0.04);
-      // S wave
       if (cycle >= 0.29 && cycle < 0.33) y -= 0.35 * Math.sin((cycle - 0.29) * Math.PI / 0.04);
-      // T wave
       if (cycle > 0.44 && cycle < 0.66) y += 0.28 * Math.sin((cycle - 0.44) * Math.PI / 0.22);
       return y;
     }
@@ -643,16 +646,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function getABP(t) {
       const cycle = t % 1.0;
       if (cycle < 0.24) {
-        // Rapid systolic ejection upstroke
         return Math.sin(cycle / 0.24 * (Math.PI / 2));
       } else if (cycle < 0.38) {
-        // Systolic decline to dicrotic notch
         return 1.0 - (cycle - 0.24) / 0.14 * 0.42;
       } else if (cycle < 0.48) {
-        // Dicrotic notch reflection wave
         return 0.58 + 0.12 * Math.sin((cycle - 0.38) / 0.10 * Math.PI);
       } else {
-        // Diastolic runoff exponential decay
         return 0.65 * Math.exp(-(cycle - 0.48) * 3.6);
       }
     }
@@ -667,20 +666,99 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function getRESP(t) {
-      // Smooth sinusoidal respiratory excursion
       return Math.sin(t * 0.35 * Math.PI * 2);
     }
+
+    // Pre-populate full canvas screen with continuous waveforms from edge to edge
+    preFillWaveforms = function() {
+      if (!width || !height) return;
+      ctx.fillStyle = '#01040a';
+      ctx.fillRect(0, 0, width, height);
+
+      // Faint physiological monitor grid
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let y = 20; y < height; y += 20) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+      }
+      ctx.stroke();
+
+      const ecgBase = height * 0.13;
+      const abpBase = height * 0.38;
+      const spo2Base = height * 0.63;
+      const respBase = height * 0.87;
+
+      let localSim = 0;
+      let localResp = 0;
+      const step = 2;
+
+      for (let x = 0; x < width; x += step) {
+        const nextX = Math.min(x + step, width);
+        const dt = (step / sweepSpeed) * 0.016;
+        const nextSim = localSim + dt * currentRateMult;
+        const nextResp = localResp + dt * (activePatient.resp / 20);
+
+        // ECG Channel
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 2.0;
+        ctx.beginPath();
+        ctx.moveTo(x, ecgBase - getECG(localSim) * (height * 0.08));
+        ctx.lineTo(nextX, ecgBase - getECG(nextSim) * (height * 0.08));
+        ctx.stroke();
+
+        // ABP Channel
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(x, abpBase - getABP(localSim + 0.11) * (height * 0.085));
+        ctx.lineTo(nextX, abpBase - getABP(nextSim + 0.11) * (height * 0.085));
+        ctx.stroke();
+
+        // SpO2 Channel
+        ctx.strokeStyle = '#06b6d4';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(x, spo2Base - getSpO2(localSim + 0.22) * (height * 0.065));
+        ctx.lineTo(nextX, spo2Base - getSpO2(nextSim + 0.22) * (height * 0.065));
+        ctx.stroke();
+
+        // RESP Channel
+        ctx.strokeStyle = '#eab308';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(x, respBase - getRESP(localResp) * (height * 0.05));
+        ctx.lineTo(nextX, respBase - getRESP(nextResp) * (height * 0.05));
+        ctx.stroke();
+
+        localSim = nextSim;
+        localResp = nextResp;
+      }
+    };
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * window.devicePixelRatio;
+      canvas.height = height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      preFillWaveforms();
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     let lastTime = performance.now();
     let simTime = 0;
     let respSimTime = 0;
     let lastQrsBeatCycle = 0;
 
-    // Previous Channel Y coordinates
-    let prevEcgY = 38;
-    let prevAbpY = 105;
-    let prevSpo2Y = 178;
-    let prevRespY = 250;
+    let prevEcgY = height * 0.13;
+    let prevAbpY = height * 0.38;
+    let prevSpo2Y = height * 0.63;
+    let prevRespY = height * 0.87;
 
     function renderWaveforms(currentTime) {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
@@ -707,7 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      for (let y = 18; y < height; y += 18) {
+      for (let y = 20; y < height; y += 20) {
         ctx.moveTo(sweepX, y);
         ctx.lineTo(sweepX + sweepSpeed, y);
       }
@@ -715,16 +793,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const prevX = (sweepX - sweepSpeed + width) % width;
 
-      // Channel baseline coordinates (Vertical distribution across 290px canvas)
-      const ecgBaseline = 38;
-      const abpBaseline = 105;
-      const spo2Baseline = 178;
-      const respBaseline = 250;
+      // Dynamic channel baseline coordinates distributed across height (~410px)
+      const ecgBaseline = height * 0.13;
+      const abpBaseline = height * 0.38;
+      const spo2Baseline = height * 0.63;
+      const respBaseline = height * 0.87;
 
-      const currentEcgY = ecgBaseline - getECG(simTime) * 25;
-      const currentAbpY = abpBaseline - getABP(simTime + 0.11) * 26;
-      const currentSpo2Y = spo2Baseline - getSpO2(simTime + 0.22) * 20;
-      const currentRespY = respBaseline - getRESP(respSimTime) * 14;
+      const currentEcgY = ecgBaseline - getECG(simTime) * (height * 0.08);
+      const currentAbpY = abpBaseline - getABP(simTime + 0.11) * (height * 0.085);
+      const currentSpo2Y = spo2Baseline - getSpO2(simTime + 0.22) * (height * 0.065);
+      const currentRespY = respBaseline - getRESP(respSimTime) * (height * 0.05);
 
       if (sweepX > prevX) {
         // Channel 1: ECG Lead II (Vibrant Emerald #10b981)

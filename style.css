@@ -172,6 +172,11 @@ body {
     radial-gradient(at 100% 100%, hsla(220, 40%, 10%, 1) 0px, transparent 50%);
   background-attachment: fixed;
   color: var(--text-body);
+  padding-top: 34px;
+}
+
+section {
+  scroll-margin-top: 120px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -233,10 +238,10 @@ img { max-width: 100%; height: auto; }
    ========================================================================== */
 .navbar {
   position: fixed;
-  top: 14px;
+  top: 40px;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1100;
   pointer-events: none;
   padding: 0 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1038,6 +1043,7 @@ img { max-width: 100%; height: auto; }
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 14px;
+  align-items: stretch;
 }
 
 @media (max-width: 960px) {
@@ -1051,7 +1057,8 @@ img { max-width: 100%; height: auto; }
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  height: 290px;
+  height: 100%;
+  min-height: 410px;
   background-image: 
     linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
@@ -1066,12 +1073,12 @@ img { max-width: 100%; height: auto; }
 
 .waveform-channel-tags {
   position: absolute;
-  top: 8px;
+  top: 12px;
+  bottom: 12px;
   left: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 270px;
+  justify-content: space-around;
   pointer-events: none;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.65rem;
@@ -1102,6 +1109,7 @@ img { max-width: 100%; height: auto; }
   font-family: 'JetBrains Mono', monospace;
   position: relative;
   transition: all 0.3s ease;
+  min-height: 82px;
 }
 
 .icu-param-box.box-alert-crit {
@@ -1249,15 +1257,19 @@ img { max-width: 100%; height: auto; }
 
 /* Persistent Top Ticker HUD */
 .icu-top-ticker-bar {
-  position: relative;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  z-index: 1200;
   background: #02060d;
   border-bottom: 1px solid rgba(16, 185, 129, 0.25);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 16px;
+  padding: 0 16px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   color: #94a3b8;
