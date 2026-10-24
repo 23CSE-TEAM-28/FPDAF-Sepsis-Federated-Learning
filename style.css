@@ -1646,6 +1646,82 @@ img { max-width: 100%; height: auto; }
   gap: 20px;
 }
 
+/* 2-Card Grid */
+.cards-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.benchmark-plot-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.benchmark-plot-card:hover {
+  border-color: rgba(20, 184, 166, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.plot-card-header {
+  margin-bottom: 12px;
+}
+
+.plot-card-header h4 {
+  font-size: 0.98rem;
+  color: #f8fafc;
+  margin: 6px 0 4px;
+}
+
+.plot-card-header p {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.benchmark-plot-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  background: #000;
+  margin-bottom: 12px;
+}
+
+.plot-footer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.plot-stat-pill {
+  font-size: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--teal-300);
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.plot-stat-pill i {
+  width: 12px;
+  height: 12px;
+}
+
 .feature-card {
   padding: 28px 24px;
   display: flex;

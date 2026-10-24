@@ -591,8 +591,8 @@
               </ul>
             </div>
             <div class="tab-media">
-              <img src="assets/cusum_drift_scores.png" alt="AD-CUSUM Drift Tracking" class="responsive-img rounded-img border-img">
-              <span class="img-caption">Real-Time Drift Score Accumulator ($S_r$) across 50 Federated Rounds</span>
+              <img src="assets/ad_cusum_drift_control_chart.png" alt="AD-CUSUM Statistical Process Control Chart" class="responsive-img rounded-img border-img">
+              <span class="img-caption">AD-CUSUM Sequential Score Accumulator ($S_r$) vs Calibrated Decision Threshold ($H=3.0$) with Gradient Variance Damping</span>
             </div>
           </div>
         </div>
@@ -656,8 +656,8 @@
               </ul>
             </div>
             <div class="tab-media">
-              <img src="assets/Dataflow2.png" alt="Dataflow & Aggregation Logic" class="responsive-img rounded-img border-img">
-              <span class="img-caption">Selective Client-Server Aggregation Logic</span>
+              <img src="assets/communication_wire_payload.png" alt="Cumulative Network Wire Payload (CSSP vs Ditto)" class="responsive-img rounded-img border-img">
+              <span class="img-caption">Empirical 50-Round Uplink Wire Payload: CSSP (1.52 GB) vs Personalized Ditto (2.48 GB) — 38.2% Bandwidth Savings</span>
             </div>
           </div>
         </div>
@@ -868,6 +868,76 @@
           <div class="cm-thumb-card">
             <img src="assets/fpdaf_personalized_confusion_matrix.png" alt="FPDAF-v2 Confusion Matrix" class="responsive-img rounded-img border-img">
             <div class="cm-caption highlight-text"><strong>FPDAF-v2 Proposed (AUC: 0.7923 • Acc: 88.72%)</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empirical Benchmark Curves & Statistical Validation Gallery -->
+      <div class="diagram-card glass-card" style="margin-top: 24px;">
+        <div class="diagram-header">
+          <div class="diagram-title-wrap">
+            <i data-lucide="line-chart" class="diagram-icon"></i>
+            <div>
+              <h3>Empirical Benchmark Trajectories &amp; Clinical Decision Validation</h3>
+              <p>Publication-verified diagnostic trajectories, cluster bootstrap confidence intervals, precision-recall trade-offs, and decision curve net benefit</p>
+            </div>
+          </div>
+        </div>
+        <div class="cards-grid-2" style="margin-top: 20px;">
+          <!-- Plot 1: Comparative ROC Overlay -->
+          <div class="benchmark-plot-card">
+            <div class="plot-card-header">
+              <span class="pill-badge pill-purple">Multi-Model Discrimination</span>
+              <h4>Five-Way Comparative ROC Overlay</h4>
+              <p>AUROC trajectories with 95% cluster bootstrap intervals across 102,994 held-out evaluation windows (FPDAF-v2 AUROC: 0.7923).</p>
+            </div>
+            <img src="assets/comparative_roc_overlay.png" alt="Five-Way Comparative ROC Overlay with 95% Confidence Intervals" class="responsive-img rounded-img border-img">
+            <div class="plot-footer">
+              <span class="plot-stat-pill"><i data-lucide="check-circle-2"></i> AUROC 0.7923 [0.7686–0.8170]</span>
+              <span class="plot-stat-pill"><i data-lucide="users"></i> B=2,000 Patient Bootstrap</span>
+            </div>
+          </div>
+
+          <!-- Plot 2: Comparative Precision-Recall Overlay -->
+          <div class="benchmark-plot-card">
+            <div class="plot-card-header">
+              <span class="pill-badge pill-cyan">Imbalanced Cohort Evaluation</span>
+              <h4>Comparative Precision-Recall (PR) Curves</h4>
+              <p>Evaluating positive detection reliability under rare sepsis event rates (1:38 positive prevalence; FPDAF-v2 AUPRC: 0.1043).</p>
+            </div>
+            <img src="assets/comparative_pr_overlay.png" alt="Comparative Precision-Recall Overlay" class="responsive-img rounded-img border-img">
+            <div class="plot-footer">
+              <span class="plot-stat-pill"><i data-lucide="check-circle-2"></i> Highest AUPRC: 0.1043</span>
+              <span class="plot-stat-pill"><i data-lucide="activity"></i> Pre-Screening Precision</span>
+            </div>
+          </div>
+
+          <!-- Plot 3: Decision Curve Analysis (DCA) -->
+          <div class="benchmark-plot-card">
+            <div class="plot-card-header">
+              <span class="pill-badge pill-emerald">Net Clinical Benefit</span>
+              <h4>Decision Curve Analysis (DCA)</h4>
+              <p>Quantifying clinical utility across decision thresholds (&tau; &isin; [0.05, 0.45]) relative to universal treat-all or treat-none strategies.</p>
+            </div>
+            <img src="assets/decision_curve_analysis.png" alt="Clinical Decision Curve Analysis" class="responsive-img rounded-img border-img">
+            <div class="plot-footer">
+              <span class="plot-stat-pill"><i data-lucide="check-circle-2"></i> Superior Net Benefit Across &tau;</span>
+              <span class="plot-stat-pill"><i data-lucide="shield"></i> Zero Overtreatment Harm</span>
+            </div>
+          </div>
+
+          <!-- Plot 4: Cross-Hospital External Generalization -->
+          <div class="benchmark-plot-card">
+            <div class="plot-card-header">
+              <span class="pill-badge pill-gold">Multi-Tier Generalization</span>
+              <h4>Cross-Hospital Institutional Generalization</h4>
+              <p>Robustness across non-IID Community (geriatric), Regional Trauma (surgical), and Academic Medical Center patient demographics.</p>
+            </div>
+            <img src="assets/external_cohort_generalization.png" alt="Cross-Hospital Non-IID Generalization" class="responsive-img rounded-img border-img">
+            <div class="plot-footer">
+              <span class="plot-stat-pill"><i data-lucide="check-circle-2"></i> 3 Heterogeneous Tiers</span>
+              <span class="plot-stat-pill"><i data-lucide="git-branch"></i> Dirichlet (&alpha;=0.5) Partition</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1354,7 +1424,7 @@
           <span class="xai-pill">Pillar 1: Temporal</span>
           <h3>"WHEN Did Risk Accumulate?"</h3>
           <p>The 24-hour Multi-Head Self-Attention distribution reveals the exact historical timeline where risk accumulated. Attention peaks dramatically at <strong>19.8% at Hour 18</strong>, providing an automated <strong>5.8-hour advance warning</strong> before clinical shock.</p>
-          <img src="assets/temporal_attention_profile.png" alt="Temporal Attention Profile" class="responsive-img rounded-img mini-img">
+          <img src="assets/temporal_attention_24h.png" alt="24-Hour Temporal Attention Profile" class="responsive-img rounded-img mini-img" style="margin-top: 14px;">
         </div>
 
         <!-- Pillar 2 -->
@@ -1364,15 +1434,8 @@
           </div>
           <span class="xai-pill">Pillar 2: Attribution</span>
           <h3>"WHAT Biomarkers Drove Risk?"</h3>
-          <p>Integrated Gradients and SHAP decompose neural activations into physiological factors: <strong>Heart Rate (35%)</strong>, <strong>Systolic BP (28%)</strong>, and <strong>SpO$_2$ (22%)</strong>, strictly aligning with international SIRS/qSOFA criteria.</p>
-          <div class="feature-bar-wrap">
-            <div class="f-bar-label"><span>Heart Rate (Tachycardia)</span> <span>35%</span></div>
-            <div class="f-bar"><div class="f-fill" style="width: 35%;"></div></div>
-            <div class="f-bar-label"><span>Systolic BP (Hypotension)</span> <span>28%</span></div>
-            <div class="f-bar"><div class="f-fill" style="width: 28%;"></div></div>
-            <div class="f-bar-label"><span>SpO2 (Hypoxemia)</span> <span>22%</span></div>
-            <div class="f-bar"><div class="f-fill" style="width: 22%;"></div></div>
-          </div>
+          <p>Integrated Gradients decomposes neural activations into individual physiological attributions: <strong>Heart Rate (Tachycardia)</strong>, <strong>Systolic BP (Hypotension)</strong>, and <strong>SpO$_2$ (Hypoxemia)</strong> dominate risk accumulation.</p>
+          <img src="assets/integrated_gradients_top_features.png" alt="Integrated Gradients Top Biomarker Attributions" class="responsive-img rounded-img mini-img" style="margin-top: 14px;">
         </div>
 
         <!-- Pillar 3 -->
