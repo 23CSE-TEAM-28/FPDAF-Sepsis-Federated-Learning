@@ -3305,13 +3305,13 @@ img { max-width: 100%; height: auto; }
 /* Downloads Grid */
 .downloads-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   margin-bottom: 24px;
 }
 
 .download-card {
-  padding: 22px 20px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
 }
@@ -3355,14 +3355,16 @@ img { max-width: 100%; height: auto; }
 
 .dl-btn-group {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   margin-top: auto;
+  flex-wrap: wrap;
 }
 
 .dl-btn-group .btn {
-  flex: 1;
+  flex: initial;
   text-align: center;
   justify-content: center;
+  padding: 6px 14px;
 }
 
 /* BibTeX */
