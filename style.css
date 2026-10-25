@@ -217,7 +217,7 @@ img { max-width: 100%; height: auto; }
 /* Standard Dark Clinical Card */
 .glass-card, .feature-card, .invention-card, .diagram-card,
 .table-card, .chart-card, .portal-tabs,
-.video-container-card, .download-card, .bibtex-card, .team-card, .guide-box {
+.download-card, .bibtex-card, .team-card, .guide-box {
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
@@ -2750,7 +2750,7 @@ img { max-width: 100%; height: auto; }
 
 
 /* ==========================================================================
-   15. PORTALS, VIDEO, PUBLICATIONS & TEAM
+   15. PORTALS, PUBLICATIONS & TEAM
    ========================================================================== */
 .portal-tabs {
   padding: 24px;
@@ -3301,82 +3301,7 @@ img { max-width: 100%; height: auto; }
   .portal-btn { font-size: 0.76rem; padding: 6px 10px; }
 }
 
-/* Video Player */
-.video-container-card {
-  padding: 24px;
-}
 
-.video-player-frame {
-  width: 100%;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: #000;
-  border: 1px solid var(--border-light);
-  margin-bottom: 16px;
-}
-
-.main-video-player {
-  width: 100%;
-  display: block;
-}
-
-.video-chapters {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-
-.chap-title {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.chap-btn {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  color: var(--text-body);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.chap-btn:hover {
-  border-color: var(--teal-400);
-  color: #ffffff;
-}
-
-.chap-btn.active {
-  background: var(--teal-500);
-  border-color: var(--teal-500);
-  color: #ffffff;
-  box-shadow: 0 0 12px rgba(20, 184, 166, 0.3);
-}
-
-.video-info-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-light);
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
-.v-info-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
 
 /* Downloads Grid */
 .downloads-grid {

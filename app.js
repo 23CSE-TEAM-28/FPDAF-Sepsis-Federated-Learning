@@ -1306,38 +1306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ==========================================
-  // 13. Video Player & Chapter Jumping
-  // ==========================================
-  const demoVideo = document.getElementById('demoVideo');
-  const chapterButtons = document.querySelectorAll('.chap-btn');
 
-  chapterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const time = parseFloat(btn.dataset.time);
-      if (!isNaN(time) && demoVideo) {
-        demoVideo.currentTime = time;
-        demoVideo.play().catch(() => {});
-        chapterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        showToast(`Jumped to video chapter: ${btn.textContent.trim()}`);
-      }
-    });
-  });
-
-  if (demoVideo) {
-    demoVideo.addEventListener('timeupdate', () => {
-      const current = demoVideo.currentTime;
-      let activeIndex = 0;
-      chapterButtons.forEach((btn, index) => {
-        const time = parseFloat(btn.dataset.time);
-        if (current >= time) activeIndex = index;
-      });
-      chapterButtons.forEach((b, i) => {
-        b.classList.toggle('active', i === activeIndex);
-      });
-    });
-  }
 
   // ==========================================
   // 14. In-Browser PDF Document Modal Viewer
@@ -1392,7 +1361,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { label: 'Jump to 40-Biomarker Cohort Data Dictionary', tag: 'Section', action: () => scrollToSection('#cohort') },
     { label: 'Jump to REST API Developer Console', tag: 'Section', action: () => scrollToSection('#api') },
     { label: 'Jump to Clinical Documentation & Portals Portfolio', tag: 'Section', action: () => scrollToSection('#portals') },
-    { label: 'Jump to Live Video Demonstration Player', tag: 'Section', action: () => scrollToSection('#demo') },
     { label: 'Jump to Scholarly Publications & Deliverables', tag: 'Section', action: () => scrollToSection('#publications') },
     { label: 'Jump to Team G028 & Faculty Mentors', tag: 'Section', action: () => scrollToSection('#team') },
     { label: 'Read JMIR Medical Informatics Paper (Full Manuscript PDF)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_JMIR_Journal_Paper.pdf', 'JMIR Medical Informatics Paper') },
