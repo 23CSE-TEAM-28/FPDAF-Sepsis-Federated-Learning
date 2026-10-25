@@ -63,7 +63,6 @@ All official evaluation drafts are included in this portal:
 - [Elsevier AIIM Manuscript (15 Pages, Artificial Intelligence in Medicine)](docs/FPDAF_Elsevier_Journal_Paper.pdf)
 - [Springer Nature SNCS Manuscript (17 Pages, SN Computer Science)](docs/FPDAF_Springer_Journal_Paper.pdf)
 - [JMIR Medical Informatics Paper (PDF)](docs/FPDAF_JMIR_Journal_Paper.pdf) & [Word Deliverable (DOCX)](docs/FPDAF_JMIR_Manuscript.docx)
-- [IPO Form 2 Patent Specification Draft (13 Pages, 15 Claims)](docs/Patent_Disclosure_Draft_FPDAF.pdf)
 - [Comprehensive Project Documentation Dossier](docs/Project_Documentation_Dossier.pdf)
 
 ---

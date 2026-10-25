@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FPDAF — Explainable Federated Learning for Healthcare Time-Series Forecasting with Personalized Drift Adaptation</title>
-  <meta name="description" content="Patent-grade, industry-level Clinical Intelligence & Federated Learning showcase portal. Early sepsis forecasting with 96.20% peak accuracy (tau=0.65), 0.7923 AUROC, AD-CUSUM concept drift detection, and point-of-care counterfactual recourse on 102,994 ICU windows.">
+  <meta name="description" content="Production-grade, industry-level Clinical Intelligence & Federated Learning showcase portal. Early sepsis forecasting with 96.20% peak accuracy (tau=0.65), 0.7923 AUROC, AD-CUSUM concept drift detection, and point-of-care counterfactual recourse on 102,994 ICU windows.">
   <meta name="keywords" content="Federated Learning, Sepsis Prediction, Clinical Decision Support System, Healthcare AI, Concept Drift, AD-CUSUM, Privacy-Preserving AI">
   
   <!-- OpenGraph / Social Metadata -->
@@ -108,13 +108,6 @@
                 <div class="dropdown-desc">40,327 multi-center ICU admissions with 40 clinical signals</div>
               </div>
             </a>
-            <a href="#patent" class="dropdown-card">
-              <div class="dropdown-icon-box"><i data-lucide="file-check-2"></i></div>
-              <div class="dropdown-text">
-                <div class="dropdown-title">Patent Specification</div>
-                <div class="dropdown-desc">15 granted claims covering federated drift adaptation</div>
-              </div>
-            </a>
           </div>
         </div>
 
@@ -211,9 +204,8 @@
         <a href="#inventions" class="mobile-link"><i data-lucide="sparkles"></i> 3 Core Inventions (AD-CUSUM, CSSP)</a>
         <a href="#xai" class="mobile-link"><i data-lucide="eye"></i> Three Pillars of Clinical XAI</a>
 
-        <div class="mobile-group-title">Validation &amp; Intellect Property</div>
+        <div class="mobile-group-title">Validation &amp; System Platform</div>
         <a href="#benchmarks" class="mobile-link"><i data-lucide="award"></i> 6-Way SOTA Benchmarks</a>
-        <a href="#patent" class="mobile-link"><i data-lucide="file-check-2"></i> Patent Specification (15 Claims)</a>
         <a href="#cohort" class="mobile-link"><i data-lucide="database"></i> PhysioNet 40-Biomarker Cohort</a>
         <a href="#portals" class="mobile-link"><i data-lucide="layout-dashboard"></i> Doctor &amp; Admin Portals</a>
 
@@ -246,9 +238,9 @@
           <i data-lucide="bar-chart-2"></i>
           <span>Explore SOTA Benchmarks</span>
         </a>
-        <a href="#patent" class="btn btn-secondary">
-          <i data-lucide="award"></i>
-          <span>Patent Specification (15 Claims)</span>
+        <a href="#portals" class="btn btn-secondary">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Clinical Portals Portfolio</span>
         </a>
         <button class="btn btn-tertiary" onclick="openPdfViewer('docs/FPDAF_JMIR_Journal_Paper.pdf', 'JMIR Medical Informatics Journal Paper')">
           <i data-lucide="file-text"></i>
@@ -940,272 +932,6 @@
     </div>
   </section>
 
-  <!-- Interactive Patent Disclosure & Legal Claims Tree (IPO Form 2) -->
-  <section id="patent" class="section patent-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag"><i data-lucide="award"></i> Official Intellectual Property</div>
-        <h2 class="section-title">Patent Disclosure &amp; Legal Claims Explorer</h2>
-        <p class="section-subtitle">
-          Complete Patent Specification drafted under <strong>The Patents Act, 1970</strong> (IPO Form 2). Explore all 15 claims, prior-art novelty analysis, and patent drawing sheets below.
-        </p>
-      </div>
-
-      <!-- Patent Metadata Banner -->
-      <div class="patent-meta-banner">
-        <div class="patent-meta-info">
-          <div class="patent-badge-icon"><i data-lucide="file-check-2"></i></div>
-          <div>
-            <h3>A Federated Personalized Drift-Aware Attention Framework (FPDAF) for Early Sepsis Forecasting in Multi-Center Critical Care</h3>
-            <p>
-              <strong>Application Type:</strong> Complete Patent Specification • <strong>Assignee:</strong> Amrita Vishwa Vidyapeetham • <strong>Inventors:</strong> Sheela Akshar Sakhi, Hasini Reddy M, Kousik Sarma Lakkaraju, Haswitha K, V. Chakravarthy
-            </p>
-          </div>
-        </div>
-        <div class="patent-meta-actions">
-          <button class="btn btn-sm btn-gold" onclick="openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft (IPO Form 2)')">
-            <i data-lucide="book-open"></i> Read Full 13-Page Patent
-          </button>
-          <a href="docs/Patent_Disclosure_Draft_FPDAF.pdf" download class="btn btn-sm btn-outline">
-            <i data-lucide="download"></i> Download Specification PDF
-          </a>
-        </div>
-      </div>
-
-      <!-- Prior-Art Novelty Analysis Radar Table -->
-      <div class="table-card glass-card" style="margin-bottom: 24px;">
-        <h4><i data-lucide="shield-check" class="text-emerald"></i> Prior-Art Novelty &amp; Inventive Step Differentiation Matrix</h4>
-        <div class="table-responsive">
-          <table class="benchmark-table">
-            <thead>
-              <tr>
-                <th>System / Prior Art Document</th>
-                <th>Decentralized FL</th>
-                <th>Concept Drift Detection</th>
-                <th>Edge Bandwidth Freezing</th>
-                <th>Temporal Attention</th>
-                <th>Counterfactual Recourse</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>D1: McMahan et al. (FedAvg)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> Yes</td>
-                <td><i data-lucide="x" class="text-rose"></i> Static</td>
-                <td><i data-lucide="x" class="text-rose"></i> Full Upload</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-              </tr>
-              <tr>
-                <td><strong>D2: Li et al. (FedProx)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> Yes</td>
-                <td><i data-lucide="x" class="text-rose"></i> Proximal Term Only</td>
-                <td><i data-lucide="x" class="text-rose"></i> Full Upload</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-              </tr>
-              <tr>
-                <td><strong>D3: Li et al. (Ditto PFL)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> Yes</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-                <td><i data-lucide="x" class="text-rose"></i> 2.48 GB (Saturating)</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-              </tr>
-              <tr>
-                <td><strong>D4: Shamir et al. (Hyp-FL)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> Yes</td>
-                <td><i data-lucide="x" class="text-rose"></i> Global Only</td>
-                <td><i data-lucide="x" class="text-rose"></i> High Payload</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-                <td><i data-lucide="x" class="text-rose"></i> None</td>
-              </tr>
-              <tr class="highlight-row">
-                <td><strong>PROPOSED FPDAF (Invention)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> <strong>Decentralized</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> <strong>AD-CUSUM (JSD)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> <strong>CSSP (-38.2% 0-Upload)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> <strong>Multi-Head (5.8h lead)</strong></td>
-                <td><i data-lucide="check" class="text-emerald"></i> <strong>SSC Bedside Recourse</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 15 Patent Claims Tree Accordion -->
-      <div class="claims-accordion" id="claimsAccordion">
-        <!-- Claim 1 (Independent) -->
-        <div class="claim-item active">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 1: Distributed Federated Sepsis Forecasting Architecture</h4>
-            <span class="claim-type-pill pill-indep">INDEPENDENT SYSTEM CLAIM</span>
-          </div>
-          <div class="claim-body">
-            A privacy-preserving distributed computing system for forecasting clinical sepsis in intensive care patients across a plurality of decentralized hospital client nodes, comprising:
-            a decoupled neural architecture featuring a shared temporal feature representation backbone (BiLSTM and Multi-Head Self-Attention) and client-specific personalized prediction heads ($\phi^k$);
-            wherein each client node ingests 40 continuous time-series physiological biomarkers without transmitting raw patient records off-premises under HIPAA and DPDPA mandates.
-          </div>
-        </div>
-
-        <!-- Claim 2 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 2: AD-CUSUM Dynamic Change-Point Detection</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 1)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 1, wherein each client node executes an Adaptive Divergence-Weighted Cumulative Sum (AD-CUSUM) change-point detector tracking cumulative drift score $S_r = \max(0, S_{r-1} + w_{\text{grad}}^{(r)} \cdot ((\mathcal{L}_{\text{val}, r} - \mu_0) + \beta D_{\text{JSD}}^{(r)} - \kappa_r))$, wherein symmetric Jensen-Shannon divergence $D_{\text{JSD}}^{(r)}$ quantifies prediction probability distribution shifts.
-          </div>
-        </div>
-
-        <!-- Claim 3 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 3: Gradient Variance Damping Factor</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 2)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 2, wherein said detector dynamically scales accumulated residuals using a gradient variance damping factor $w_{\text{grad}}^{(r)} = 1 + \tanh(\gamma \cdot \text{Var}(\nabla_{\theta_k} \mathcal{L}))$, dampening spurious alarms generated by high mini-batch gradient variance and transient ICU sensor dropouts.
-          </div>
-        </div>
-
-        <!-- Claim 4 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 4: Self-Calibrating Slack Coefficient $\kappa_r$</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 2)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 2, wherein the slack coefficient $\kappa_r = \mu_{\text{loss}} + \alpha \sigma_{\text{loss}}$ continuously updates based on a sliding window of historical validation errors, preventing drift accumulator explosion during standard model convergence.
-          </div>
-        </div>
-
-        <!-- Claim 5 (Independent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 5: DDP-ERP Four-Term Regularized Personalization Objective</h4>
-            <span class="claim-type-pill pill-indep">INDEPENDENT METHOD CLAIM</span>
-          </div>
-          <div class="claim-body">
-            A computer-implemented method for adapting a personalized neural network upon drift detection, comprising optimizing an objective:
-            $\mathcal{L}_{\text{DDP-ERP}} = \mathcal{L}_{\text{CE}}(y, \hat{y}) + \lambda_1 \mathcal{L}_{\text{distill}} + \lambda_2 \mathcal{L}_{\text{align}} + \lambda_3 \mathcal{H}(P_{\text{local}})$,
-            preventing catastrophic forgetting of shared multi-center representations while adapting to local ICU patient demographics.
-          </div>
-        </div>
-
-        <!-- Claim 6 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 6: Knowledge Distillation Bounded Divergence</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 5)</span>
-          </div>
-          <div class="claim-body">
-            The method of claim 5, wherein the distillation loss comprises Kullback-Leibler divergence $D_{\text{KL}}(P_{\text{local}} \,\|\, P_{\text{global}})$ penalizing deviation of the client prediction distribution from the aggregated global consensus model.
-          </div>
-        </div>
-
-        <!-- Claim 7 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 7: Cosine Head Parameter Alignment</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 5)</span>
-          </div>
-          <div class="claim-body">
-            The method of claim 5, wherein the alignment loss penalizes angular divergence $1 - \frac{\langle \phi^k, \theta_{\text{global}}^{\text{head}} \rangle}{\|\phi^k\|_2 \cdot \|\theta_{\text{global}}^{\text{head}}\|_2}$, constraining edge optimization within a bounded directional hypercone.
-          </div>
-        </div>
-
-        <!-- Claim 8 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 8: Shannon Entropy Calibration Under Missingness</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 5)</span>
-          </div>
-          <div class="claim-body">
-            The method of claim 5, wherein Shannon entropy $\mathcal{H}(P_{\text{local}}) = -\sum_c P_c \log P_c$ penalizes overconfident predictions when vital laboratory inputs exhibit high clinical sparsity.
-          </div>
-        </div>
-
-        <!-- Claim 9 (Independent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 9: Client-Side Selective Personalization (CSSP) Freezing Protocol</h4>
-            <span class="claim-type-pill pill-indep">INDEPENDENT PROTOCOL CLAIM</span>
-          </div>
-          <div class="claim-body">
-            A communication protocol for edge federated networks, wherein upon cumulative drift score $S_r \ge H$, the client node locks gradient backpropagation into the shared temporal backbone ($\nabla_\theta \mathcal{L} \leftarrow 0$) and completely suppresses parameter transmission ($\text{Upload}(\phi^k) = \emptyset$), saving 38.2% wide-area network bandwidth.
-          </div>
-        </div>
-
-        <!-- Claim 10 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 10: Zero-Upload Edge Parameter Sovereignty</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 9)</span>
-          </div>
-          <div class="claim-body">
-            The protocol of claim 9, wherein personalized head parameters $\phi^k$ reside exclusively on local hospital storage, preventing membership inference and model inversion attacks.
-          </div>
-        </div>
-
-        <!-- Claim 11 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 11: Multi-Head Self-Attention Early Warning Window</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 1)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 1, wherein multi-head self-attention computes temporal attribution across 24 historical hours, identifying clinical risk accumulation 5.8 hours prior to physiological septic shock onset.
-          </div>
-        </div>
-
-        <!-- Claim 12 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 12: Point-of-Care Bedside Counterfactual Recourse</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 1)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 1, further comprising a counterfactual recourse engine calculating physiological perturbations required to invert predicted septic shock risk $\hat{y} \ge 0.5$ to safe baseline status $\hat{y} < 0.2$.
-          </div>
-        </div>
-
-        <!-- Claim 13 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 13: Automated Surviving Sepsis Campaign (SSC) Bundle Dispatch</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT CLAIM (TO CLAIM 12)</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 12, wherein predicted risk exceeding calibrated thresholds automatically dispatches Surviving Sepsis Campaign (SSC) Hour-1 electronic clinical orders: stat blood lactate, 2 sets of blood cultures, empiric broad-spectrum antibiotics, and 30 mL/kg crystalloid resuscitation.
-          </div>
-        </div>
-
-        <!-- Claim 14 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 14: Non-Transitory Computer-Readable Storage Medium</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT MEDIA CLAIM</span>
-          </div>
-          <div class="claim-body">
-            A non-transitory computer-readable storage medium embodying executable instructions causing one or more distributed hospital processors to execute the methods of claims 1 through 13.
-          </div>
-        </div>
-
-        <!-- Claim 15 (Dependent) -->
-        <div class="claim-item">
-          <div class="claim-header">
-            <h4><i data-lucide="chevron-right"></i> Claim 15: Heterogeneous Multi-Center ICU Topology</h4>
-            <span class="claim-type-pill pill-dep">DEPENDENT TOPOLOGY CLAIM</span>
-          </div>
-          <div class="claim-body">
-            The system of claim 1, configured across at least three heterogeneous clinical tiers: a primary community hospital, a specialized acute trauma resuscitation center, and a tertiary academic oncology research hospital.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Searchable 40-Biomarker Clinical Cohort Data Dictionary -->
   <!-- Comprehensive Multi-Center Dataset Specifications & 40-Biomarker Clinical Dictionary -->
@@ -2437,20 +2163,20 @@
     </div>
   </section>
 
-  <!-- Publications, Patent & Download Center -->
+  <!-- Publications & Scholarly Downloads Center -->
   <section id="publications" class="section publications-section">
     <div class="container">
       <div class="section-header">
         <div class="section-tag"><i data-lucide="award"></i> Official Submission Packages</div>
-        <h2 class="section-title">Final Submission Manuscripts &amp; Intellectual Property</h2>
+        <h2 class="section-title">Final Scholarly Manuscripts &amp; Replication Deliverables</h2>
         <p class="section-subtitle">
-          Final peer-reviewed journal submission manuscript formatted for Journal of Medical Internet Research (JMIR), complete Indian Patent Office (IPO Form 2) specifications, and official open-science replication artifacts:
+          Final peer-reviewed journal submission manuscript formatted for Journal of Medical Internet Research (JMIR), engineering documentation dossiers, and official open-science replication artifacts:
         </p>
       </div>
 
       <div class="downloads-grid">
         <!-- 1. JMIR Medical Informatics (Final Journal Submission) -->
-        <div class="download-card glass-card highlight-patent" style="border-color: rgba(20, 184, 166, 0.45);">
+        <div class="download-card glass-card" style="border-color: rgba(20, 184, 166, 0.45);">
           <div class="dl-badge dl-badge-emerald">Official Submission • JMIR Medical Informatics (Q1)</div>
           <h4>JMIR Medical Informatics Research Paper</h4>
           <p>Complete final manuscript formatted for the Journal of Medical Internet Research (JMIR) with 40,327-patient cohort analysis, patient-level cluster bootstrap statistics, and 3-pillar clinical explainability.</p>
@@ -2469,21 +2195,6 @@
             </a>
             <a href="docs/FPDAF_JMIR_Submission_Checklist.docx" download class="btn btn-sm btn-outline" title="Download Submission Checklist">
               <i data-lucide="check-square"></i> Checklist
-            </a>
-          </div>
-        </div>
-
-        <!-- 2. IPO Patent Specification -->
-        <div class="download-card glass-card highlight-patent">
-          <div class="dl-badge dl-badge-gold">Intellectual Property • IPO Form 2</div>
-          <h4>Patent Disclosure Specification (15 Claims)</h4>
-          <p>Complete Indian Patent Office Specification with 15 Legal Claims, 5 Drawing Sheets, and Field of Invention encompassing AD-CUSUM drift telemetry and DDP-ERP personalization (13 Pages).</p>
-          <div class="dl-btn-group">
-            <button class="btn btn-sm btn-gold" onclick="openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft (IPO Form 2)')">
-              <i data-lucide="book-open"></i> Read Online
-            </button>
-            <a href="docs/Patent_Disclosure_Draft_FPDAF.pdf" download class="btn btn-sm btn-outline">
-              <i data-lucide="download"></i> PDF
             </a>
           </div>
         </div>
@@ -2610,7 +2321,6 @@
           <a href="https://github.com/23CSE-TEAM-28/FPDAF-Sepsis-Federated-Learning" target="_blank"><svg class="github-icon-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg> GitHub Repository</a>
           <a href="https://github.com/23CSE-TEAM-28" target="_blank"><i data-lucide="users"></i> GitHub Organization</a>
           <a href="docs/FPDAF_JMIR_Journal_Paper.pdf" target="_blank"><i data-lucide="file-text"></i> JMIR Manuscript (PDF)</a>
-          <a href="docs/Patent_Disclosure_Draft_FPDAF.pdf" target="_blank"><i data-lucide="award"></i> Patent Disclosure</a>
           <a href="docs/Project_Documentation_Dossier.pdf" target="_blank"><i data-lucide="file-check"></i> Dossier PDF</a>
         </div>
       </div>
@@ -2623,7 +2333,7 @@
     <div class="cmd-box">
       <div class="cmd-search-header">
         <i data-lucide="search" style="color: var(--cyan); width: 20px; height: 20px;"></i>
-        <input type="text" id="cmdInput" class="cmd-search-input" placeholder="Type a section, biomarker, or patent claim..." autofocus>
+        <input type="text" id="cmdInput" class="cmd-search-input" placeholder="Type a section or clinical biomarker..." autofocus>
         <span class="cmd-shortcut">ESC</span>
       </div>
       <ul class="cmd-results-list" id="cmdResultsList">

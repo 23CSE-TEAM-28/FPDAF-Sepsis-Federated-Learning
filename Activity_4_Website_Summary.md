@@ -7,7 +7,7 @@
 
 ## 1. Executive Summary & Live Publication
 
-The official Project Website & Documentation Portal has been completely transformed into an **authentic, commercial-grade ICU central telemetry monitor workstation and patent-grade medical AI showcase platform**, published live on GitHub Pages:
+The official Project Website & Documentation Portal has been completely transformed into an **authentic, commercial-grade ICU central telemetry monitor workstation and medical AI showcase platform**, published live on GitHub Pages:
 - 🌐 **Live Published Portal:** [https://aksharsakhi.github.io/FPDAF-Sepsis-Federated-Learning/](https://aksharsakhi.github.io/FPDAF-Sepsis-Federated-Learning/)
 - 💻 **Official GitHub Repository:** [https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning](https://github.com/aksharsakhi/FPDAF-Sepsis-Federated-Learning)
 - 🏢 **Organization Hub:** [https://github.com/23CSE-TEAM-28](https://github.com/23CSE-TEAM-28)
@@ -26,8 +26,7 @@ The official Project Website & Documentation Portal has been completely transfor
 | **Web Audio QRS Heartbeat Synthesizer** | Real-time 880Hz medical-grade sine tone audio beep synchronized with each ECG R-wave peak, accompanied by synchronous heartbeat icon pulsing, with a mute/unmute toggle | Multi-sensory authentic bedside auditory telemetry | **100% Active** |
 | **Full-Cohort Benchmark Table** | Ground truth verified evaluation on the complete unstratified held-out test partition ($N=102,994$ windows, $M=6,050$ disjoint patients, prevalence 2.58%): FPDAF-v2 achieves 0.7923 AUROC [0.7686–0.8170], 88.72% balanced accuracy, 96.20% peak accuracy, and lowest ECE (0.0902) | Full mathematical and statistical rigor across all 6 baseline models | **100% Active** |
 | **Dual Clinical Operating Modes Table** | Five calibrated operating configurations (&tau; = 0.65, 0.50, 0.12, 0.08, 0.06) spanning High-Confidence Rule-In (96.20% Acc, 97.80% Spec) to Early Bedside Screening (80.15% Sens) | Eliminates clinical alert fatigue while preventing diagnostic missed cases | **100% Active** |
-| **Patent Claims Explorer (IPO Form 2)** | Interactive accordion tree showcasing all 15 legal patent claims (Independent vs. Dependent) + Prior-Art Novelty Matrix (FPDAF vs. D1–D5) | Ready for Indian Patent Office filing under The Patents Act, 1970 | **100% Active** |
-| **Scholarly Artifacts & Downloads Center** | Integrated in-browser viewer and direct download cards for all 4 formal journal submissions (IEEE JBHI, Elsevier AIIM, Springer Nature SNCS, JMIR Medical Informatics PDF & DOCX), IPO Patent Draft, and Technical Dossier | Transparent access to all university and peer-review submissions | **100% Active** |
+| **Scholarly Artifacts & Downloads Center** | Integrated in-browser viewer and direct download cards for all 4 formal journal submissions (IEEE JBHI, Elsevier AIIM, Springer Nature SNCS, JMIR Medical Informatics PDF & DOCX) and Technical Dossier | Transparent access to all university and peer-review submissions | **100% Active** |
 
 ---
 

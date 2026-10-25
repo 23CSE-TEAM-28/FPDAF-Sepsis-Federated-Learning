@@ -1129,24 +1129,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // 9. Patent Claims Accordion
-  // ==========================================
-  const claimItems = document.querySelectorAll('.claim-item');
-  claimItems.forEach(item => {
-    const header = item.querySelector('.claim-header');
-    if (header) {
-      header.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        item.classList.toggle('active', !isActive);
-        const icon = header.querySelector('i');
-        if (icon && window.lucide) {
-          icon.setAttribute('data-lucide', !isActive ? 'chevron-down' : 'chevron-right');
-          window.lucide.createIcons();
-        }
-      });
-    }
-  });
 
   // ==========================================
   // 10. Searchable 40-Biomarker Cohort Data Dictionary
@@ -1357,14 +1339,11 @@ document.addEventListener('DOMContentLoaded', () => {
     { label: 'Jump to 3 Architectural Inventions (AD-CUSUM Drift, DDP-ERP, CSSP)', tag: 'Section', action: () => scrollToSection('#inventions') },
     { label: 'Jump to Three Pillars of Clinical XAI (Temporal, Attribution, Recourse)', tag: 'Section', action: () => scrollToSection('#xai') },
     { label: 'Jump to 6-Way Benchmark Suite & Empirical Validation Curves', tag: 'Section', action: () => scrollToSection('#benchmarks') },
-    { label: 'Jump to Patent Disclosure & 15 Legal Claims (IPO Form 2)', tag: 'Section', action: () => scrollToSection('#patent') },
     { label: 'Jump to 40-Biomarker Cohort Data Dictionary', tag: 'Section', action: () => scrollToSection('#cohort') },
-    { label: 'Jump to REST API Developer Console', tag: 'Section', action: () => scrollToSection('#api') },
     { label: 'Jump to Clinical Documentation & Portals Portfolio', tag: 'Section', action: () => scrollToSection('#portals') },
     { label: 'Jump to Scholarly Publications & Deliverables', tag: 'Section', action: () => scrollToSection('#publications') },
     { label: 'Jump to Team G028 & Faculty Mentors', tag: 'Section', action: () => scrollToSection('#team') },
     { label: 'Read JMIR Medical Informatics Paper (Full Manuscript PDF)', tag: 'PDF', action: () => openPdfViewer('docs/FPDAF_JMIR_Journal_Paper.pdf', 'JMIR Medical Informatics Paper') },
-    { label: 'Read Patent Specification (15 Claims, IPO Form 2 Draft)', tag: 'PDF', action: () => openPdfViewer('docs/Patent_Disclosure_Draft_FPDAF.pdf', 'Patent Disclosure Draft') },
     { label: 'Read Project Documentation Dossier (100+ Pages)', tag: 'PDF', action: () => openPdfViewer('docs/Project_Documentation_Dossier.pdf', 'Project Documentation Dossier') }
   ];
 
